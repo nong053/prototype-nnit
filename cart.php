@@ -118,7 +118,7 @@ $strNum++;
                                         <div id="product_title" style="width:250px;">
 										<?
             								if(strlen($product_title)>70){
-											$product_title =mb_substr($product_title,0,70)."...";
+											$product_title =mb_substr($product_title,0,70,"UTF-8")."...";
 											echo"$product_title";
 											}else{
 											echo $product_title;

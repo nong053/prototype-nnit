@@ -1,4 +1,3 @@
-
 <?php
 class table{
 	var $var_columnd = 4;

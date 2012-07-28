@@ -75,6 +75,7 @@ $rs=mysql_fetch_array($result);
     <br style="clear:both" />
     
 <?php
+
 $strSQL2="select * from answer where topic_id=$topic_id";
 $result2=mysql_query($strSQL2);
 if(!$result2){

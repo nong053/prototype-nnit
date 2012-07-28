@@ -53,7 +53,7 @@
 
 $cus_id=$_SESSION['cus_id'];
 
-echo"cus_id$cus_id";
+/*echo"cus_id$cus_id";*/
 $db = new database();
 $result_customer = $db->tableSQL("customer where cus_id='$cus_id'");
 $rs = mysql_fetch_array($result_customer);

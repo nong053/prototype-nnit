@@ -70,10 +70,9 @@ class table{
 }
 //@table::create_table(5);
 $obj_table = new table();
-
-$column=4;
-$title_header="Title1,Title2,Title3,Title4";
-$field_data = "article_id,article_name,article_title,article_detail,";
+//$column=4;
+//$title_header="Title1,Title2,Title3,Title4";
+//$field_data = "article_id,article_name,article_title,article_detail,";
 @$obj_table->create_table();
 ?>
 

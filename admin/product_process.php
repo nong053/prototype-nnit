@@ -197,10 +197,8 @@
 
 
 									
-	if ($action == "edit"){
-		
-		
-		
+if ($action == "edit"){	
+/*
 		
 		$path_thumbnail="../product/".$productcat_id."/".$product_id."/thumbnail/";
 $path_big_picture="../product/".$productcat_id."/".$product_id."/";
@@ -231,9 +229,8 @@ $path_big_picture="../product/".$productcat_id."/".$product_id."/";
 	} 
 	if(is_dir($path_big_picture)){
 	rmdir("$path_big_picture");
-	}
-		
-		
+	}	
+*/	
 		
 		
 		$sql="UPDATE product SET product_name='$product_name',product_title='$product_title', product_detail='$product_detail',product_price='$product_price',product_promotion='$product_promotion',product_amount='$product_amount',product_name_eng='$product_name_eng',product_title_eng='$product_title_eng',product_detail_eng='$product_detail_eng',product_price_eng='$product_price_eng' WHERE product_id='$product_id'";

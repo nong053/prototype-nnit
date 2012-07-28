@@ -1,8 +1,0 @@
-<IfModule mod_rewrite.c>
-Options +FollowSymLinks
-RewriteEngine on
-
-RewriteRule (.*)/$ index.php?page=$1
-
-   
-</IfModule>

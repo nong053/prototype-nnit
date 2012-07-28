@@ -64,7 +64,7 @@
 	
 	
 	if($_GET['article_id']){
-		
+	$article_id = $_GET['article_id'];
 	
 	
 		$result_article=$db->tableSQL("article where article_id='$article_id'");
