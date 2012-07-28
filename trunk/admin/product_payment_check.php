@@ -320,8 +320,8 @@ $rs=mysql_fetch_array($result);
         </div>
        
         <div id="dev_check">
-        <? //$rs[product_payment_check_invoice_pic]?>
-        <img src="images/Camera.png"/>
+        <?=$rs[product_payment_check_invoice_pic]?>
+        <!--<img src="images/Camera.png"/>-->
         </div>
        
         </td>

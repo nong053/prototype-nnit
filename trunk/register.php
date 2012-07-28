@@ -184,7 +184,7 @@ float:left;
 			</div>
 			<div id="text">
 			<input type="text" name="cus_fax" width="100" />
-            <font color="#FF0000" style="margin-left:5px;">*</font>
+            
 			</div>
 			
 		</div>

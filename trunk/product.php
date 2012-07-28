@@ -86,7 +86,7 @@
             <div id="title_product" style="width:180px; padding:3px;">
         	<?
             if(strlen($product_title)>51){
-			$product_title =mb_substr($product_title,0,50)."...";
+			$product_title =mb_substr($product_title,0,50,"UTF-8")."...";
 			echo"$product_title";
 			}else{
 			echo $product_title;

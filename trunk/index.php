@@ -3,10 +3,71 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <!--<link href="template/template1/css/index.css" type="text/css" rel="stylesheet"/>-->
+<!-- import jquery and jquery ui start-->
+<link href="jQueryUI/css/smoothness/jquery-ui-1.8.20.custom.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="jQueryUI/js/jquery-ui-1.8.20.custom.min.js"></script>
+<!-- import jquery and jquery ui end-->
+
+ <script type="text/javascript">
+	$(document).ready(function(){
+		//alert("ok");
+		
+		$("input[type=button],input[type=submit]").button();
+		var productSearch = ['a1','a2','a3'];
+		$("#txtSearch").autocomplete({source:productSearch});
+	});
+	</script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <? $name_title=$_GET['name_title'];//is name to call title
+## ทำการ require เอาclass database;
+			include_once("class_mysql.php");
+			$db = new database();		
+ 		## set logo area.
+$main_menu_id2=$_GET['main_menu_id'];
+if($_GET['page']=="" ){
+$result_seo = $db->tableSQL("seo where 	seo_id = 5");
+			$rs_seo = mysql_fetch_array($result_seo);
+			$object_seo_id=$rs_seo['seo_id'];
+			$object_seo_tag1=$rs_seo['seo_tag1'];
+			$object_seo_tag2=$rs_seo['seo_tag2'];
+			$object_seo_tag3=$rs_seo['seo_tag3'];
+			$object_seo_keyword=$rs_seo['seo_keyword'];
 ?>
-<title><?=$name_title?></title>
+			
+			<title><?=$object_seo_tag1?> <?=$object_seo_tag2?> <?=$object_seo_tag3?></title>
+            <meta name="Description" content="<?=$object_seo_keyword?>" />
+            <meta name="KeyWords" content="<?=$object_seo_tag1?>,<?=$object_seo_tag2?>,<?=$object_seo_tag3?>"/>
+<?
+
+}
+if($main_menu_id2){
+	// echo"main_menu_id2$main_menu_id2";
+$result_seo = $db->tableSQL("seo where 	seo_position = '$main_menu_id2'");
+			$rs_seo = mysql_fetch_array($result_seo);
+			$object_seo_id=$rs_seo['seo_id'];
+			$object_seo_tag1=$rs_seo['seo_tag1'];
+			$object_seo_tag2=$rs_seo['seo_tag2'];
+			$object_seo_tag3=$rs_seo['seo_tag3'];
+			$object_seo_keyword=$rs_seo['seo_keyword'];
+			$seo="yes";
+			?>
+            <title><?=$object_seo_tag1?> <?=$object_seo_tag2?> <?=$object_seo_tag3?></title>
+            <meta name="Description" content="<?=$object_seo_keyword?>" />
+            <meta name="KeyWords" content="<?=$object_seo_tag1?>,<?=$object_seo_tag2?>,<?=$object_seo_tag3?>"/>
+            
+            
+
+ 
+            <?
+}else{
+	$seo="no";
+	?>
+    <title><?=$name_title?></title>
+    <?
+}
+
+?>
 <style>
 a{
 	color:#00F;}
@@ -14,9 +75,7 @@ a{
 
 
 <?
-## ทำการ require เอาclass database;
-			include_once("class_mysql.php");
-			$db = new database();		
+	
  		## set logo area.
 			$result_logo = $db->tableSQL("object_system where object_position = 'header_logo'");
 			$rs_logo = mysql_fetch_array($result_logo);
@@ -309,7 +368,8 @@ body{
 /*footer*/
 #body #bg_footer{
 	background-color:<?=$footer_color?>;
-	height:100px;
+	/*height:100px;*/
+	height:auto;
 	background-image:url(object_system/<?=$footer_bg?>);
 	background-repeat:<?=$footer_repeat?>;
 }
@@ -354,6 +414,13 @@ body{
 	background-image:url(object_system/<?=$button_over?>);
 	
 }
+#autocomplete{
+	float:right;
+}
+#txtSearch{
+	height:22px;
+	width:150px;
+}
 
 /*/footer*/
 
@@ -365,6 +432,9 @@ body{
 
 <body style="background-color:<?=$bg_color?>; background-image:url(object_system/<?=$bg_name?>); background-repeat:<?=$bg_repeat?>;">
 	
+   
+    
+    
     
 	<div id="body" style="background-color:<?=$bg_web_color?>;">
 	<?
@@ -388,6 +458,20 @@ body{
 </div>
             <div id="top_banner" style="background-color:<?=$object_color_banner?>;">
             <img src="object_system/<?=$object_name_banner?>" width="<?=$object_width_logo?>" height="<?=$object_height_logo?>" />
+            <div id="autocomplete">
+            <form action="" >
+            	<table>
+                	<tr>
+                    	<td>
+                        <input type="text" id="txtSearch"  name="txtSearch" />
+                        </td>
+                        <td>
+                        <input type="button" id="btnSubmit" name="btnSubmit" value="ค้นหาข้อมูล" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            </div>
             </div>
             
             <br style="clear:both" />
@@ -727,6 +811,7 @@ body{
 				}
 					?>
                 </ul>
+                <br style="clear:both" />
                 <br style="clear:both" />
             </div>
         </div>

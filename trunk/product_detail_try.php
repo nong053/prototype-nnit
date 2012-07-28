@@ -189,10 +189,10 @@ $product_promotion_detail=$rs[product_promotion_detail];
                                         	
                                        <table width="100%" style="margin:5px;">
                                             	<tr>
-                                                	<td width="67%">
+                                                	<td width="35%">
                                                    ชื่อสินค้า:
                                                     </td>
-                                                    <td width="33%" align="right">
+                                                    <td width="65%" align="right">
                                                     
                                                     <div id="text01" style=" font-weight:bold;  padding-right:20px; ">
                                                     	<b><?=$product_name?></b>
