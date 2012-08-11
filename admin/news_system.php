@@ -154,7 +154,7 @@
 
 <div class="bg_admin">
 	<div id="box_admin">
-    	<div id="bg_bt_top">
+    	<!--<div id="bg_bt_top">-->
         
         
         
@@ -174,7 +174,7 @@
 		}
 		?>
         
-        
+        <!--
         <div id="bg_bt">
         
          	<ul>
@@ -258,7 +258,7 @@
             
             
             
-        </div>
+        </div>-->
         <div id="bg_conent">
         	<div id="contnt">
         	  

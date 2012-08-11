@@ -228,12 +228,19 @@
 <div id="frm-admin2"><input name="admin_email" type="text" class="frm-text" value="<?=$admin_email?>"></div>
 <br style="clear:both"  />
 </div>
-
+<!--
 <div id="admin-line-frm">
 <div id="frm-admin" style="width:200px;">ข้อมูลรายละเอียดอื่นๆ</div>
 <div id="frm-admin2"><textarea name="admin_website" type="text" cols="30" class="frm-texts" ><?=$admin_website?></textarea></div>
 <br style="clear:both"  />
 </div>
+-->
+<div id="admin-line-frm">
+<div id="frm-admin">Website</div>
+<div id="frm-admin2"><input name="admin_website" type="text" class="frm-text" value="<?=$admin_website?>"></div>
+<br style="clear:both"  />
+</div>
+
 
 <div id="admin-line-frm">
 <div id="frm-admin">ชื่อเข้าใช้</div>
