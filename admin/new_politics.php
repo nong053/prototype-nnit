@@ -1,6 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+
 <!-- CKE-->
 <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 <!-- CKE-->
@@ -42,22 +40,22 @@
 	 border:#999 1px solid;
  }
  #dev_title{
-	border:#09C 5px solid;
-	background-color:#09F;
+	/*border:#0099CC 5px solid;*/
+	background-color:#0099CC;
 	-moz-border-radius:5px;
 	-webkit-border-radius:15px;
 	padding:5px;
 	color:#FFF;
 	font-weight:bold;
+	margin-top:5px;
+	margin-bottom:5px;
 }
 -->
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-</head>
 
-<body>
+
 <?
 if($action2=="edit"){
 $news_id=$_GET['news_id'];
@@ -311,5 +309,3 @@ if($action2=="edit"){
 
 </table>
 </form>
-</body>
-</html>

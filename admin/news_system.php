@@ -154,7 +154,7 @@
 
 <div class="bg_admin">
 	<div id="box_admin">
-    	<!--<div id="bg_bt_top">-->
+    	<div id="bg_bt_top">
         
         
         
@@ -174,7 +174,7 @@
 		}
 		?>
         
-        <!--
+       
         <div id="bg_bt">
         
          	<ul>
@@ -182,7 +182,7 @@
                 		<div id="<?=$select1?>">
               		 		<a href="index.php?page=news_system&select_news=new_politics&news_cat_id=1">
                             <div id="devmagin" style="margin:5px;">
-              			 	ข่าวการเมือง
+              			 	กิจกรรม(กลาง)
                      		</div>
               			 	</a>
                     	 </div>
@@ -192,12 +192,13 @@
                 		<div id="<?=$select2?>">
               		 		<a href="index.php?page=news_system&select_news=new_entertain&news_cat_id=2">
                             <div id="devmagin" style="margin:5px;">
-              			 	ข่าวบันเทิง
+              			 	กิจกรรม/ข่าวสาร(ซ้าย)
                      		</div>
               			 	</a>
                     	 </div>
                  
                		 </li>
+					 <!--
                      <li>
                 		<div id="<?=$select3?>">
               		 		<a href="index.php?page=news_system&select_news=new_variety&news_cat_id=3">
@@ -240,7 +241,7 @@
                  
                		 </li>
                     	
-                  
+                  -->
                      
                		
             </ul>
@@ -258,7 +259,7 @@
             
             
             
-        </div>-->
+        </div>
         <div id="bg_conent">
         	<div id="contnt">
         	  

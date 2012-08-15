@@ -8,7 +8,7 @@
 	padding:5px;
 	border:#CCC 0px solid;
 	
-	color:#FFF;
+	color:black;
 	font-weight:bold;
 	margin:0px;
 	font-size:13px;
@@ -38,7 +38,7 @@
    
    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial,Helvetica,sans-serif;
 font-size:13px;">
-    	<tr style="font-weight:bold; background-color:#333; color:#FFF; height:25px; border:#CCC 1px solid; ">
+    	<tr style="font-weight:bold; background-color:#dddddd; height:25px; border:#CCC 1px solid; ">
       
         	<td width="104">
             <div id="devtext">
@@ -86,7 +86,7 @@ font-size:13px;">
 		$strSQL2="select * from answer where topic_id=$rs[topic_id] ";
 		$result2=mysql_query("$strSQL2");
 		$num = mysql_num_rows($result2);
-		$bgcolor=($i++%2)?'#ffffff':'#CCCCCC';
+		$bgcolor=($i++%2)?'#EEF2F7':'#DFE6EF';
 	   ?>
         <tr bgcolor="<?=$bgcolor?>">
        

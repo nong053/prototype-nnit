@@ -1,10 +1,13 @@
 <?php ob_start(); session_start();
 ?>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="kendoui/js/kendo.web.min.js"></script>
+<script src="kendoui/js/kendo.all.min.js"></script>
 
 <link href="kendoui/styles/kendo.common.min.css" rel="stylesheet" />
 <link href="kendoui/styles/kendo.default.min.css" rel="stylesheet" />
+
+
+
 
 <?php
 //$host=$_SERVER['HTTP_HOST'];

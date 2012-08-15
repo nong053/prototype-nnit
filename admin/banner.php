@@ -116,7 +116,6 @@ SMALL BANNER 170 X 100 px
         </td>
     	<td>
         <img src="../mypicture/<?=$pic_name?>" width="20%" height="20%" />
-        
         </td>
         <td>
        
