@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 /*
  * ### CKFinder : Configuration File - Basic Instructions
  *
@@ -30,7 +30,11 @@ function CheckAuthentication()
 	// user logs in your system. To be able to use session variables don't
 	// forget to add session_start() at the top of this file.
 
+	if($_SESSION['admin_name']){
 	return true;
+	}else{
+	return false;
+	}
 }
 
 

@@ -43,7 +43,16 @@ if(isset($_GET['logout'])){
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<!-- css loaded-->
 <link href="../admin/css.css" type="text/css" rel="stylesheet"/>
+<!-- css loaded-->
+
+<!-- Script loaded-->
+
+
+
+<!-- Script loaded-->
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <style type="text/css">
@@ -267,7 +276,7 @@ p{
 			$default_page="select.php";//default page
 			?>
          		  <li><a href="index.php?page=select"><img src="images/pic_small/Settings.png"  border="0" align="absbottom" /> เลือกรายการ</a></li>
-            	 <li><a href="index.php?page=home"><img src="images/clientarea.gif" border="0" align="absbottom" /> หน้าแรก</a></li>
+            	 <li><a href="index.php?page=home"><img src="images/clientarea.gif" border="0" align="absbottom" />ตารางออกอากาศ</a></li>
 				
                 
                 
@@ -321,7 +330,7 @@ p{
                      
                      <li><a href="index.php?page=style_system"><img src="images/Photos.png" border="0" align="absbottom" /> ระบบตกแต่งเว็บ</a></li>
                      
-                     <li><a href="index.php?page=#"><img src="images/pic_small/YouTube.png" border="0" align="absbottom" /> ระบบทีวีออนไลน์</a></li>
+                     <li><a href="index.php?page=tv_system"><img src="images/pic_small/YouTube.png" border="0" align="absbottom" /> ระบบทีวีออนไลน์</a></li>
                      
                      <li><a href="index.php?page=#"><img src="images/pic_small/iPod.png" border="0" align="absbottom" /> ระบบวิทยุออนไลน์</a></li>
                      
@@ -457,6 +466,10 @@ p{
 				break;
 			case 'slide_picture':
 				include("slide_picture.php");
+				break;
+
+			case 'tv_system':
+				include("tv_system.php");
 				break;
 				
 				

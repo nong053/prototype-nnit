@@ -1,4 +1,3 @@
-
 <?
 class database{
 	function tableSQL($table)
