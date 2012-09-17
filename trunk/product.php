@@ -67,19 +67,19 @@
 	 ?>
 		
 				
-     <div id="pic_all " style="float:left; background-color:#FFF; margin-left:5px; margin-top:5px; width:100; height:300px; border:#ccc solid 1px;">
+     <div id="pic_all " style="float:left; background-color:#FFF; margin-left:5px; margin-top:5px; width:210; height:300px; border:#ccc solid 1px;">
      
         
         <img src="<?=$thumbnailsFile?>" border="0"  height="188" /><br>
         <div id="pic_txt" style="padding:5px;">
-        <a href="index.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>">
+        <a href="index.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>&name_title=<?=$product_name?>">
        
        <div id="txt" style="padding:1px;"> <img src="admin/images/knowledgebase.gif" border="0" />คลิ๊กดูรายละเอียด</div>
         </a>
         </div>
         <hr />
         <div id="pic_small">
-        	<a href="index.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>" >
+        	<a href="index.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>&name_title=<?=$product_name?>" >
        
         	
 			<b><?=$product_name?></b> <br>

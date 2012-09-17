@@ -74,7 +74,7 @@ float:left;
 		<div id="lable_text">
 			<div id="lable"></div>
 			<div id="text">
-			<h4>สมัครสมาชิกเพื่อรับส่วนลดพิเศษ 10-20%</h4>
+			<!--<h4>สมัครสมาชิกเพื่อรับส่วนลดพิเศษ 10-20%</h4>-->
 			
 			</div>
 			<br style="clear:both" />

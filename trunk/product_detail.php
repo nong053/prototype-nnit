@@ -40,7 +40,7 @@ $product_promotion_detail=$rs[product_promotion_detail];
 					*/
 					
 					if(is_file($thumbnailsFile)){
-					echo"-------------$i--------------";
+					//echo"-------------$i--------------";
 					$imagesFiles[$i]=$thumbnailsFile;
 					$count+=1;
 					}
@@ -67,12 +67,12 @@ $product_promotion_detail=$rs[product_promotion_detail];
 <?
 	for($i=2; $i<=$count; $i++){//รอบที่0 = . รอบที่1= .. 
 	
-		echo"<br>$i:$imagesFiles[$i]<br>";
+		//echo"<br>$i:$imagesFiles[$i]<br>";
 	}
 ?>
 
 
-        <img src="<?=$picture_big?>" />
+       <center> <img src="<?=$picture_big?>" /></center>
        
        
         <table>

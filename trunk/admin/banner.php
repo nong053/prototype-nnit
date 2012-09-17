@@ -34,7 +34,7 @@ border-right:#dedede solid 1px;
 include("../config.inc.php");
 //include("fckeditor/fckeditor.php");?>
 <div id="dev_text" style="font-size:18px; font-weight:bold; color:#FFF; padding:5px; background-color:#333;">
-SMALL BANNER 170 X 100 px
+SMALL BANNER 280 X 100 px
 </div>
 
 <table width="100%" cellpadding="0" cellspacing="0">

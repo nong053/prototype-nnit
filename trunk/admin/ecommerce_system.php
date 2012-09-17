@@ -200,7 +200,7 @@
                     	 </div>
                  
                		 </li>
-                     
+                   <!-- 
                      <li>
                 		<div id="<?=$select3?>">
               		 		<a href="index.php?page=ecommerce_system&select_ecommerce=product_payment_methods">
@@ -234,7 +234,7 @@
                     	 </div>
                  
                		 </li>
-               		
+               		-->
             </ul>
         
         

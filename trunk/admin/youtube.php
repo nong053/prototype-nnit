@@ -1,3 +1,6 @@
+<!-- CKE-->
+<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+<!-- CKE-->
 <style>
 #devtext_title{	
 	padding:5px;
@@ -52,6 +55,7 @@ while($rs=mysql_fetch_array($result)){
 $embed=$rs[embed_youtupe ];
 $title_youtupe=$rs[title_youtupe];
 $id_youtupe=$rs[id_youtupe];
+$detail_youtupe=$rs[detail_youtupe];
 
 	$thumbnailsPath="../youtupe/".$id_cat_youtupe."/".$rs[id_youtupe]."/thumbnail";
 		if(!is_dir($thumbnailsPath)){
@@ -123,8 +127,9 @@ if($action=="edit"){
 	$db = new database();
 	$result = $db->selectSQL("youtupe where id_youtupe='$id_youtupe'");
 	$rs=mysql_fetch_array($result);
-	$vdo=$rs[embed_youtupe];
+	$vdo=$rs["embed_youtupe"];
 	$title_vdo=$rs[title_youtupe];
+	$detail_vdo=$rs[detail_youtupe];
 	
 	$submit="แก้ไขข้อมูล";
 	$action="edit";
@@ -141,7 +146,10 @@ if($action=="edit"){
 	<tr>
     	<td>เพิ่มวีดีโอ(You tube embed)
         </td>
-        <td><input type="text" name="vdo" value="<?=$vdo?>" /></td>
+        <td>
+		<textarea name="vdo" cols="50" rows="3"><?=$vdo?></textarea>
+		<!--<input type="text" name="vdo" value="<?=$vdo?>" />-->
+		</td>
     </tr>
     <tr>
     	<td>หัวข้อวีดีโอ
@@ -149,12 +157,38 @@ if($action=="edit"){
         <td><input type="text" name="title_vdo" value="<?=$title_vdo?>" />
         </td>
     </tr>
+	
     
     <tr>
     	<td>รูปภาพ
         </td>
         <td><input type="file" name="product_file[]" />
         
+        </td>
+    </tr>
+	 <tr>
+    	<td>รายละเอียดวีดีโอ
+        </td>
+        <td>
+		<!--<textarea id="detail_vdo" name="detail_vdo"><?=$detail_vdo?></textarea>-->
+		<!--CKEditor-->
+    <textarea cols="100%" id="detail_vdo" name="detail_vdo" rows="10" ><?=$detail_vdo?></textarea>
+    <script type="text/javascript">
+        //<![CDATA[
+            CKEDITOR.replace( 'detail_vdo',{
+
+          
+            filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
+            filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?Type=Images',
+            filebrowserFlashBrowseUrl : '/ckfinder/ckfinder.html?Type=Flash',
+            filebrowserUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+            filebrowserFlashUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+
+            } );
+        //]]>
+    </script>
+    <!--CKEditor-->
         </td>
     </tr>
     

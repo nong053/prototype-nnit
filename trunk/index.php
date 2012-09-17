@@ -2,9 +2,11 @@
 ?>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="kendoui/js/kendo.all.min.js"></script>
+<script src="jQueryUI/js/jquery-ui-1.8.23.custom.min.js"></script>
 
-<link href="kendoui/styles/kendo.common.min.css" rel="stylesheet" />
-<link href="kendoui/styles/kendo.default.min.css" rel="stylesheet" />
+
+
+<link href="jQueryUI/css/custom-theme/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
 
 
 

@@ -273,23 +273,24 @@ p{
             <li><a href="index.php?page=mlm_system"><img src="iFile.png" border="0" align="absbottom" /> ธุรกิจเครื่อข่าย</a></li>
             <? 
 			}else{
-			$default_page="select.php";//default page
+			$default_page="tv_system.php";//default page
 			?>
-         		  <li><a href="index.php?page=select"><img src="images/pic_small/Settings.png"  border="0" align="absbottom" /> เลือกรายการ</a></li>
-            	 <li><a href="index.php?page=home"><img src="images/clientarea.gif" border="0" align="absbottom" />ตารางออกอากาศ</a></li>
-				
+         		  <!--<li><a href="index.php?page=select"><img src="images/pic_small/Settings.png"  border="0" align="absbottom" /> เลือกรายการ</a></li>
+				  
+            	 <li><a href="index.php?page=home"><img src="images/clientarea.gif" border="0" align="absbottom" />หน้าแรก</a></li>
+				-->
                 
                 
-                <li><a href="index.php?page=menu_system"><img src="images/pic_small/Macristocracy.png" border="0" align="absbottom" /> จัดการเมนู</a></li>
+                <li>จัดการเมนู</li>
                 
                 <li><a href="index.php?page=article_system"><img src="images/pic_small/BeejiveIM_alt2.png" border="0" align="absbottom" /> บทความ</a></li>
-                
+                <!--
                 <li><a href="index.php?page=web_directory"><img src="images/pic_small/Safari.png" border="0" align="absbottom" /> บัญชีเว็บไชต์</a></li>
-                
+                -->
                 <li><a href="index.php?page=Knowledge"><img src="images/announcement.gif" border="0" align="absbottom" />	คลังความรู้</a></li>
                <!-- <li><a href="index.php?page=begin"><img src="images/clientarea.gif" border="0" align="absbottom" /> เริ่มธุกิจ</a></li>-->
-                <!--<li><a href="index.php?page=plan"><img src="images/clientarea.gif" border="0" align="absbottom" /> แผนการตลาด</a></li>-->
-                <li><a href="index.php?page=about"><img src="images/details.gif" border="0" align="absbottom" /> เกี่ยวกับเรา</a></li>
+                <!--<li><a href="index.php?page=plan"><img src="images/clientarea.gif" border="0" align="absbottom" /> แผนการตลาด</a></li>
+                <li><a href="index.php?page=about"><img src="images/details.gif" border="0" align="absbottom" /> เกี่ยวกับเรา</a></li-->
                 
 				<!--<li><a href="index.php?page=productcat"><img src="images/clientarea.gif" border="0" align="absbottom" /> ทัวร์ประเทศต่างๆ</a></li>-->
                 
@@ -311,32 +312,35 @@ p{
                <!-- <li><a href="index.php?page=downline"><img src="images/knowledgebase.gif" width="16" height="16" border="0" align="absbottom" />ตรวจสอบสายงาน</a></li>-->
                 
                  <li><a href="index.php?page=banner"><img src="images/order.gif" width="16" height="16" border="0" align="absbottom" /> Banner</a></li>
-                  <li><a href="index.php?page=slide_picture"><img src="images/order.gif" width="16" height="16" border="0" align="absbottom" /> รูปภาพสไลด์</a></li>
-                 <li><a href="index.php?page=tour"><img  src="images/announcement.gif" width="16" height="16" border="0" align="absbottom" /> ทัวร์ท่องเที่ยว</a></li>
+                 <!---
+				  <li><a href="index.php?page=slide_picture"><img src="images/order.gif" width="16" height="16" border="0" align="absbottom" /> รูปภาพสไลด์</a></li>
+
+                 <li><a href="index.php?page=tour"><img  src="images/announcement.gif" width="16" height="16" border="0" align="absbottom" /> ทัวร์ท่องเที่ยว</a></li>-->
                   <li><a href="index.php?page=webbord"><img src="images/knowledgebase.gif" width="16" height="16" border="0" align="absbottom" /> จัดการเว็บบอร์ด</a></li>
                   <li><a href="index.php?page=picturecat"><img src="images/Maps_alt.png" border="0" align="absbottom" /> อัลบั้ลรูปภาพ</a></li>
-                  
+                  <!--
                   <li><a href="index.php?page=horoscope"><img src="images/iFile.png" border="0" align="absbottom" /> ระบบดูดวง</a></li>
-                  
+                  -->
                   <li><a href="index.php?page=ecommerce_system"><img src="images/iPod_alt.png" border="0" align="absbottom" /> ร้านค้าออนไลน์</a></li>
-                  
+                  <!--
                    <li><a href="index.php?page=mlm_system"><img src="iFile.png" border="0" align="absbottom" /> ธุรกิจเครื่อข่าย</a></li>
                   
                 	 <li><a href="index.php?page=hotel_system"><img src="images/Phone.png" border="0" align="absbottom" /> ระบบจองโรงแรม</a></li>
-                     
+                     -->
                      <li><a href="index.php?page=member_system"><img src="images/BeejiveIM_Dalt2.png" border="0" align="absbottom" /> ระบบสมาชิก</a></li>
                      
                      <li><a href="index.php?page=news_system"><img src="images/CamDera.png" border="0" align="absbottom" /> ระบบข่าวสาร(Rss)</a></li>
                      
                      <li><a href="index.php?page=style_system"><img src="images/Photos.png" border="0" align="absbottom" /> ระบบตกแต่งเว็บ</a></li>
-                     
+                   <!--  -->
                      <li><a href="index.php?page=tv_system"><img src="images/pic_small/YouTube.png" border="0" align="absbottom" /> ระบบทีวีออนไลน์</a></li>
-                     
+                     <!--
                      <li><a href="index.php?page=#"><img src="images/pic_small/iPod.png" border="0" align="absbottom" /> ระบบวิทยุออนไลน์</a></li>
-                     
+                     -->
                       <li><a href="index.php?page=seo_system"><img src="images/pic_small/Things.png" border="0" align="absbottom" /> ระบบโปรโมทเว็บ(SEO)</a></li>
-                      
+                      <!--
                        <li><a href="index.php?page=job_system"><img src="images/pic_small/Settings.png" border="0" align="absbottom" /> สมัครงาน</a></li>
+					   -->
 						<? }?> <!--ถ้าloginเข้ามาในระบบโดย downline ให้มองเห็นเฉพาะckeck downline-->
 			</ul>
             <br style="clear:both" />
@@ -476,6 +480,7 @@ p{
 			default:
 				include("$default_page");
 				break;
+				
 				
 		}	
 	?>
