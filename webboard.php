@@ -31,7 +31,7 @@
 <title>เว็บบอร์ด</title>
 <div id="devbord" style="padding-left:5px;">
 
-        <a href="index.php?page=new_topic">ตั้งกระทู้ถาม</a>
+        <a href="index.php?page=new_topic&name_title=ตั้งกระทู้ถาม">ตั้งกระทู้ถาม</a>
         
        
         

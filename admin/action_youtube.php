@@ -64,6 +64,7 @@ $result2=mysql_query($strSQL2);
 $id_youtupe=$_GET['id_youtupe'];
 $embed_youtupe=$_POST['vdo'];
 $title_youtupe=$_POST['title_vdo'];
+$detail_youtupe=$_POST['detail_vdo'];
 $id_cat_youtupe=$_POST['id_cat_youtupe'];
 $id_cat_youtupe2=$_GET['id_cat_youtupe'];
 $action1=$_POST['action'];
@@ -327,7 +328,7 @@ $path_big_picture="../youtupe/".$id_cat_youtupe."/".$id_youtupe."/";
 
 		/*INSERT INTO youtupe (id_youtupe, id_cat_youtupe,title_youtupe,embed_youtupe) VALUES ('$id_youtupe', '$id_cat_youtupe','$title_youtupe', '$embed_youtupe')*/
 		
-		$sql="UPDATE youtupe SET title_youtupe='$title_youtupe',embed_youtupe='$embed_youtupe' WHERE id_youtupe='$id_youtupe'";
+		$sql="UPDATE youtupe SET title_youtupe='$title_youtupe',detail_youtupe='$detail_youtupe',embed_youtupe='$embed_youtupe' WHERE id_youtupe='$id_youtupe'";
 		mysql_query($sql)or die (mysql_error());
 		
 			$youtupe_path = "../youtupe/" . $id_cat_youtupe . "/" . $id_youtupe . "/";
@@ -373,14 +374,14 @@ $path_big_picture="../youtupe/".$id_cat_youtupe."/".$id_youtupe."/";
 		if($row=mysql_fetch_array($table)) {
 			?>
 			<script>
-			alert("ชื่อวีดีโอนี้อยู่ในระบบแล้ว !");
+			alert("ชื่อวีดีโอนี้มีอยู่ในระบบแล้ว !");
 			window.history.back();
 			</script>
 			<?
 			exit();
 		}
 		
-		$sql="INSERT INTO youtupe (id_cat_youtupe,title_youtupe,embed_youtupe) VALUES ('$id_cat_youtupe','$title_youtupe', '$embed_youtupe')";
+		$sql="INSERT INTO youtupe (id_cat_youtupe,title_youtupe,detail_youtupe,embed_youtupe) VALUES ('$id_cat_youtupe','$title_youtupe','$detail_youtupe', '$embed_youtupe')";
 		mysql_query($sql)or die (mysql_error());
 		
 		$sql="select * FROM youtupe WHERE title_youtupe = '$title_youtupe'";

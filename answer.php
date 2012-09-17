@@ -134,17 +134,7 @@ while($rs2=mysql_fetch_array($result2)){
 	  <textarea  id="ans_detail" name="ans_detail"  style="margin:5px;"><?=$ans_detail?></textarea>
 	  <script type="text/javascript">
         //<![CDATA[
-            CKEDITOR.replace( 'ans_detail',{
-
-          
-            filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
-            filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?Type=Images',
-            filebrowserFlashBrowseUrl : '/ckfinder/ckfinder.html?Type=Flash',
-            filebrowserUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-            filebrowserImageUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-            filebrowserFlashUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-
-            } );
+            CKEDITOR.replace( 'ans_detail' );
         //]]>
     </script>
 	  <!--CKEditor-->

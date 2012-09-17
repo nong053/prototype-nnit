@@ -6,5 +6,6 @@ $rs_banner_sum=mysql_fetch_array($result_banner_sum);
 $detail_banner=$rs_banner_sum[pic_detail];
 echo"<div id=\"banner_detail\" style=\"padding:10px;\">";
 echo"$detail_banner";
+
 echo"</div>";
 ?>

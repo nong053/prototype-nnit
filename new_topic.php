@@ -16,7 +16,7 @@
 	height:auto;
 	padding:5px;
 	background-image:url(images/bg_title.png);
-	color:#FFF;
+	/*color:#FFF;*/
 	font-weight:bold;
 	margin:3px;
 	font-size:13px;
@@ -52,7 +52,9 @@
 	}
 
 </style>
-
+<!-- CKE-->
+<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+<!-- CKE-->
 <div id="title">
 ถามตอบ->ตั้งคำถาม
 </div>
@@ -73,17 +75,7 @@
 	  <textarea  id="topic_detail" name="topic_detail" ><?=$topic_detail?></textarea>
 	  <script type="text/javascript">
         //<![CDATA[
-            CKEDITOR.replace( 'topic_detail',{
-
-          
-            filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
-            filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?Type=Images',
-            filebrowserFlashBrowseUrl : '/ckfinder/ckfinder.html?Type=Flash',
-            filebrowserUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-            filebrowserImageUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-            filebrowserFlashUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-
-            } );
+            CKEDITOR.replace( 'topic_detail');
         //]]>
     </script>
 	  <!--CKEditor-->

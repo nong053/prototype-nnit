@@ -3,9 +3,16 @@
 <!--<link href="./css/form_member.css" rel="stylesheet" type="text/css">-->
 <style>
 .content_form_member{
-width:auto;
+width:500px;
 border:#CCCCCC 1px solid;
 padding:5px;
+float:left;
+}
+.map{
+width:400px;
+
+padding:5px;
+float:left;
 }
 .content_form_member #content{
 width:auto;
@@ -203,3 +210,6 @@ float:left;
 	</div>
 </div>
 </form>
+<div class="map">
+<iframe width="425" height="580" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.th/maps/ms?msid=203002154092292441902.0004c7f62fcdd8ce9b445&amp;msa=0&amp;hl=th&amp;ie=UTF8&amp;ll=13.77576,100.628015&amp;spn=0,0&amp;t=m&amp;iwloc=0004c7f64490354838be2&amp;output=embed"></iframe><br /><small>ดู <a href="https://maps.google.co.th/maps/ms?msid=203002154092292441902.0004c7f62fcdd8ce9b445&amp;msa=0&amp;hl=th&amp;ie=UTF8&amp;ll=13.77576,100.628015&amp;spn=0,0&amp;t=m&amp;iwloc=0004c7f64490354838be2&amp;source=embed" style="color:#0000FF;text-align:left">R-channelTv</a> ในแผนที่ขนาดใหญ่กว่า</small>
+</div

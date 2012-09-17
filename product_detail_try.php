@@ -3,13 +3,13 @@
 <style>
 
 #bg_content11{
-	width:780px;
+	width:1000px;
 	height:auto;
 	/*background-color:#0F0;*/
 	float:left;
 	padding:0px;
 	margin:0px;
-	float:right;
+	/*float:right;*/
 }
 /* #bg_content11 #header_content11{
 	width:750px;
@@ -85,9 +85,10 @@
  #bg_content11 #content1 #bg_product1_detail{
 	float:left;
 	width:300px;
+	margin-left:10px;
 	height:auto;
 	border:#5E88A3 0.1em solid;
-	float:right;
+
 	margin-top:5px;
 	margin-right:2px;
 }
@@ -215,7 +216,7 @@ $product_promotion_detail=$rs[product_promotion_detail];
                                                 	<td>จำนวนสินค้า</td>
                                                     <td align="right">
                                                     <div id="price" style="background-image:url(images/botton_chat_03.jpg); background-repeat:no-repeat; ">
-                                                    		<div id="text01" style="color:#FFF; font-weight:bold; padding-right:20px; ">
+                                                    		<div id="text01" style="color:#000; font-weight:bold; padding-right:20px; ">
                                                     	<?=$product_amount?>
                                                     		</div>
                                                     </div>
@@ -282,17 +283,18 @@ $product_promotion_detail=$rs[product_promotion_detail];
                                       
                                         
                                         <!-- table-->
+										<!--
                                         <div id="txt_product_detail" style="background-color:#CCC; padding:5px;">
                                             สั่งชื้อสินค้า
                                             </div>
                                         	<div id="product_add_cart1" style="padding:5px;">
                                            	 	 <a href="index.php?page=cart&ProductID=<?=$product_id?>&Pic=<?=$thumbnailsFile?>">add Cart</a>
                                                  
-                                                <!--<a href="basket2.php?pid=<?//$product_id?>&action=add">add Cart</a>-->
+                                              
                                                 
                                             </div>
                                         </div>
-                                         
+                                         -->
                                          
                                       
                                         <br style="clear:both" />

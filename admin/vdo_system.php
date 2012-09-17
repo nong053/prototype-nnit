@@ -175,6 +175,7 @@
         <div id="bg_bt">
         
          	<ul>
+			<!--
             		<li>
                 		<div id="<?=$select1?>">
               		 		<a href="index.php?page=vdo_system&select_page=catmyvdo">
@@ -195,7 +196,7 @@
                     	 </div>
                  
                		 </li>
-                	
+                -->	
                     <li>
                 		<div id="<?=$select3?>">
               		 		<a href="index.php?page=vdo_system&select_page=youtube_cat">
@@ -236,7 +237,7 @@
 			case'myvdo':include("myvdo.php");break;
 			case'youtube_cat':include("youtube_cat.php");break;
 			case'youtube':include("youtube.php");break;
-			default:include("catmyvdo.php");break;
+			default:include("youtube_cat.php");break;
 		}
 		?>
             </div>
