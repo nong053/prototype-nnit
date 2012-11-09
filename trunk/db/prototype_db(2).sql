@@ -50,16 +50,27 @@ CREATE TABLE `admin` (
   `admin_email` varchar(100) default NULL,
   `admin_website` varchar(100) default NULL,
   `admin_send_email` varchar(100) default NULL,
+  `admin_address` text NOT NULL,
+  `admin_tel` varchar(255) NOT NULL,
   PRIMARY KEY  (`admin_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=174 ;
 
 -- 
 -- dump ตาราง `admin`
 -- 
 
-INSERT INTO `admin` VALUES (1, 'admin', 'admin', '11', '11', '3', 'nn.it@hotmail.com', 'www.test.com', '');
-INSERT INTO `admin` VALUES (2, 'rest', 'tes', 'test', 'test', '1', 'nn.it@hotmail.com', 'tes', '');
-INSERT INTO `admin` VALUES (3, 'rchanel', 'rchanel', 'rchanel', '1234', '1', 'rchanel@hotmail.com', 'www.rchaneltv.com', '');
+INSERT INTO `admin` VALUES (1, 'admin', 'admin', '11', '11', '3', 'nn.it@hotmail.com', 'www.test.com', '', '', '');
+INSERT INTO `admin` VALUES (2, 'rest', 'tes', 'test', 'test', '1', 'nn.it@hotmail.com', 'tes', '', '', '');
+INSERT INTO `admin` VALUES (3, 'rchanel', 'rchanel', 'rchanel', '1234', '1', 'rchanel@hotmail.com', 'www.rchaneltv.com', '', '', '');
+INSERT INTO `admin` VALUES (157, '11', '11', '1123', '11', 'check', '11', NULL, NULL, '11', '11');
+INSERT INTO `admin` VALUES (158, '11', '11', '11233', '11', 'check', '11', NULL, NULL, '11', '11');
+INSERT INTO `admin` VALUES (159, '11', '11', '112334', '11', 'check', '11', NULL, NULL, '11', '11');
+INSERT INTO `admin` VALUES (160, '11', '11', '1123345', '11', 'check', '11', NULL, NULL, '11', '11');
+INSERT INTO `admin` VALUES (161, '11', '11', '11233456', '11', 'check', '11', NULL, NULL, '11', '11');
+INSERT INTO `admin` VALUES (162, '11', '11', '112334567', '11', 'check', '11', NULL, NULL, '11', '11');
+INSERT INTO `admin` VALUES (164, '3112', '3112', '3112', '3112', 'check', '3112', NULL, NULL, '3112', '3112');
+INSERT INTO `admin` VALUES (171, '31123456789', '31123456789', '31123456789', '31123456789', 'check', '31123456789', NULL, NULL, '31123456789', '31123456789');
+INSERT INTO `admin` VALUES (173, '1asdf1', '1asdf1', '1asdf1', '1asdf1', 'check', '1asdf1', NULL, NULL, '1asdf1', '1asdf1');
 
 -- --------------------------------------------------------
 
@@ -75,12 +86,13 @@ CREATE TABLE `answer` (
   `topic_id` int(11) NOT NULL,
   PRIMARY KEY  (`ans_id`),
   KEY `topic_id` (`topic_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- 
 -- dump ตาราง `answer`
 -- 
 
+INSERT INTO `answer` VALUES (1, '<p>\r\n	55555</p>\r\n', '2024-08-12 06:38:00', 'vvv', 132);
 
 -- --------------------------------------------------------
 
@@ -100,7 +112,7 @@ CREATE TABLE `article` (
   `main_menucat_id` varchar(11) NOT NULL,
   `article_show` varchar(55) NOT NULL default 'show',
   PRIMARY KEY  (`article_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 -- 
 -- dump ตาราง `article`
@@ -112,6 +124,7 @@ INSERT INTO `article` VALUES (8, 'ติดต่อเรา', 'ติดต่
 INSERT INTO `article` VALUES (9, 'เกี่ยวกับเรา', 'เกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา\r\nเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา\r\nเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา\r\nเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา\r\nเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา', '<p>\r\n	เกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา<br />\r\n	เกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา</p>\r\n<p>\r\n	เกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา<br />\r\n	เกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา</p>\r\n<p>\r\n	เกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา<br />\r\n	เกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา</p>\r\n<p>\r\n	เกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา<br />\r\n	เกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา</p>\r\n<p>\r\n	เกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา<br />\r\n	เกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา</p>\r\n<p>\r\n	เกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา<br />\r\n	เกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเราเกี่ยวกับเรา</p>', '', '', '', '98', '', 'show');
 INSERT INTO `article` VALUES (11, 'บทความ1', 'บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1\r\nบทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1\r\nบทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1\r\nบทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1\r\nบทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1', '<p>\r\n	บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1</p>\r\n<p>\r\n	บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1บทความ1</p>', 'test', 'sdf', '<p>\r\n	sdfsdf</p>', '99', '', 'no');
 INSERT INTO `article` VALUES (12, 'บทความ2', 'บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2\r\nบทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2\r\nบทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2\r\nบทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2\r\nบทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2', '<p>\r\n	บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2</p>\r\n<p>\r\n	บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2</p>\r\n<p>\r\n	บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2</p>\r\n<p>\r\n	บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2</p>\r\n<p>\r\n	บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2</p>', 'test', 'บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2\r\nบทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2\r\nบทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2\r\nบทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2\r\nบทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2บทความ2', '', '99', '', 'show');
+INSERT INTO `article` VALUES (13, 'nong22', 'title22', '', NULL, '', '', '', '', 'show');
 
 -- --------------------------------------------------------
 
@@ -1643,7 +1656,7 @@ CREATE TABLE `news` (
 -- dump ตาราง `news`
 -- 
 
-INSERT INTO `news` VALUES (43, 'ddd', 'เฉิดฉายทุกนาง! ปาร์ตี้ชุดขาวของเหล่าดารา ในคอนเสิร์ต Sensation ชมภาพแฟชั่นสุดจี๊ด พร้อมบรรยากาศสนุก ๆ ในงาน คอนเสิร์ตกันเลย ...', '', '21-08-12:04:54:39', '<p>\r\n	ddd</p>\r\n', '1');
+INSERT INTO `news` VALUES (43, 'ddd', 'เฉิดฉายทุกนาง! ปาร์ตี้ชุดขาวของเหล่าดารา ในคอนเสิร์ต Sensation ชมภาพแฟชั่นสุดจี๊ด พร้อมบรรยากาศสนุก ๆ ในงาน คอนเสิร์ตกันเลย ...\r\nเฉิดฉายทุกนาง! ปาร์ตี้ชุดขาวของเหล่าดารา ในคอนเสิร์ต Sensation ชมภาพแฟชั่นสุดจี๊ด พร้อมบรรยากาศสนุก ๆ ในงาน คอนเสิร์ตกันเลย ...', '', '11-09-12:05:51:19', '<p>\r\n	ddd</p>\r\n', '1');
 INSERT INTO `news` VALUES (44, 'dddddd', 'เฉิดฉายทุกนาง! ปาร์ตี้ชุดขาวของเหล่าดารา ในคอนเสิร์ต Sensation ชมภาพแฟชั่นสุดจี๊ด พร้อมบรรยากาศสนุก ๆ ในงาน คอนเสิร์ตกันเลย ...', '', '21-08-12:04:54:33', '<p>\r\n	dddd</p>\r\n', '1');
 INSERT INTO `news` VALUES (45, 'ddd', 'เฉิดฉายทุกนาง! ปาร์ตี้ชุดขาวของเหล่าดารา ในคอนเสิร์ต Sensation ชมภาพแฟชั่นสุดจี๊ด พร้อมบรรยากาศสนุก ๆ ในงาน คอนเสิร์ตกันเลย ...', '', '21-08-12:04:53:56', '<p>\r\n	dddd</p>\r\n', '1');
 INSERT INTO `news` VALUES (46, 'กิจกรรม R-chanel', 'เฉิดฉายทุกนาง! ปาร์ตี้ชุดขาวของเหล่าดารา ในคอนเสิร์ต Sensation ชมภาพแฟชั่นสุดจี๊ด พร้อมบรรยากาศสนุก ๆ ในงาน คอนเสิร์ตกันเลย ...', '', '21-08-12:05:44:02', '', '2');
@@ -1689,7 +1702,7 @@ CREATE TABLE `object_system` (
 -- 
 
 INSERT INTO `object_system` VALUES (8, 'test_banner_big220811101205.gif', 'header_bg', '#00FFFF', '10', '240', NULL);
-INSERT INTO `object_system` VALUES (9, 'logo2161208122631.png', 'header_logo', '', '', '', NULL);
+INSERT INTO `object_system` VALUES (9, 'logo_032241208074142.png', 'header_logo', '', '', '', NULL);
 INSERT INTO `object_system` VALUES (10, '', 'header_banner', '', '', '', NULL);
 
 -- --------------------------------------------------------
@@ -2201,7 +2214,7 @@ CREATE TABLE `topic` (
   `topic_update` varchar(255) NOT NULL,
   `topic_name` varchar(255) NOT NULL,
   PRIMARY KEY  (`topic_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=132 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=133 ;
 
 -- 
 -- dump ตาราง `topic`
@@ -2209,6 +2222,7 @@ CREATE TABLE `topic` (
 
 INSERT INTO `topic` VALUES (130, 'sojv''', 'sdf', '11-09-17 22:05:51', 'หน่อง');
 INSERT INTO `topic` VALUES (131, 'sss', 'sss', '11-09-17 22:06:42', 'sss');
+INSERT INTO `topic` VALUES (132, 'ddd', 'ddd', '12-08-24 06:37:36', 'test');
 
 -- --------------------------------------------------------
 
@@ -2296,6 +2310,27 @@ INSERT INTO `tour_pic` VALUES (22, 'menu5.gif', '4');
 -- --------------------------------------------------------
 
 -- 
+-- โครงสร้างตาราง `webcat_register`
+-- 
+
+CREATE TABLE `webcat_register` (
+  `cat_webre_id` int(11) NOT NULL auto_increment,
+  `cat_webre_package` varchar(250) NOT NULL,
+  `cat_webre_detail` text NOT NULL,
+  PRIMARY KEY  (`cat_webre_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+-- 
+-- dump ตาราง `webcat_register`
+-- 
+
+INSERT INTO `webcat_register` VALUES (1, 'p1', '');
+INSERT INTO `webcat_register` VALUES (2, 'p2', '');
+INSERT INTO `webcat_register` VALUES (3, 'p3', '');
+
+-- --------------------------------------------------------
+
+-- 
 -- โครงสร้างตาราง `webdir`
 -- 
 
@@ -2325,6 +2360,33 @@ INSERT INTO `webdir` VALUES (20, 'http://www.workphp.com', 'http://www.workphp.c
 -- --------------------------------------------------------
 
 -- 
+-- โครงสร้างตาราง `web_register`
+-- 
+
+CREATE TABLE `web_register` (
+  `webre_id` int(11) NOT NULL auto_increment,
+  `webre_url` varchar(255) NOT NULL,
+  `webre_detail` text NOT NULL,
+  `webre_start` varchar(255) NOT NULL,
+  `webre_end` varchar(2555) NOT NULL,
+  `webre_update` varchar(255) NOT NULL,
+  `webre_cat_id` int(11) NOT NULL,
+  `admin_id` int(11) NOT NULL,
+  PRIMARY KEY  (`webre_id`),
+  KEY `webre_cat_id` (`webre_cat_id`),
+  KEY `admin_id` (`admin_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+
+-- 
+-- dump ตาราง `web_register`
+-- 
+
+INSERT INTO `web_register` VALUES (9, '3112', '3112', '11/08/2012', '11/08/2012', '08-11-12 04:21:23', 1, 164);
+INSERT INTO `web_register` VALUES (18, '1asdf1', '1asdf1', '11/08/2012', '11/01/2012', '08-11-12 07:16:23', 1, 173);
+
+-- --------------------------------------------------------
+
+-- 
 -- โครงสร้างตาราง `youtupe`
 -- 
 
@@ -2332,23 +2394,26 @@ CREATE TABLE `youtupe` (
   `id_youtupe` int(11) NOT NULL auto_increment,
   `id_cat_youtupe` int(11) NOT NULL,
   `title_youtupe` text NOT NULL,
+  `detail_youtupe` text NOT NULL,
   `embed_youtupe` text NOT NULL,
   PRIMARY KEY  (`id_youtupe`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=77 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=80 ;
 
 -- 
 -- dump ตาราง `youtupe`
 -- 
 
-INSERT INTO `youtupe` VALUES (1, 1, 'dd', '<iframe width="540" height="360" src="http://www.youtube.com/embed/-k69jaqNCF0" frameborder="0" allowfullscreen></iframe>');
-INSERT INTO `youtupe` VALUES (59, 76, 'รายการ1', '<iframe width="480" height="360" src="http://www.youtube.com/embed/2xRfWZIXiPU" frameborder="0" allowfullscreen></iframe>');
-INSERT INTO `youtupe` VALUES (70, 76, 'รายการ2', '<iframe width="480" height="360" src="http://www.youtube.com/embed/17bV36cNHf0" frameborder="0" allowfullscreen></iframe>');
-INSERT INTO `youtupe` VALUES (71, 76, 'รายการ3', '<iframe width="480" height="360" src="http://www.youtube.com/embed/muDFXnsages" frameborder="0" allowfullscreen></iframe>');
-INSERT INTO `youtupe` VALUES (72, 77, 'รายการ4', '<iframe width="480" height="360" src="http://www.youtube.com/embed/sDlOxMLk_bY" frameborder="0" allowfullscreen></iframe>');
-INSERT INTO `youtupe` VALUES (73, 77, 'รายการ5', '<iframe width="480" height="360" src="http://www.youtube.com/embed/cPt6oOhBCBs" frameborder="0" allowfullscreen></iframe>');
-INSERT INTO `youtupe` VALUES (74, 77, 'รายการ6', '<iframe width="480" height="360" src="http://www.youtube.com/embed/knrYeIXn9fk" frameborder="0" allowfullscreen></iframe>');
-INSERT INTO `youtupe` VALUES (75, 77, 'รายการ7', '<iframe width="480" height="360" src="http://www.youtube.com/embed/ZY0y8bT2SE4" frameborder="0" allowfullscreen></iframe>');
-INSERT INTO `youtupe` VALUES (76, 76, 'รายการ8', '<iframe width="640" height="360" src="http://www.youtube.com/embed/E5nYS4OIrq0" frameborder="0" allowfullscreen></iframe>');
+INSERT INTO `youtupe` VALUES (1, 1, 'tv online', '', '<iframe width="540" height="360" src="http://www.youtube.com/embed/-k69jaqNCF0" frameborder="0" allowfullscreen></iframe>');
+INSERT INTO `youtupe` VALUES (59, 76, 'รายการ1', '<p>\r\n	tttttttttttttttttttttttttttttttt</p>\r\n<p>\r\n	ddddddddddddddddddddddddddddddddddddddddddd</p>\r\n<p>\r\n	dddddddddddddddddddddddddddddd</p>\r\n', '<iframe width="480" height="360" src="http://www.youtube.com/embed/2xRfWZIXiPU" frameborder="0" allowfullscreen></iframe>');
+INSERT INTO `youtupe` VALUES (70, 76, 'รายการ2', '', '<iframe width="480" height="360" src="http://www.youtube.com/embed/17bV36cNHf0" frameborder="0" allowfullscreen></iframe>');
+INSERT INTO `youtupe` VALUES (71, 76, 'รายการ3', '', '<iframe width="480" height="360" src="http://www.youtube.com/embed/muDFXnsages" frameborder="0" allowfullscreen></iframe>');
+INSERT INTO `youtupe` VALUES (72, 77, 'รายการ4', '', '<iframe width="480" height="360" src="http://www.youtube.com/embed/sDlOxMLk_bY" frameborder="0" allowfullscreen></iframe>');
+INSERT INTO `youtupe` VALUES (73, 77, 'รายการ5', '', '<iframe width="480" height="360" src="http://www.youtube.com/embed/cPt6oOhBCBs" frameborder="0" allowfullscreen></iframe>');
+INSERT INTO `youtupe` VALUES (74, 77, 'รายการ6', '', '<iframe width="480" height="360" src="http://www.youtube.com/embed/knrYeIXn9fk" frameborder="0" allowfullscreen></iframe>');
+INSERT INTO `youtupe` VALUES (75, 77, 'รายการ7', '', '<iframe width="480" height="360" src="http://www.youtube.com/embed/ZY0y8bT2SE4" frameborder="0" allowfullscreen></iframe>');
+INSERT INTO `youtupe` VALUES (76, 76, 'รายการ8', '', '<iframe width="640" height="360" src="http://www.youtube.com/embed/E5nYS4OIrq0" frameborder="0" allowfullscreen></iframe>');
+INSERT INTO `youtupe` VALUES (78, 76, 'aew', 'wqeq55555', 'saewqe');
+INSERT INTO `youtupe` VALUES (79, 76, 'dddd', '<p>\r\n	deteilsss</p>\r\n', 'ddd');
 
 -- --------------------------------------------------------
 
@@ -2388,3 +2453,10 @@ ALTER TABLE `answer`
 -- 
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`productcat_id`) REFERENCES `productcat` (`productcat_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- 
+-- Constraints for table `web_register`
+-- 
+ALTER TABLE `web_register`
+  ADD CONSTRAINT `web_register_ibfk_1` FOREIGN KEY (`webre_cat_id`) REFERENCES `webcat_register` (`cat_webre_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `web_register_ibfk_2` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`) ON DELETE CASCADE ON UPDATE CASCADE;

@@ -1,4 +1,4 @@
-<!--<meta http-equiv="content-Type" content="text/html; charset=utf-8">-->
+
 <?php
 class connect_mysql{
 	var $var_hostname = "localhost";
@@ -29,18 +29,20 @@ class manage_data extends connect_mysql{
 		$this->set_host_user_pass_dbname();
 		$strSQL="SELECT $field_select FROM $table_condition";
 		$result=mysql_query($strSQL);
+
 		return $result;
 	}
 		
 		
-	function insert_data($table,$field,$vaules){
+	function  insert_data($table,$field,$vaules){
 		$strSQL="INSERT INTO $table($field)VALUES($vaules)";
 		connect_mysql::set_host_user_pass_dbname();
 		$result=mysql_query($strSQL);
 			if(!$result){echo"error".mysql_error();}else
 			{
-			//echo"ok for result insert";
+			return "ok for result insert";
 			}
+			mysql_close();
 		}
 	function edit_data($table,$setfield,$condition){
 		connect_mysql::set_host_user_pass_dbname();
@@ -57,9 +59,10 @@ class manage_data extends connect_mysql{
 		connect_mysql::set_host_user_pass_dbname();
 		$strSQL="DELETE FROM $table WHERE $condition";
 		$result=mysql_query($strSQL);
-			if(!$result){echo"error".mysql_error();}else
-			{
-			//echo"ok for result delete";	
+			if($result){
+				return $result;
+			}else{
+			echo"error".mysql_error();
 			}
 		}
 }

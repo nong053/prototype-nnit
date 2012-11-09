@@ -13,7 +13,7 @@
 
 <?php
 //$host=$_SERVER['HTTP_HOST'];
-$host="www.rchaneltv.com";
+//$host="www.rchaneltv.com";
 if($host=="www.rchaneltv.com"){
 include("web_design/rchaneltv/index.php");
 }else{
