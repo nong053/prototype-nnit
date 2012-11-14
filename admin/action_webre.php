@@ -145,14 +145,13 @@ if($_POST['action']=="delete"){
 
 
 if($_POST['action']=="show_edit_data"){
-
 	$webre_id=$_POST['webre_id'];
 	if($webre_id!=""){
 	$condition="and webre_id=$webre_id";
 	}else{
 	$condition="";
 	}
-	$field_select="webre_id,webre_url,webre_detail,webre_start  ,webre_end   ,cat_webre_package ,admin_name, admin_surname, admin_username,admin_password, admin_status,admin_email, 	admin_website, 	admin_send_email, admin_address, admin_tel";
+	$field_select="webre_id,webre_url,webre_detail,webre_start  ,webre_end   ,cat_webre_package  ,admin_name, admin_surname, admin_username,admin_password, admin_status,admin_email, 	admin_website, 	admin_send_email, admin_address, admin_tel,admin.admin_id";
 	$table_condition="web_register,webcat_register,admin
 where web_register.webre_cat_id=webcat_register.cat_webre_id 
 and web_register.admin_id=admin.admin_id $condition group by webre_url";
@@ -177,11 +176,21 @@ and web_register.admin_id=admin.admin_id $condition group by webre_url";
 	echo "admin_address".$rs[admin_address]."<br>";
 	echo "admin_tel".$rs[admin_tel]."<br>";
 */
-	echo"{\"webre_url\":\"".$rs[webre_url]."\",\"webre_detail\":\"".$rs[webre_detail]."\",\"webre_start\":\"".$rs[webre_start]."\",\"webre_end\":\"".$rs[webre_end]."\",\"cat_webre_package\":\"".$rs[cat_webre_package]."\",\"admin_name\":\"".$rs[admin_name]."\",\"admin_surname\":\"".$rs[admin_surname]."\",\"admin_username\":\"".$rs[admin_username]."\",\"admin_password\":\"".$rs[admin_password]."\",\"admin_status\":\"".$rs[admin_status]."\",\"admin_email\":\"".$rs[admin_email]."\",\"admin_website\":\"".$rs[admin_website]."\",\"admin_send_email\":\"".$rs[admin_send_email]."\",\"admin_address\":\"".$rs[admin_address]."\",\"admin_tel\":\"".$rs[admin_tel]."\"}";
+	echo"{\"webre_url\":\"".$rs[webre_url]."\",\"webre_detail\":\"".$rs[webre_detail]."\",\"webre_start\":\"".$rs[webre_start]."\",\"webre_end\":\"".$rs[webre_end]."\",\"cat_webre_package\":\"".$rs[cat_webre_package]."\",\"admin_name\":\"".$rs[admin_name]."\",\"admin_surname\":\"".$rs[admin_surname]."\",\"admin_username\":\"".$rs[admin_username]."\",\"admin_password\":\"".$rs[admin_password]."\",\"admin_status\":\"".$rs[admin_status]."\",\"admin_email\":\"".$rs[admin_email]."\",\"admin_website\":\"".$rs[admin_website]."\",\"admin_send_email\":\"".$rs[admin_send_email]."\",\"admin_address\":\"".$rs[admin_address]."\",\"admin_tel\":\"".$rs[admin_tel]."\",\"admin_id\":\"".$rs[admin_id]."\"}";
 
 	}
 
 
+}
+if($_POST['action']=="edit"){
+	//relation one:one
+	echo"edit webre";
+	echo"admin_id".$admin_id;
+$table="web_register";
+$setfield="webre_url='$webre_url',webre_detail='$webre_detail',webre_start='$webre_start',webre_end='$webre_end',webre_update='$webre_update'";
+$condition="admin_id='$admin_id'";
+$obj_manage_data->edit_data($table,$setfield,$condition);
+echo"{\"result\":\"edit webre\"}";
 }
 
 ?>

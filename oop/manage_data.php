@@ -48,9 +48,9 @@ class manage_data extends connect_mysql{
 		connect_mysql::set_host_user_pass_dbname();
 		$strSQL="UPDATE $table SET $setfield WHERE $condition";
 		$result=mysql_query($strSQL);
-			if(!$result){echo"error".mysql_error();}else
-			{
-			//echo"ok for result edit";
+			if(!$result){echo"error".mysql_error();
+			}else{
+			return $result;
 			}
 		}
 	function delete_data($table, $condition){

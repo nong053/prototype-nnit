@@ -48,7 +48,17 @@ if($result){
 	
 }
 if($_POST['action']=="edit"){
- echo"here edit";
+	function __autoload($file_name){
+		require_once("../oop/".$file_name.".php");
+	}
+$obj_manage_data=new manage_data();
+//relation is one:one
+echo"{\"result\":\"edit admin\"}";
+$admin_id=$_POST['admin_id'];
+echo "admin_id $admin_id";
+$table="admin";
+$setfield="admin_name='$admin_name',admin_surname='$admin_surname',admin_username='$admin_username',admin_password='$admin_password',admin_status='$admin_status',admin_email='$admin_email',admin_address='$admin_address',admin_tel='$admin_tel'";
+$condition="admin_id='$admin_id'";
+$obj_manage_data->edit_data($table,$setfield,$condition);
 }
-
 ?>
