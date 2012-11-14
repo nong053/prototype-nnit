@@ -54,8 +54,8 @@ $.noConflict();
 	$("#webre_end").datepicker();
 	$(".button").button();
 
-	$("#form_web_register").submit(function(){
-
+//SUBMIT HERE
+$("#form_web_register").submit(function(){
 var admin_name =$("#admin_name").val();
 var admin_surname = $("#admin_surname").val();
 var admin_username =$("#admin_username").val();
@@ -65,23 +65,18 @@ var admin_email =$("#admin_email").val();
 var admin_address =$("#admin_address").val();
 var admin_tel =$("#admin_tel").val();
 var action = $("#action").val();
+var admin_id = $("#admin_id").val();
 //alert("action"+action);
 //alert("admin_name="+admin_name+"\n"+"admin_surname="+admin_surname+"\n"+"admin_username="+admin_username+"\n"+"admin_password="+admin_password+"\n"+"admin_status="+admin_status+"\n"+"admin_email="+admin_email+"\n"+"admin_address="+admin_address+"\n"+"admin_tel="+admin_tel+"\n");
 	$.ajax({
 	url:'action_webre_admin.php',
 	type:'POST',
-	dataType:'json',
+	dataType:'html',
 	cache:'false',
-	data:{'admin_name':admin_name,'admin_surname':admin_surname,'admin_username':admin_username,'admin_password':admin_password,'admin_status':admin_status,'admin_email':admin_email,'admin_address':admin_address,'admin_tel':admin_tel,'action':action},
+	data:{'admin_id':admin_id,'admin_name':admin_name,'admin_surname':admin_surname,'admin_username':admin_username,'admin_password':admin_password,'admin_status':admin_status,'admin_email':admin_email,'admin_address':admin_address,'admin_tel':admin_tel,'action':action},
 	success:function(data){
-		//alert(data);
-		if(data['result']=="user_duplicate"){
-		alert("User Duplicate");
-		return false;
-		}
-		//alert(data['admin_id']);
-		//alert("webre_url "+$("#webre_url").val());
-		var admin_id = data['admin_id'];
+		alert(data);
+		var admin_id = $("#admin_id").val();
 		var webre_url  = $("#webre_url").val();
 		var webre_detail  = $("#webre_detail").val(); 	
 		var webre_start  = $("#webre_start").val();
@@ -97,13 +92,13 @@ var action = $("#action").val();
 		$.ajax({
 			url:'action_webre.php',
 			type:'post',
-			dataType:'json',
+			dataType:'html',
 			cache:false,
-			data:{'webre_url':webre_url,'webre_detail':webre_detail,'webre_start':webre_start,'webre_end':webre_end,'webre_cat_id':webre_cat_id,'admin_id':admin_id,'action':'add_data'},
+			data:{'webre_url':webre_url,'webre_detail':webre_detail,'webre_start':webre_start,'webre_end':webre_end,'webre_cat_id':webre_cat_id,'admin_id':admin_id,'action':'edit'},
 			success:function(data){
 				//alert(data['result']);
 				if(data['result']=="success"){
-						alert("Save is Successfully");
+						alert("Edit is Successfully");
 						show_data();
 				}
 			}//if function success
@@ -144,11 +139,19 @@ var action = $("#action").val();
 						cache:false,
 						data:{'action':'show_edit_data','webre_id':webre_id},
 						success:function(data){
+						/*
 						console.log(data['webre_url']);
 						console.log(data['webre_detail']);
 						console.log(data['webre_start']);
 						console.log(data['webre_end']);
 						console.log(data['cat_webre_package']);
+
+						*/
+						$("#webre_url").val(data['webre_url']);
+						$("#webre_detail").val(data['webre_detail']);
+						$("#webre_start").val(data['webre_start']);
+						$("#webre_end").val(data['webre_end']);
+						$("#cat_webre_package").val(data['cat_webre_package']);
 
 						console.log(data['admin_name']);
 						console.log(data['admin_surname']);
@@ -160,6 +163,19 @@ var action = $("#action").val();
 						console.log(data['admin_send_email']);
 						console.log(data['admin_address']);
 						console.log(data['admin_tel']);
+						
+						$("#admin_name").val(data['admin_name']);
+						$("#admin_surname").val(data['admin_surname']);
+						$("#admin_username").val(data['admin_username']);
+						$("#admin_password").val(data['admin_password']);
+						$("#admin_status").val(data['admin_status']);
+
+						$("#admin_email").val(data['admin_email']);
+						$("#admin_website").val(data['admin_website']);
+						$("#admin_send_email").val(data['admin_send_email']);
+						$("#admin_address").val(data['admin_address']);
+						$("#admin_tel").val(data['admin_tel']);
+						$("#admin_id").val(data['admin_id']);
 
 						}
 		});
@@ -438,7 +454,9 @@ display:inline;
 	
     <tr>
     	<td colspan="2">
-       <input type="hidden" name="action" id="action" value="add" />
+       <input type="hidden" name="action" id="action" value="edit" />
+	
+	   <input type="hidden" name="admin_id" id="admin_id" value="" />
        <input type="submit" name="btn_submit" id="btn_submit" class="button" value="แก้ไข"/>
 	   <input type="reset" name="btn_reset" id="btn_reset"  class="button" value="ยกเลิก"/>
         </td>
