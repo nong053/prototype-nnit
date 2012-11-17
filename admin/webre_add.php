@@ -65,6 +65,18 @@ var admin_email =$("#admin_email").val();
 var admin_address =$("#admin_address").val();
 var admin_tel =$("#admin_tel").val();
 var action = $("#action").val();
+var webre_url  = $("#webre_url").val();
+var str="";
+if(admin_name==""){
+str+="กรอกชื่อด้วยครับ \n";
+} 
+if(admin_surname==""){
+str+="กรอกนามสกุลด้วยครับ \n";
+}
+if(str != ""){
+alert(str);
+return false;
+}
 //alert("action"+action);
 //alert("admin_name="+admin_name+"\n"+"admin_surname="+admin_surname+"\n"+"admin_username="+admin_username+"\n"+"admin_password="+admin_password+"\n"+"admin_status="+admin_status+"\n"+"admin_email="+admin_email+"\n"+"admin_address="+admin_address+"\n"+"admin_tel="+admin_tel+"\n");
 	$.ajax({
@@ -72,13 +84,15 @@ var action = $("#action").val();
 	type:'POST',
 	dataType:'json',
 	cache:'false',
-	data:{'admin_name':admin_name,'admin_surname':admin_surname,'admin_username':admin_username,'admin_password':admin_password,'admin_status':admin_status,'admin_email':admin_email,'admin_address':admin_address,'admin_tel':admin_tel,'action':action},
+	data:{'admin_name':admin_name,'admin_surname':admin_surname,'admin_username':admin_username,'admin_password':admin_password,'admin_status':admin_status,'admin_email':admin_email,'admin_address':admin_address,'admin_tel':admin_tel,'action':action,'webre_url':webre_url},
 	success:function(data){
-		//alert(data);
+		//console.log(data);
 		if(data['result']=="user_duplicate"){
-		alert("User Duplicate");
+			alert("User Duplicate");
 		return false;
-		}
+		}else if(data['result']=="url_duplicate"){
+			alert("Url Duplicate");
+		}else
 		//alert(data['admin_id']);
 		//alert("webre_url "+$("#webre_url").val());
 		var admin_id = data['admin_id'];

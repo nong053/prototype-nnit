@@ -23,13 +23,13 @@ require_once("../oop/".$file.".php");
 $obj_manage_data=new manage_data();
 if($_POST['action']=="add_data"){
 
-$table="web_register";
-$field="webre_url  ,webre_detail ,webre_start  ,webre_end ,webre_update ,webre_cat_id  ,admin_id";
-$values="'$webre_url' ,'$webre_detail','$webre_start' ,'$webre_end','$webre_update' ,'$webre_cat_id' ,'$admin_id'";
-$result=$obj_manage_data->insert_data($table,$field,$values);
-if($result){
-	echo"{\"result\":\"success\"}";
-}
+		$table="web_register";
+		$field="webre_url  ,webre_detail ,webre_start  ,webre_end ,webre_update ,webre_cat_id  ,admin_id";
+		$values="'$webre_url' ,'$webre_detail','$webre_start' ,'$webre_end','$webre_update' ,'$webre_cat_id' ,'$admin_id'";
+		$result=$obj_manage_data->insert_data($table,$field,$values);
+		if($result){
+			echo"{\"result\":\"success\"}";
+		}
 
 }//if action
 
@@ -183,14 +183,12 @@ and web_register.admin_id=admin.admin_id $condition group by webre_url";
 
 }
 if($_POST['action']=="edit"){
-	//relation one:one
-	echo"edit webre";
-	echo"admin_id".$admin_id;
+//relation one:one
 $table="web_register";
 $setfield="webre_url='$webre_url',webre_detail='$webre_detail',webre_start='$webre_start',webre_end='$webre_end',webre_update='$webre_update'";
 $condition="admin_id='$admin_id'";
 $obj_manage_data->edit_data($table,$setfield,$condition);
-echo"{\"result\":\"edit webre\"}";
+echo"{\"result\":\"success\"}";
 }
 
 ?>
