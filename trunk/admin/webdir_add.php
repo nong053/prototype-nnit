@@ -38,7 +38,6 @@ function postResult(txt){
 function callBackpost(){
 	if(xmlReq.readyState!=4){
 	document.getElementById("Result").innerHTML="LOADING..";
-	
 	}else if(xmlReq.status==200){
 	<!--option-->
 	/*
@@ -146,7 +145,7 @@ border-right:#dedede solid 1px;
          <td>
         <div id="devtext_name">
         <center>
-        ดูรายละเีอียด
+        ดูรายละเอียด
         </center>
         </div>
         </td>

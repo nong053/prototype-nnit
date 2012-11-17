@@ -7,6 +7,7 @@ $admin_status =$_POST["admin_status"];
 $admin_email =$_POST["admin_email"];
 $admin_address =$_POST["admin_address"];
 $dmin_tel =$_POST["admin_tel"];
+$webre_url =$_POST["webre_url"];
 
 
 if($_POST['action']=="add"){
@@ -27,12 +28,20 @@ echo"dmin_tel".$dmin_tel."<br>";
 
 $obj_manage_data=new manage_data();
 $field_select="admin_username";
+//check user duplicate
 $table_condition="admin where admin_username='$admin_username'";
 $result_select_web=$obj_manage_data->select_data($table_condition,$field_select);
 $num=mysql_num_rows($result_select_web);
+//check url duplicate
+$field_select_url="webre_url";
+$table_condition_url="web_register where webre_url='$webre_url'";
+$result_select_web_url=$obj_manage_data->select_data($table_condition_url,$field_select_url);
+$num_url=mysql_num_rows($result_select_web_url);
 if($num){
 echo"{\"result\":\"user_duplicate\"}";
 
+}else if($num_url){
+echo"{\"result\":\"url_duplicate\"}";
 }else{
 
 $table="admin";
@@ -48,17 +57,20 @@ if($result){
 	
 }
 if($_POST['action']=="edit"){
-	function __autoload($file_name){
-		require_once("../oop/".$file_name.".php");
+		function __autoload($file_name){
+			require_once("../oop/".$file_name.".php");
+		}
+	$obj_manage_data=new manage_data();
+	//relation is one:one
+	//echo"{\"result\":\"edit admin\"}";
+	$admin_id=$_POST['admin_id'];
+	//echo "admin_id $admin_id";
+	$table="admin";
+	$setfield="admin_name='$admin_name',admin_surname='$admin_surname',admin_username='$admin_username',admin_password='$admin_password',admin_status='$admin_status',admin_email='$admin_email',admin_address='$admin_address',admin_tel='$admin_tel'";
+	$condition="admin_id='$admin_id'";
+	$result=$obj_manage_data->edit_data($table,$setfield,$condition);
+	if($result){
+		echo"{\"result\":\"success\"}";
 	}
-$obj_manage_data=new manage_data();
-//relation is one:one
-echo"{\"result\":\"edit admin\"}";
-$admin_id=$_POST['admin_id'];
-echo "admin_id $admin_id";
-$table="admin";
-$setfield="admin_name='$admin_name',admin_surname='$admin_surname',admin_username='$admin_username',admin_password='$admin_password',admin_status='$admin_status',admin_email='$admin_email',admin_address='$admin_address',admin_tel='$admin_tel'";
-$condition="admin_id='$admin_id'";
-$obj_manage_data->edit_data($table,$setfield,$condition);
 }
 ?>

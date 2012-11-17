@@ -71,39 +71,41 @@ var admin_id = $("#admin_id").val();
 	$.ajax({
 	url:'action_webre_admin.php',
 	type:'POST',
-	dataType:'html',
+	dataType:'json',
 	cache:'false',
 	data:{'admin_id':admin_id,'admin_name':admin_name,'admin_surname':admin_surname,'admin_username':admin_username,'admin_password':admin_password,'admin_status':admin_status,'admin_email':admin_email,'admin_address':admin_address,'admin_tel':admin_tel,'action':action},
 	success:function(data){
-		alert(data);
-		var admin_id = $("#admin_id").val();
-		var webre_url  = $("#webre_url").val();
-		var webre_detail  = $("#webre_detail").val(); 	
-		var webre_start  = $("#webre_start").val();
-		var webre_end  = $("#webre_end").val();
-		var webre_cat_id  = $("#cat_webre_package").val(); 	
-		/*
-		alert("webre_url "+$("#webre_url").val());
-		alert("webre_detail "+$("#webre_detail").val());
-		alert("webre_start "+$("#webre_start").val());
-		alert("webre_end "+$("#webre_end").val());
-		alert("webre_cat_id "+$("#cat_webre_package").val());
-		*/
-		$.ajax({
-			url:'action_webre.php',
-			type:'post',
-			dataType:'html',
-			cache:false,
-			data:{'webre_url':webre_url,'webre_detail':webre_detail,'webre_start':webre_start,'webre_end':webre_end,'webre_cat_id':webre_cat_id,'admin_id':admin_id,'action':'edit'},
-			success:function(data){
-				//alert(data['result']);
-				if(data['result']=="success"){
-						alert("Edit is Successfully");
-						show_data();
-				}
-			}//if function success
-		});//ajax
-	}
+		//alert(data);
+		if(data['result']=="success"){
+			var admin_id = $("#admin_id").val();
+			var webre_url  = $("#webre_url").val();
+			var webre_detail  = $("#webre_detail").val(); 	
+			var webre_start  = $("#webre_start").val();
+			var webre_end  = $("#webre_end").val();
+			var webre_cat_id  = $("#cat_webre_package").val(); 	
+			/*
+			alert("webre_url "+$("#webre_url").val());
+			alert("webre_detail "+$("#webre_detail").val());
+			alert("webre_start "+$("#webre_start").val());
+			alert("webre_end "+$("#webre_end").val());
+			alert("webre_cat_id "+$("#cat_webre_package").val());
+			*/
+			$.ajax({
+				url:'action_webre.php',
+				type:'post',
+				dataType:'json',
+				cache:false,
+				data:{'webre_url':webre_url,'webre_detail':webre_detail,'webre_start':webre_start,'webre_end':webre_end,'webre_cat_id':webre_cat_id,'admin_id':admin_id,'action':'edit'},
+				success:function(data){
+					//alert(data['result']);
+					if(data['result']=="success"){
+							alert("Edit is Successfully");
+							show_data();
+					}
+				}//if function success2
+			});//ajax
+		}//if success
+	}//if function success1
 	});
 		return false;
 	})
