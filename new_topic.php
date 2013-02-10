@@ -80,6 +80,7 @@
     </script>
 	  <!--CKEditor-->
         </div>
+		<input type="hidden" name="member_user_url" id="member_user_url" value="<?=$_SESSION['member_user_url2']?>">
         <input type="submit" value="ตั้งคำถาม" " />
     </div>
 </div>

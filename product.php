@@ -10,9 +10,7 @@
 
 </style>
  
-	 <!--สินค้าที่น่าสนใจ-->
-	 <!--ผีเสื้อบินไปบินมา
-		<embed style="left: 0px; width: 1000px; position: absolute; top: 0px; height: 900px;" src="http://imgfree.21cn.com/free/flash/9.swf" type="application/octet-stream" wmode="transparent" quality="high" align="3" height="1000" width="1"></embed> -->
+
   <div id="dev_table">
 	 <?php 
 	 include("config.inc.php");
@@ -72,14 +70,14 @@
         
         <img src="<?=$thumbnailsFile?>" border="0"  height="188" /><br>
         <div id="pic_txt" style="padding:5px;">
-        <a href="index.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>&name_title=<?=$product_name?>">
+        <a href="index.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>&name_title=<?=$product_name?>&member_user_url=<?=$_SESSION['member_user_url2']?>">
        
        <div id="txt" style="padding:1px;"> <img src="admin/images/knowledgebase.gif" border="0" />คลิ๊กดูรายละเอียด</div>
         </a>
         </div>
         <hr />
         <div id="pic_small">
-        	<a href="index.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>&name_title=<?=$product_name?>" >
+        	<a href="index.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>&name_title=<?=$product_name?>&member_user_url=<?=$_SESSION['member_user_url2']?>" >
        
         	
 			<b><?=$product_name?></b> <br>

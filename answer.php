@@ -147,6 +147,8 @@ while($rs2=mysql_fetch_array($result2)){
             
         	</td>
         	<td>
+
+			<input type="hidden" name="member_user_url" id="member_user_url" value="<?=$_SESSION['member_user_url2']?>">
             <input type="submit" value="ตอบกระทู้" />
         	</td>
        </tr>

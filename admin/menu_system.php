@@ -173,7 +173,9 @@ $http="";
 	$action_menu="add";
 	$http="http://";
 }
-$strSQL="select * from main_menu";
+$member_user_id=$_SESSION['member_user_id'];
+echo"member_user_id= $member_user_id";
+$strSQL="select * from main_menu where admin_id='$member_user_id'";
 $result=mysql_query($strSQL);
 $i=1;
 while($rs=mysql_fetch_array($result)){
@@ -266,7 +268,6 @@ $i++;
 <br style="clear:both" />
 <form action="" method="post" enctype="multipart/form-data" name="form1" id="form1">
 <table border="0" cellpadding="2" cellspacing="2" width="600">
-    	
         <tr>
         	<td width="600">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	<b>ชื่อเมนู</b>

@@ -19,7 +19,7 @@ if($_GET["ProductID"] != "")
 	{
 			if($_SESSION["strProductID"][$i] == $_GET["ProductID"])
 			{
-			header("location:index.php?page=cart");
+			header("location:index.php?page=cart&member_user_url=".$_SESSION['member_user_url2']."");
 			exit();//้ามี id ที่ตรงกันไม่ต้องทำอะรัย ภ้ายังไม่มี  id นี้ก็ให้ทำงานต่อ
 			}
 	}
@@ -33,7 +33,7 @@ if(trim($_GET["ProductID"]) != "")
 	$_SESSION["strQuanlity"][$_SESSION[strP]]=1;
 	session_write_close();
 	//header("location:$_SERVER[PHP_SELF]");
-	header("location:index.php?page=cart");
+	header("location:index.php?page=cart&member_user_url=".$_SESSION['member_user_url2']."");
 }	
 
 //============ กรณีลบรายการสั่งซื้อ
@@ -44,7 +44,7 @@ if(trim($_GET["action"]) == "Del")
 	$_SESSION["strQuanlity"][$_GET[P]]="";
 	session_write_close();
 	//header("location:$_SERVER[PHP_SELF]");
-	header("location:index.php?page=cart");
+	header("location:index.php?page=cart&member_user_url=".$_SESSION['member_user_url2']."");
 }	
 
 //============ กรณีการแก้ไขรายการสั่งซื้อ
@@ -64,7 +64,7 @@ for($i=0;$i<count($_POST["txtQua"]);$i++)
 	session_write_close();
 	//============ กระโดด Refresh ใหม่อีกรอบ
 	//header("location:$_SERVER[PHP_SELF]");
-	header("location:index.php?page=cart");
+	header("location:index.php?page=cart&member_user_url=".$_SESSION['member_user_url2']."");
 }	
 ?>		
 
@@ -107,7 +107,7 @@ $strNum++;
                                   <tr bgcolor="<?=$bgcolor?>"> 
                                     <td width="9%"> <div align="center"> 
                                         <?=$strNum;?>
-                                        <a href="javascript:if(confirm('ลบรายการสินค้า')==true){window.location='index.php?page=cart&action=Del&P=<?=$i;?>';}"><img src="images_system/deleteC.gif" width="12" height="11" border="0"></a></div></td>
+                                        <a href="javascript:if(confirm('ลบรายการสินค้า')==true){window.location='index.php?page=cart&action=Del&P=<?=$i;?>';}&member_user_url=<?=$_SESSION['member_user_url2']?>"><img src="images_system/deleteC.gif" width="12" height="11" border="0"></a></div></td>
                                     <td width="48%"> 
                                     <div id="pcicart">
                                        	<div id="productPic" style="float:left;">
@@ -174,14 +174,14 @@ $strNum++;
 							echo "<br><center><strong><font color=red>ไม่มีรายการสั่งซื้อ</font></strong></center><br><br>";
 							}
 							?>
-                                  <input name="BtnContinute" type="button" class="button" id="BtnContinute2" value="ซื้อสินค้าต่อ" onClick="window.location='index.php?page=product';">
+                                  <input name="BtnContinute" type="button" class="button" id="BtnContinute2" value="ซื้อสินค้าต่อ" onClick="window.location='index.php?page=product&member_user_url=<?=$_SESSION['member_user_url2']?>';">
                                   &nbsp; 
                                   <?
 								  if($strNum>0)
 								  {?>
                                   <input name="BtnCalu" type="submit" class="button" id="BtnCalu" value="คำนวณเงินใหม่">
                                   &nbsp; 
-                                  <input name="BtnPayment" type="button" class="button" id="BtnPayment" value="ชำระเงิน" onClick="window.location='index.php?page=pay'">
+                                  <input name="BtnPayment" type="button" class="button" id="BtnPayment" value="ชำระเงิน" onClick="window.location='index.php?page=pay&member_user_url=<?=$_SESSION['member_user_url2']?>'">
                                   <? }?>
                                   <br>
                                 </div></td>

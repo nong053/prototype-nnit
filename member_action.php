@@ -63,7 +63,7 @@ $cus_fax=$_POST['cus_fax'];
 $cus_other=$_POST['cus_other'];
 $cus_address=$_POST['cus_address'];
 $cus_id=$_POST['cus_id'];
-
+$member_user_url2=$_POST['member_user_url'];
 
 
 
@@ -126,7 +126,7 @@ if(!$result){
 	echo"no update".mysql_error();
 }else{
 	echo"<script>alert(\"แก้ไขข้อมูลเรียบร้อย\")</script>";
-	echo"<script>window.location=\"index.php?page=customer_area\"</script>";
+	echo"<script>window.location=\"index.php?page=customer_area&member_user_url=$member_user_url2\"</script>";
 	}
 }else if($action2=="check_member"){
 ?>
@@ -162,7 +162,7 @@ $cus_id=$_GET['cus_id'];
         <input type="hidden" value="change_status" name="action_status" />
         <input type="hidden" value="<?=$cus_id?>" name="cus_id" />
        
-        <input type="button" onclick="parent.location='index.php?page=customer_area'" value="ยกเลิกการแปลี่ยนแปลง" />
+        <input type="button" onclick="parent.location='index.php?page=customer_area&member_user_url=$member_user_url2'" value="ยกเลิกการแปลี่ยนแปลง" />
         </td>
     </tr>
 </table>

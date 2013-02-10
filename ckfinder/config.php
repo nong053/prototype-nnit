@@ -30,7 +30,7 @@ function CheckAuthentication()
 	// user logs in your system. To be able to use session variables don't
 	// forget to add session_start() at the top of this file.
 
-	if($_SESSION['admin_name']){
+	if($_SESSION['member_user_url2']){
 	return true;
 	}else{
 	return false;
@@ -63,12 +63,14 @@ in CKFinder. If empty, the default value (/userfiles/) is used.
 
 Examples:
 	$baseUrl = 'http://example.com/ckfinder/files/';
-	$baseUrl = '/userfiles/';
-
+	*/
+	//$baseUrl = '/userfiles/';
+	$baseUrl = '/prototype-nnit/nongLogin/';
+/*
 ATTENTION: The trailing slash is required.
 */
-$baseUrl = '/ckfinder/userfiles/';
-
+//$baseUrl = '/ckfinder/userfiles/';
+//$baseUrl = '/ckfinder/userfiles/';
 /*
 $baseDir : the path to the local directory (in the server) which points to the
 above $baseUrl URL. This is the path used by CKFinder to handle the files in

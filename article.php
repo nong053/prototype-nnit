@@ -28,7 +28,7 @@
 				$article=mb_substr($rs_article[article_title],0,100,"UTF-8")."...";
 				echo"$article";
 				?>
-                 <a href="index.php?page=article&article_id=<?=$rs_article[article_id]?>">อ่านเพิ่มเติม</a>
+                 <a href="index.php?page=article&article_id=<?=$rs_article[article_id]?>&member_user_url=<?=$_SESSION['member_user_url2']?>">อ่านเพิ่มเติม</a>
                 <?
 			}else{
 				$article=$rs_article[article_title];

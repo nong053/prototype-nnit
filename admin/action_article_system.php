@@ -1,3 +1,4 @@
+<? session_start();?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
 include("../config.inc.php");
@@ -15,7 +16,7 @@ $article_del_id=$_GET['article_del_id'];
 $article_id=$_POST['article_id'];
 $main_menu_id=$_POST['main_menu_id'];
 $article_name=$_POST['article_name'];
-
+$member_user_id=$_SESSION['member_user_id'];
 //echo"11$article_detail";
 //echo"22$article_title";
 
@@ -37,7 +38,7 @@ if(!$result){
 
 
 if($action_article=="add"){
-	$strSQL="insert into article(article_name,article_title,article_detail,article_name_eng,article_title_eng,article_detail_eng,main_menu_id,article_show)values('$article_name','$article_title','$article_detail','$article_name_eng','$article_title_eng','$article_detail_eng','$main_menu_id','$article_show')";
+	$strSQL="insert into article(article_name,article_title,article_detail,article_name_eng,article_title_eng,article_detail_eng,main_menu_id,article_show,admin_id)values('$article_name','$article_title','$article_detail','$article_name_eng','$article_title_eng','$article_detail_eng','$main_menu_id','$article_show','$member_user_id')";
 	$result=mysql_query($strSQL);
 	if(!$result){echo"error".mysql_error();}else{
 	echo"<script>window.location=\"index.php?page=article_system\";</script>";}

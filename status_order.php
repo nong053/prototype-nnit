@@ -88,7 +88,7 @@ if($_GET['check_product']=="check_product"){
          <?=$rs_order[order_status]?>
         </td>
         <td>
-         <a href="index.php?page=customer_area&select_member=status_order&check_product=check_product&order_id=<?=$rs_order[order_id]?>">รายละเอียด</a>
+         <a href="index.php?page=customer_area&select_member=status_order&check_product=check_product&order_id=<?=$rs_order[order_id]?>&member_user_url=<?=$_SESSION['member_user_url2']?>">รายละเอียด</a>
         </td>
     </tr>
     <?

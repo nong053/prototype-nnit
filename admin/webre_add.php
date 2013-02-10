@@ -73,6 +73,12 @@ str+="กรอกชื่อด้วยครับ \n";
 if(admin_surname==""){
 str+="กรอกนามสกุลด้วยครับ \n";
 }
+if(admin_username==""){
+str+="กรอก User name ด้วยครับ \n";
+}
+if(admin_password==""){
+str+="กรอก Password ด้วยครับ \n";
+}
 if(str != ""){
 alert(str);
 return false;
@@ -101,6 +107,8 @@ return false;
 		var webre_start  = $("#webre_start").val();
 		var webre_end  = $("#webre_end").val();
 		var webre_cat_id  = $("#cat_webre_package").val(); 	
+
+
 		/*
 		alert("webre_url "+$("#webre_url").val());
 		alert("webre_detail "+$("#webre_detail").val());

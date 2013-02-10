@@ -178,7 +178,7 @@
          	<ul>
             		<li>
                 		<div id="<?=$select1?>">
-              		 		<a href="index.php?page=customer_area&select_member=member_add">
+              		 		<a href="index.php?page=customer_area&select_member=member_add&member_user_url=<?=$_SESSION['member_user_url2']?>">
                             <div id="devmagin" style="margin:5px;">
               			 	จัดการข้อมูลสมาชิก
                      		</div>
@@ -188,7 +188,7 @@
                		 </li>
                      <li>
                 		<div id="<?=$select2?>">
-              		 		<a href="index.php?page=customer_area&select_member=payment">
+              		 		<a href="index.php?page=customer_area&select_member=payment&member_user_url=<?=$_SESSION['member_user_url2']?>">
                             <div id="devmagin" style="margin:5px;">
               			 	แจ้งการโอนเงิน
                      		</div>
@@ -198,7 +198,7 @@
                		 </li>
                      <li>
                 		<div id="<?=$select3?>">
-              		 		<a href="index.php?page=customer_area&select_member=status_order">
+              		 		<a href="index.php?page=customer_area&select_member=status_order&member_user_url=<?=$_SESSION['member_user_url2']?>">
                             <div id="devmagin" style="margin:5px;">
               			 	สถานะการสั่งซื้อ
                      		</div>

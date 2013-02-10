@@ -388,9 +388,9 @@ display:inline;
         </td>
         <td>
         <select name="admin_status" id="admin_status">
-        <option value="check">รอตรวจสอบ</option>
-        <option value="show">แสดงผล</option>
-        <option value="stop">ระงับการแสดงผล</option>
+        <option value="0">รอตรวจสอบ</option>
+        <option value="1">แสดงผล</option>
+       <!-- <option value="stop">ระงับการแสดงผล</option>-->
         </select>
         </td>
     </tr>

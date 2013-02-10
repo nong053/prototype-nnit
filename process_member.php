@@ -6,7 +6,7 @@
 include("config.inc.php");
 require("class_mysql.php");
 $db = new database();
-
+$member_user_url2=$_POST['member_user_url'];
 $cus_email=$_POST['cus_email'];
 $cus_user=$_POST['cus_user'];
 $cus_password=$_POST['cus_pass'];
@@ -112,5 +112,5 @@ $rs_admin = mysql_fetch_array($result_admin);
 	echo"error".mysql_error();
 }
 echo"<script>alert('บันทึกข้อมูลเรียบร้อยแล้ว');</script>";
-echo"<script>window.location=\"index.php?page=cart\";</script>";
+echo"<script>window.location=\"index.php?page=cart&member_user_url=$member_user_url2\";</script>";
 ?>

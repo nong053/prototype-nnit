@@ -276,21 +276,24 @@ $rs = mysql_fetch_array($result_customer);
 			<?
 			if($_GET['action2']=="edit"){//บันทึกไปแกไข
 			?>
-            <input type="submit" value="<?=$submit?>" />
+			<input type="hidden" name="member_user_url" id="member_user_url" value="<?=$_SESSION['member_user_url2']?>">  <input type="submit" value="<?=$submit?>" />
+			<input type="hidden" name="member_user_url" id="member_user_url" value="<?=$_SESSION['member_user_url2']?>">
             <input type="hidden" value="<?=$cus_id?>" name="cus_id" />
             <input type="hidden" value="edit" name="action" />
-            <input type="button" onClick="parent.location='index.php?page=customer_area&select_member=member_add'" value="ยกเลิกการแก้ไข" />
+            <input type="button" onClick="parent.location='index.php?page=customer_area&select_member=member_add&member_user_url=<?=$_SESSION['member_user_url2']?>'" value="ยกเลิกการแก้ไข" />
             <?
 			}else{
 			?>
             <!-- แก้ไข-->
-           <input type="button" onClick="parent.location='index.php?page=customer_area&cus_id=<?=$cus_id?>&detail_cus=detail_cus&action2=edit'"  value="<?=$submit?>"/>
-            <input type="button" onClick="parent.location='index.php?page=customer_area'"  value="ย้อนกลับ"/>
+			
+           <input type="button" onClick="parent.location='index.php?page=customer_area&cus_id=<?=$cus_id?>&detail_cus=detail_cus&action2=edit&member_user_url=<?=$_SESSION['member_user_url2']?>'"  value="<?=$submit?>"/>
+            <input type="button" onClick="parent.location='index.php?page=customer_area'&member_user_url=<?=$_SESSION['member_user_url2']?>"  value="ย้อนกลับ"/>
            <?
 			}
 		   ?> 
            
             </div>
+			
         </td>
     </tr>
 </table>

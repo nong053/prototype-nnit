@@ -1,5 +1,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?
+$member_user_url2=$_GET['member_user_url'];
+echo"member_user_url2=".$member_user_url2;
 if(($_GET["Action"])=="Send")
 /*$strSQL="insert into product_payment_check(product_payment_check_fullname,product_payment_check_email)VALUES('1','2')";
 		$result=mysql_query($strSQL);*/
@@ -39,7 +41,7 @@ require("config.inc.php");
 						
 						
 	echo "<script language=\"JavaScript\"> ";
-	echo "	alert('ทางเราได้รับข้อมูลของคุณเรียบร้อยแล้ว');window.location='index.php';";
+	echo "	alert('ทางเราได้รับข้อมูลของคุณเรียบร้อยแล้ว');window.location='index.php?member_user_url=$member_user_url2'";
 	echo "	</script> ";												
 
 }
@@ -105,7 +107,7 @@ require("config.inc.php");
 									
 	 }
 </script>
-                                      <form name="form_payment" method="post" action="index.php?page=customer_area&select_member=payment&Action=Send">
+                                      <form name="form_payment" method="post" action="index.php?page=customer_area&select_member=payment&Action=Send&member_user_url=<?=$member_user_url2?>">
  
                                         <table width="504" border="0">
                                           <tr> 
@@ -151,7 +153,10 @@ require("config.inc.php");
                                           </tr>
                                           <tr> 
                                             <td>&nbsp;</td>
-                                            <td><input name="btnSubmit" type="button" id="btnSubmit" value="Submit" onclick="checkvalue()" class="button"> 
+
+                                            <td> 
+											<input type="hidden" name="member_user_url" id="member_user_url" value="<?=$_SESSION['member_user_url2']?>">
+											<input name="btnSubmit" type="button" id="btnSubmit" value="Submit" onclick="checkvalue()" class="button"> 
                                               <input name="btnReset" type="reset" id="btnReset" value="Reset" class="button"></td>
                                           </tr>
                                         </table>
