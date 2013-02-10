@@ -1,4 +1,11 @@
 <IfModule mod_rewrite.c>
-RewriteEngine On
-ErrorDocument 404 /wep_polo_type/index.php
+Options +FollowSymLinks
+RewriteEngine on
+
+RewriteRule ^([a-zA-Z0-9_-]+)$ urlUser.php?userUrlId=$1
+RewriteRule ^([a-zA-Z0-9_-]+)/$ urlUser.php?userUrlId=$1
+
+
+
 </IfModule>
+

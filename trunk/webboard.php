@@ -31,7 +31,7 @@
 <title>เว็บบอร์ด</title>
 <div id="devbord" style="padding-left:5px;">
 
-        <a href="index.php?page=new_topic&name_title=ตั้งกระทู้ถาม">ตั้งกระทู้ถาม</a>
+        <a href="index.php?page=new_topic&name_title=ตั้งกระทู้ถาม&member_user_url=<?=$_SESSION['member_user_url2']?>">ตั้งกระทู้ถาม</a>
         
        
         
@@ -99,7 +99,7 @@ font-size:13px;">
             
             <td>
             <div id="create017_divtable" style="width:297px;">
-            <a href="index.php?page=answer&topic_id=<?=$rs[topic_id]?>">
+            <a href="index.php?page=answer&topic_id=<?=$rs[topic_id]?>&member_user_url=<?=$_SESSION['member_user_url2']?>">
             <?php 
 			
 			if(strlen($rs[topic_subject])>80){

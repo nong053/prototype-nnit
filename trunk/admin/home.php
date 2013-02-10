@@ -5,8 +5,33 @@
 <!-- CKE-->
 <?php 
 include("../config.inc.php");
+$member_user_url=trim($_SESSION['member_user_url2']);
+
+//##### Check table home start #####
+
+$query_home="select admin_id from home WHERE
+home.admin_id=(select admin_id from admin
+where admin_username='".$member_user_url."');";
+$result_home=$obj_manage_data->select_data_proc($query_home);
+$rs_num=mysql_num_rows($result_home);
+
+//ทำการ select admin_id ออกมาใช้งาน
+$query_admin_id="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin_id=$obj_manage_data->select_data_proc($query_admin_id);
+$rs_admin_id=mysql_fetch_array($result_admin_id);
+if(!$rs_num){
+//ทำการเพิ่มข้อมูลเมื่อมี User ใหม่เข้ามา
+$table="home";
+$field="admin_id";
+$values = $rs_admin_id['admin_id'];
+$obj_manage_data->insert_data($table,$field,$values);
+}
+//##### Check table home end #####
+
 //include("fckeditor/fckeditor.php");
-$strSQL="select * from home";
+
+$values = $rs_admin_id['admin_id'];
+$strSQL="select * from home where admin_id='".$values."'";
 $result=mysql_query($strSQL);
 $rs=mysql_fetch_array($result);
 $home_detail=$rs[home_detail];
@@ -122,9 +147,8 @@ $home_detail_eng=$rs[home_detail_eng];
     <script type="text/javascript">
         //<![CDATA[
             CKEDITOR.replace( 'home_detail_eng',{
-
-          
-            filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
+			//"../ckfinder/ckfinder.html"
+            filebrowserBrowseUrl : '../ckfinder/ckfinder.html',
             filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?Type=Images',
             filebrowserFlashBrowseUrl : '/ckfinder/ckfinder.html?Type=Flash',
             filebrowserUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
@@ -157,8 +181,9 @@ $home_detail_eng=$rs[home_detail_eng];
             <tr>
             	
                 <td>
+				<input type="hidden" name="admin_id" id="admin_id" value="<?= $rs_admin_id['admin_id']?>">
                 <input type="hidden" value="add" name="action" />
-                <input type="submit" value="submit">
+                <input type="submit" value="ok">
                 </td>
             </tr>
         </tr>

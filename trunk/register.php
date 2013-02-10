@@ -246,7 +246,7 @@ float:left;
 		<div id="lable_text">
 			<div id="lable"></div>
 			<div id="text">
-            
+            <input type="hidden" name="member_user_url" id="member_user_url" value="<?=$_SESSION['member_user_url2']?>">
 			<input type="reset" value="ยกเลิก" />
 			<input type="button" value="สมัครสมาชิก" onclick="check_cus(<?=$confrim?>)" />
             

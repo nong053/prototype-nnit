@@ -57,7 +57,7 @@ $action=$_GET['action'];*/
 //echo"action$action";
 include("../config.inc.php");
 /*include("fckeditor/fckeditor.php");*/
-
+$member_user_id=$_SESSION['member_user_id'];
 ?>
 
 
@@ -123,7 +123,7 @@ $article_name_edit=$rs[article_name];
 	$action_article="add";
 }
 
-$strSQL="select * from article";
+$strSQL="select * from article where admin_id='$member_user_id'";
 $result=mysql_query($strSQL);
 $i=1;
 $SQLposition = new database();

@@ -1,15 +1,16 @@
 ﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php 
 include("config.inc.php");
-
+$member_user_url2=$_POST['member_user_url'];
 $ans_detail=$_POST['ans_detail'];
 $ans_update=date("d-m-y H:i:s");
 $ans_name=$_POST['ans_name'];
 $topic_id=$_POST['topic_id'];
 
 if(!$ans_name){
+
 echo"<script>alert(\"กรุณากรอกชื่อด้วยครับ\");</script>";
-echo"<script>window.location=\"index.php?page=answer&topic_id=$topic_id\";</script>";
+echo"<script>window.location=\"index.php?page=answer&topic_id=$topic_id&member_user_url=$member_user_url2\";</script>";
 exit();
 }
 
@@ -22,5 +23,5 @@ $result=mysql_query($strSQL);
 if(!$result){
 	echo"error".mysql_error();
 }
-echo"<script>window.location=\"index.php?page=answer&topic_id=$topic_id\";</script>";
+echo"<script>window.location=\"index.php?page=answer&topic_id=$topic_id&member_user_url=$member_user_url2\";</script>";
 ?>

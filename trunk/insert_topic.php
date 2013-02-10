@@ -3,7 +3,7 @@
 
 $topic_subject=$_POST['topic_subject'];
 $topic_detail=$_POST['topic_detail'];
-
+$member_user_url2=$_POST['member_user_url'];
 $topic_name=$_POST['topic_name'];
 
 $topic_update=date("y-m-d H:i:s");
@@ -11,7 +11,7 @@ $topic_update=date("y-m-d H:i:s");
 
 if(!$topic_name){
 echo"<script>alert(\"กรุณากรอกชื่อด้วยครับ\");</script>";
-echo"<script>window.location=\"index.php?page=new_topic\";</script>";
+echo"<script>window.location=\"index.php?page=new_topic&member_user_url=$member_user_url2\";</script>";
 exit();
 }
 
@@ -20,6 +20,6 @@ $strSQL="insert into topic(topic_subject,topic_detail,topic_update,topic_name)va
 $result=mysql_query($strSQL);
 if(!$result){echo"error".mysql_error();}else{
 	/*header("Location:index.php?page=webboard");*/
-	echo"<script>window.location=\"index.php?page=webboard\";</script>";
+	echo"<script>window.location=\"index.php?page=webboard&member_user_url=$member_user_url2\";</script>";
 }
 ?>

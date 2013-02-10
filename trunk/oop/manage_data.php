@@ -32,6 +32,11 @@ class manage_data extends connect_mysql{
 
 		return $result;
 	}
+		function select_data_proc($query){
+		$this->set_host_user_pass_dbname();
+		$result=mysql_query($query);
+		return $result;
+	}
 		
 		
 	function  insert_data($table,$field,$vaules){

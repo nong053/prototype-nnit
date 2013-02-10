@@ -1,3 +1,4 @@
+<?php session_start();?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?
 include("../config.inc.php");
@@ -5,6 +6,7 @@ $action_menu=$_POST['action_menu'];
 $action_menu_del=$_GET['action_menu_del'];
 if($action_menu_del=="del"){
 $menu_del_id=$_GET['menu_del_id'];
+$member_user_id=$_SESSION['member_user_id'];
 $strSQL="delete from main_menu where main_menu_id='$menu_del_id'";
 $result=mysql_query($strSQL);
 if(!$result){
@@ -29,7 +31,7 @@ echo"menu_detail$menu_detail<br>";
 echo"action_menu$action_menu";*/
 
 
-$strSQL="insert into main_menu(main_menu_name,main_menu_name_eng,main_menu_link,plugin)values('$main_menu_name','$main_menu_name_eng','$main_menu_link','$plugin')";
+$strSQL="insert into main_menu(main_menu_name,main_menu_name_eng,main_menu_link,plugin,admin_id)values('$main_menu_name','$main_menu_name_eng','$main_menu_link','$plugin','$member_user_id')";
 
 $result=mysql_query($strSQL);
 if(!$result){
@@ -45,6 +47,7 @@ $main_menu_name_eng=$_POST['menu_name_eng'];
 $main_menu_link=$_POST['menu_link'];
 $plugin=$_POST['plugin'];
 $main_menu_id=$_POST['main_menu_id'];
+
 //$select_type_menu=$_POST['select_type_menu'];
 /*echo"1$main_menu_id<br>";
 echo"2$main_menu_name<br>";
