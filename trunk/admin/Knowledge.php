@@ -54,7 +54,6 @@ include("../config.inc.php");
     
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
     	<tr>
-        	
             <td width="11%">
              <div id="devtext_title">ลำดับ.  
             </div>       
@@ -89,7 +88,7 @@ $action_Knowledge="edit";
 	$action_Knowledge="add";
 }
 
-$strSQL="select * from knowledge";
+$strSQL="select * from knowledge where admin_id='$member_user_id'";
 $result=mysql_query($strSQL);
 $i=1;
 while($rs=mysql_fetch_array($result)){

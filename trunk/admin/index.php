@@ -28,6 +28,7 @@ $rs_admin_id=mysql_fetch_array($result_admin_id);
 $_SESSION['member_user_id']=$rs_admin_id['admin_id'];
 echo"member user url ".$member_user_url."<br>";
 echo"member user id ".$_SESSION['member_user_id']."<br>";
+$member_user_id=$_SESSION['member_user_id'];
 /*################## จัดาร session ผู้ใช้งาน End*/
 
 $user_downline=$_SESSION['user_downline'];
