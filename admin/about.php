@@ -5,8 +5,23 @@
 <!-- CKE-->
 <?php 
 include("../config.inc.php");
-//include("fckeditor/fckeditor.php");
-$strSQL="select * from about";
+//##### Check table home Start #####
+//ทำการ select admin_id ออกมาใช้งาน
+
+$query_about_admin_id="select admin_id from about where admin_id='$member_user_id'";
+$result_about_admin_id=$obj_manage_data->select_data_proc($query_about_admin_id);
+$rs_num_about=mysql_num_rows($result_about_admin_id);
+
+if(!$rs_num_about){
+//ทำการเพิ่มข้อมูลเมื่อมี User ใหม่เข้ามา
+$table="about";
+$field="admin_id";
+$values =$member_user_id;
+$obj_manage_data->insert_data($table,$field,$values);
+}
+//##### Check table home end #####
+
+$strSQL="select * from about where admin_id=$member_user_id";
 $result=mysql_query($strSQL);
 $rs=mysql_fetch_array($result);
 $about_detail=$rs[about_detail];

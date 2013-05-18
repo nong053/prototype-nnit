@@ -235,7 +235,7 @@ $i++;
         <tr>
         	<td>
             <?
-			$strSQL="select * from main_menu";
+			$strSQL="select * from main_menu where admin_id='$member_user_id'";
 			$result=mysql_query($strSQL);
 			$num=mysql_num_rows($result);
 			

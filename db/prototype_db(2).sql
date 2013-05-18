@@ -25,14 +25,15 @@ CREATE TABLE `about` (
   `about_detail` text NOT NULL,
   `about_title_eng` text NOT NULL,
   `about_detail_eng` text NOT NULL,
+  `admin_id` int(11) NOT NULL,
   PRIMARY KEY  (`about_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 -- 
 -- dump ตาราง `about`
 -- 
 
-INSERT INTO `about` VALUES (1, '', '<p>\r\n	เกี่ยวกับเรา</p>\r\n<p>\r\n	ใส่ข้อมูลเกี่ยวกับเราที่นี้</p>\r\n', '', '<p>\r\n	about us here..</p>\r\n');
+INSERT INTO `about` VALUES (6, '', '<p>\r\n	test</p>\r\n', '', '<p>\r\n	test2</p>\r\n', 179);
 
 -- --------------------------------------------------------
 
@@ -734,7 +735,7 @@ CREATE TABLE `home` (
   `home_detail_eng` text NOT NULL,
   `admin_id` varchar(255) default NULL,
   PRIMARY KEY  (`home_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 -- 
 -- dump ตาราง `home`
@@ -742,6 +743,11 @@ CREATE TABLE `home` (
 
 INSERT INTO `home` VALUES (1, '', '<p>\r\n	<img alt="" src="/ckfinder/userfiles/images/564630_412436118772743_283313225018367_1784497_1125432247_n.jpg" style="width: 700px; height: 644px;" /></p>\r\n', '', '', '');
 INSERT INTO `home` VALUES (2, '', '<p>\r\n	<img alt="" src="/ckfinder/userfiles/images/564630_412436118772743_283313225018367_1784497_1125432247_n.jpg" style="width: 700px; height: 644px;" /></p>\r\n', '', '<p>\r\n	test2</p>\r\n', '179');
+INSERT INTO `home` VALUES (3, '', '', '', '', '179');
+INSERT INTO `home` VALUES (4, '', '', '', '', '179');
+INSERT INTO `home` VALUES (5, '', '', '', '', '179');
+INSERT INTO `home` VALUES (6, '', '', '', '', '179');
+INSERT INTO `home` VALUES (7, '', '', '', '', '179');
 
 -- --------------------------------------------------------
 
@@ -1469,15 +1475,18 @@ CREATE TABLE `knowledge` (
   `Knowledge_detail` text NOT NULL,
   `Knowledge_title_eng` varchar(255) default NULL,
   `Knowledge_detail_eng` text,
+  `admin_id` int(11) default NULL,
   PRIMARY KEY  (`Knowledge_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 -- 
 -- dump ตาราง `knowledge`
 -- 
 
-INSERT INTO `knowledge` VALUES (6, 'ความรู้ดีดี', '', '<p>\r\n	ทดสอบเกี่ยวกับการใส่บทความหรือคลังความรู้ต่างๆ</p>\r\n', 'knowledge dd', '<p>\r\n	Test Article content about quick knowledge..</p>\r\n');
-INSERT INTO `knowledge` VALUES (7, 'ค้นหาข้อมูล', 'http://www.google.co.th', '\r\n', 'Search ', '');
+INSERT INTO `knowledge` VALUES (6, 'ความรู้ดีดี', '', '<p>\r\n	ทดสอบเกี่ยวกับการใส่บทความหรือคลังความรู้ต่างๆ</p>\r\n', 'knowledge dd', '<p>\r\n	Test Article content about quick knowledge..</p>\r\n', NULL);
+INSERT INTO `knowledge` VALUES (7, 'ค้นหาข้อมูล', 'http://www.google.co.th', '\r\n', 'Search ', '', NULL);
+INSERT INTO `knowledge` VALUES (8, 'หัวข้อ', '', '<p>\r\n	<b>รายละเอียด</b></p>\r\n', 'TEST topic', '<p>\r\n	<b>Detail</b></p>\r\n', 0);
+INSERT INTO `knowledge` VALUES (9, 'หัวข้อ', '', '<p>\r\n	<b>รายละเอียด</b></p>\r\n', 'Topic', '<p>\r\n	<b>Detail</b></p>\r\n', 179);
 
 -- --------------------------------------------------------
 
@@ -1496,7 +1505,8 @@ CREATE TABLE `main_menu` (
   `plugin` varchar(100) NOT NULL,
   `menu_priority` int(11) default NULL,
   `admin_id` int(11) default NULL,
-  PRIMARY KEY  (`main_menu_id`)
+  PRIMARY KEY  (`main_menu_id`),
+  KEY `admin_id` (`admin_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=107 ;
 
 -- 
