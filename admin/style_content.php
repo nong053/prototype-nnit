@@ -2,9 +2,38 @@
 $db=new database();
 ?>
 <?php 
-//require("class_mysql.php");
+//Check User and Management by User Start
+//ทำการ select admin_id ออกมาจาก table content_style
+$query_home="select admin_id from content_style WHERE
+content_style.admin_id=(select admin_id from admin
+where admin_username='".$member_user_url."');";
+$result_home=$obj_manage_data->select_data_proc($query_home);
+$rs_num=mysql_num_rows($result_home);
 
-$result_content= $db->selectSQL("content_style");
+//ทำการ select admin_id ออกมาจาก admin
+$query_admin_id="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin_id=$obj_manage_data->select_data_proc($query_admin_id);
+$rs_admin_id=mysql_fetch_array($result_admin_id);
+
+//ทำการเพิ่มข้อมูลเมื่อมี User ใหม่เข้ามา
+if(!$rs_num){
+$table="content_style";
+$field="admin_id";
+$values = $rs_admin_id['admin_id'];
+$obj_manage_data->insert_data($table,$field,$values);
+}
+//##### Check table home end #####
+
+//include("fckeditor/fckeditor.php");
+
+$values = $rs_admin_id['admin_id'];
+if($_SESSION['admin_status']=="3"){
+echo"admin here";
+$values=1;
+}
+//Check User and Management by User End
+
+$result_content= $db->selectSQL("content_style where admin_id='".$values."'");
 $rs_content=mysql_fetch_array($result_content);
 $box_num=mysql_num_rows($result_content);
 
@@ -141,6 +170,7 @@ $content_bg_color=$rs_content[content_bg_color];
         
         </td>
         <td>
+		<input type="hidden" name="admin_id" id="admin_id" value="<?= $rs_admin_id['admin_id']?>">
         <input type="submit"  value="Submit"/>
         </td>
     </tr>

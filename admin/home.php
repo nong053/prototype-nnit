@@ -1,4 +1,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--
+<script src="../sum_js/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	alert("hello jquery");
+});
+</script>
+-->
 <link href="css/about_us.css" rel="stylesheet" type="text/css">
 <!-- CKE-->
 <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
@@ -6,21 +14,21 @@
 <?php 
 include("../config.inc.php");
 $member_user_url=trim($_SESSION['member_user_url2']);
-
 //##### Check table home start #####
-
+//ทำการ select admin_id ออกมาจาก table home
 $query_home="select admin_id from home WHERE
 home.admin_id=(select admin_id from admin
 where admin_username='".$member_user_url."');";
 $result_home=$obj_manage_data->select_data_proc($query_home);
 $rs_num=mysql_num_rows($result_home);
 
-//ทำการ select admin_id ออกมาใช้งาน
+//ทำการ select admin_id ออกมาจาก admin
 $query_admin_id="select admin_id from admin where admin_username='".$member_user_url."'";
 $result_admin_id=$obj_manage_data->select_data_proc($query_admin_id);
 $rs_admin_id=mysql_fetch_array($result_admin_id);
-if(!$rs_num){
+
 //ทำการเพิ่มข้อมูลเมื่อมี User ใหม่เข้ามา
+if(!$rs_num){
 $table="home";
 $field="admin_id";
 $values = $rs_admin_id['admin_id'];
@@ -31,6 +39,10 @@ $obj_manage_data->insert_data($table,$field,$values);
 //include("fckeditor/fckeditor.php");
 
 $values = $rs_admin_id['admin_id'];
+if($_SESSION['admin_status']=="3"){
+echo"admin here";
+$values=1;
+}
 $strSQL="select * from home where admin_id='".$values."'";
 $result=mysql_query($strSQL);
 $rs=mysql_fetch_array($result);
@@ -98,7 +110,6 @@ $home_detail_eng=$rs[home_detail_eng];
   <form action="process_home.php" method="post" enctype="multipart/form-data">        
      <table>     
           <tr>
-        	
             <td>
             <div id="about_us_div" style="width:600px;">
            	  <? //$home_title?>
@@ -183,7 +194,8 @@ $home_detail_eng=$rs[home_detail_eng];
                 <td>
 				<input type="hidden" name="admin_id" id="admin_id" value="<?= $rs_admin_id['admin_id']?>">
                 <input type="hidden" value="add" name="action" />
-                <input type="submit" value="ok">
+                <input type="submit" value="Submit">
+				<input type="reset" value="Cancel" id="reset">
                 </td>
             </tr>
         </tr>

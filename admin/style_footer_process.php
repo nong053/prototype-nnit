@@ -15,6 +15,7 @@ $file_bg=$_FILES["footer_bg"]["name"];//--ต้องแก้ไข
 
 $footer_repeat=$_POST['footer_repeat'];//--ต้องแก้ไข
 $footer_color=$_POST['footer_color'];//--ต้องแก้ไข
+$admin_id=$_POST['admin_id'];
 $file_name=$file_bg;//--ต้องแก้ไข
 
 if($file_bg){
@@ -58,8 +59,8 @@ if($file_bg){
 				
 				//echo"object_position_edit$object_position_edit";
 				//echo"num_object$num_object<br>";
-				if($num_object){//check ถ้ามีข้อมูลอยู่แล้วให้ทำการUpdate
-					$strSQL="UPDATE footer_style SET footer_bg='$object_name',footer_repeat='$footer_repeat',footer_color='$footer_color'";
+				if($num_object){//check ถ้ามีข้อมูลอยู่แล้วให้ทำการUpdateและแก้ไขรูปภาพ
+					$strSQL="UPDATE footer_style SET footer_bg='$object_name',footer_repeat='$footer_repeat',footer_color='$footer_color' where admin_id='$admin_id'";
 					$query=mysql_query($strSQL);
 					if(!$query){echo"Error1".mysql_error();}
 					
@@ -67,7 +68,7 @@ if($file_bg){
 				}else{
 				echo"Inseart";
 				
-					$strSQL = "INSERT INTO footer_style(footer_bg,footer_repeat,footer_color) VALUES('$object_name','$footer_repeat','$footer_color')";
+					$strSQL = "INSERT INTO footer_style(footer_bg,footer_repeat,footer_color,admin_id) VALUES('$object_name','$footer_repeat','$footer_color','$admin_id')";
 					$objQuery = mysql_query($strSQL);	
 					if($objQuery){
 					/*echo"<script>window.location=\"index.php?page=$pic_type\";</script>";*/
@@ -81,11 +82,8 @@ if($file_bg){
 	}
 	
 }else{//if($file_header_bg)
-
-				
-	
-	
-	$strSQL="UPDATE footer_style SET footer_repeat='$footer_repeat',footer_color='$footer_color'";
+	//ไม่มีการแก้ไขรูปภาพ
+	$strSQL="UPDATE footer_style SET footer_repeat='$footer_repeat',footer_color='$footer_color' where admin_id='$admin_id'";
 	$query=mysql_query($strSQL);
 	if(!$query){echo"Error".mysql_error();}
 }

@@ -3,8 +3,38 @@ $db=new database();
 ?>
 <?php 
 //require("class_mysql.php");
+$member_user_url=trim($_SESSION['member_user_url2']);
+//##### Check table home start #####
+//ทำการ select admin_id ออกมาจาก table home
+$query_home="select admin_id from bg_style WHERE
+bg_style.admin_id=(select admin_id from admin
+where admin_username='".$member_user_url."');";
+$result_home=$obj_manage_data->select_data_proc($query_home);
+$rs_num=mysql_num_rows($result_home);
 
-$result_bg = $db->selectSQL("bg_style");
+//ทำการ select admin_id ออกมาจาก admin
+$query_admin_id="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin_id=$obj_manage_data->select_data_proc($query_admin_id);
+$rs_admin_id=mysql_fetch_array($result_admin_id);
+
+//ทำการเพิ่มข้อมูลเมื่อมี User ใหม่เข้ามา
+if(!$rs_num){
+$table="bg_style";
+$field="admin_id";
+$values = $rs_admin_id['admin_id'];
+$obj_manage_data->insert_data($table,$field,$values);
+}
+//##### Check table home end #####
+
+//include("fckeditor/fckeditor.php");
+
+$values = $rs_admin_id['admin_id'];
+if($_SESSION['admin_status']=="3"){
+echo"admin here";
+$values=1;
+}
+
+$result_bg = $db->selectSQL("bg_style where admin_id='".$values."'");
 $rs_bg=mysql_fetch_array($result_bg);
 $bg_num=@mysql_num_rows($rs_bg);
 $bg_name=$rs_bg[bg_name];
@@ -170,6 +200,7 @@ $bg_web_color=$rs_bg[bg_web_color];
      <tr>
     </tr>
         <td>
+		<input type="hidden" name="admin_id" id="admin_id" value="<?= $rs_admin_id['admin_id']?>">
         <input type="submit"  value="Submit"/>
         </td>
     </tr>

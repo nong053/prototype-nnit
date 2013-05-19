@@ -23,22 +23,66 @@ $db=new database();
 <div id="box_style">
 <div id="box_style_l" style="float:left">
 <?php 
-//require("class_mysql.php");
 
-$result_header_bg = $db->selectSQL("object_system where object_position='header_bg'");
+//Check User and Management by User Start
+//ทำการ select admin_id ออกมาจาก table object_system
+$query_home="select admin_id from object_system WHERE
+object_system.admin_id=(select admin_id from admin
+where admin_username='".$member_user_url."');";
+$result_home=$obj_manage_data->select_data_proc($query_home);
+$rs_num=mysql_num_rows($result_home);
+
+//ทำการ select admin_id ออกมาจาก admin
+$query_admin_id="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin_id=$obj_manage_data->select_data_proc($query_admin_id);
+$rs_admin_id=mysql_fetch_array($result_admin_id);
+
+//ทำการเพิ่มข้อมูลเมื่อมี User ใหม่เข้ามา
+if(!$rs_num){
+$admin_id=$rs_admin_id['admin_id'];
+//add recode header_bg
+$table="object_system";
+$field="object_position,admin_id";
+$values = "'header_bg','".$admin_id."'";
+$obj_manage_data->insert_data($table,$field,$values);
+
+//add recode  	header_logo
+$table="object_system";
+$field="admin_id,object_position";
+$values = " '".$admin_id."','header_logo'";
+$obj_manage_data->insert_data($table,$field,$values);
+
+//add recode header_banner
+$table="object_system";
+$field="admin_id,object_position";
+$values = " '".$admin_id."','header_banner'";
+$obj_manage_data->insert_data($table,$field,$values);
+}
+//##### Check table home end #####
+
+//include("fckeditor/fckeditor.php");
+
+$values = $rs_admin_id['admin_id'];
+if($_SESSION['admin_status']=="3"){
+echo"admin here";
+$values=1;
+}
+//Check User and Management by User End
+
+$result_header_bg = $db->selectSQL("object_system where object_position='header_bg' and admin_id='".$values."'");
 $rs_header_bg=mysql_fetch_array($result_header_bg);
 $header_num=mysql_num_rows($result_header_bg);
 $header_bg_color=$rs_header_bg[object_color];
 $header_bg_width=$rs_header_bg[object_width];
 $header_bg_height=$rs_header_bg[object_height];
 
-$result_header_logo = $db->selectSQL("object_system where object_position='header_logo'");
+$result_header_logo = $db->selectSQL("object_system where object_position='header_logo'  and admin_id='".$values."'");
 $rs_header_logo=mysql_fetch_array($result_header_logo);
 $header_logo_color=$rs_header_logo[object_color];
 $header_logo_width=$rs_header_logo[object_width];
 $header_logo_height=$rs_header_logo[object_height];
 
-$result_header_banner = $db->selectSQL("object_system where object_position='header_banner'");
+$result_header_banner = $db->selectSQL("object_system where object_position='header_banner'  and admin_id='".$values."'");
 $rs_header_banner=mysql_fetch_array($result_header_banner);
 $header_banner_color=$rs_header_banner[object_color];
 $header_banner_width=$rs_header_banner[object_width];
@@ -110,7 +154,8 @@ $header_banner_height=$rs_header_banner[object_height];
     
     
 </table>
-<input type="submit"  value="OK SICKAREC"/>
+<input type="hidden" name="admin_id" id="admin_id" value="<?= $rs_admin_id['admin_id']?>">
+<input type="submit"  value="Submit"/>
 </form>
 
 

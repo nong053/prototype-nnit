@@ -1,7 +1,5 @@
 <?php session_start();
 require("../config.inc.php");
-
-
 if(isset($_GET['logout'])){
 	session_destroy();
 	header("location:../index.php?member_user_url=".$_SESSION['member_user_url2']."");
@@ -9,15 +7,12 @@ if(isset($_GET['logout'])){
 if(!$_SESSION['admin_name']){//กรณี check การloginของ admin
 	header("location:../index.php"); 
 }
-
-
-
-
 /*##########ดึง oject มาใช้งาน Start*/
 	function __autoload($filename){
 		require_once "../oop/".$filename.".php";
 		}
 $obj_manage_data = new manage_data();
+
 /*##########ดึง oject มาใช้งาน End*/
 /*################## จัดาร session ผู้ใช้งาน Start*/
 $member_user_url=trim($_SESSION['member_user_url2']);
@@ -67,7 +62,6 @@ if(isset($_GET['logout'])){
 <head>
 <link href="../admin/css.css" type="text/css" rel="stylesheet"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
 <style type="text/css">
 <!--
 body,td,th {

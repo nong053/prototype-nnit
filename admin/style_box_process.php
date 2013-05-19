@@ -22,6 +22,7 @@ $box_header=$_FILES["box_header"]["name"];//--ต้องแก้ไข
 	$box_color_over=$_POST['box_color_over'];//--ต้องแก้ไข
 	$box_color_overed=$_POST['box_color_overed'];//--ต้องแก้ไข
 	$box_font_color=$_POST['box_font_color'];//--ต้องแก้ไข
+	$admin_id=$_POST['admin_id'];
 	
 	
 if($box_header){
@@ -64,11 +65,11 @@ if($box_header){
 				}
 
 				if($num_object){//check ถ้ามีข้อมูลอยู่แล้วให้ทำการUpdate
-					$strSQL="UPDATE box_style SET box_header='$object_name',box_header_color='$box_header_color',box_border_color='$box_border_color',box_border_style='$box_border_style',box_color_bg='$box_color_bg',box_color='$box_color',box_color_over='$box_color_over',box_color_overed='$box_color_overed',box_font_color='$box_font_color'";
+					$strSQL="UPDATE box_style SET box_header='$object_name',box_header_color='$box_header_color',box_border_color='$box_border_color',box_border_style='$box_border_style',box_color_bg='$box_color_bg',box_color='$box_color',box_color_over='$box_color_over',box_color_overed='$box_color_overed',box_font_color='$box_font_color' where admin_id='$admin_id'";
 					$query=mysql_query($strSQL);
 					if(!$query){echo"Error".mysql_error();}
 				}else{
-					$strSQL = "INSERT INTO box_style(box_header,box_header_color,box_border_color,box_border_style,box_color_bg,box_color,box_color_over,box_color_overed,box_font_color) VALUES('$object_name','$box_header_color','$box_border_color','$box_border_style','$box_color_bg','$box_color','$box_color_over','$box_color_overed','box_font_color')";
+					$strSQL = "INSERT INTO box_style(box_header,box_header_color,box_border_color,box_border_style,box_color_bg,box_color,box_color_over,box_color_overed,box_font_color,admin_id) VALUES('$object_name','$box_header_color','$box_border_color','$box_border_style','$box_color_bg','$box_color','$box_color_over','$box_color_overed','box_font_color','$admin_id')";
 					$objQuery = mysql_query($strSQL);	
 					if($objQuery){
 					}else{
@@ -81,14 +82,10 @@ if($box_header){
 	
 }else{//if($file_header_bg)
 
-	$strSQL="UPDATE box_style SET box_header_color='$box_header_color',box_border_color='$box_border_color',box_border_style='$box_border_style',box_color_bg='$box_color_bg',box_color='$box_color',box_color_over='$box_color_over',box_color_overed='$box_color_overed',box_font_color='$box_font_color'";
+	$strSQL="UPDATE box_style SET box_header_color='$box_header_color',box_border_color='$box_border_color',box_border_style='$box_border_style',box_color_bg='$box_color_bg',box_color='$box_color',box_color_over='$box_color_over',box_color_overed='$box_color_overed',box_font_color='$box_font_color' where admin_id='$admin_id'";
 	$query=mysql_query($strSQL);
 	if(!$query){echo"Error".mysql_error();}
 }
-
-
-
-
 echo"<script>window.location=\"index.php?page=style_system&select_page=picture_style&page_style=box\"</script>";
 
 ?>

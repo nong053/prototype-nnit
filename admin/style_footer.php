@@ -2,9 +2,39 @@
 $db=new database();
 ?>
 <?php 
-//require("class_mysql.php");
 
-$result_footer = $db->selectSQL("footer_style");
+//Check User and Management by User Start
+//ทำการ select admin_id ออกมาจาก table footer_style
+$query_home="select admin_id from footer_style WHERE
+footer_style.admin_id=(select admin_id from admin
+where admin_username='".$member_user_url."');";
+$result_home=$obj_manage_data->select_data_proc($query_home);
+$rs_num=mysql_num_rows($result_home);
+
+//ทำการ select admin_id ออกมาจาก admin
+$query_admin_id="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin_id=$obj_manage_data->select_data_proc($query_admin_id);
+$rs_admin_id=mysql_fetch_array($result_admin_id);
+
+//ทำการเพิ่มข้อมูลเมื่อมี User ใหม่เข้ามา
+if(!$rs_num){
+$table="footer_style";
+$field="admin_id";
+$values = $rs_admin_id['admin_id'];
+$obj_manage_data->insert_data($table,$field,$values);
+}
+//##### Check table home end #####
+
+//include("fckeditor/fckeditor.php");
+
+$values = $rs_admin_id['admin_id'];
+if($_SESSION['admin_status']=="3"){
+echo"admin here";
+$values=1;
+}
+//Check User and Management by User End
+
+$result_footer = $db->selectSQL("footer_style where admin_id='".$values."'");
 $rs_footer=mysql_fetch_array($result_footer);
 $footer_num=@mysql_num_rows($rs_footer);
 $footer_bg=$rs_footer[footer_bg];
@@ -114,6 +144,7 @@ $footer_color=$rs_footer[footer_color];
      <tr>
     </tr>
         <td>
+		<input type="hidden" name="admin_id" id="admin_id" value="<?= $rs_admin_id['admin_id']?>">
         <input type="submit"  value="Submit"/>
         </td>
     </tr>
