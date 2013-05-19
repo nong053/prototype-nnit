@@ -17,6 +17,7 @@ $intro_repeat=$_POST['intro_repeat'];//--ต้องแก้ไข
 $intro_color=$_POST['intro_color'];//--ต้องแก้ไข
 $intro_detail=$_POST['intro_detail'];
 $file_name=$file_bg;//--ต้องแก้ไข
+$admin_id=$_POST['admin_id'];
 
 if($file_bg){
 	
@@ -60,7 +61,7 @@ if($file_bg){
 				//echo"object_position_edit$object_position_edit";
 				//echo"num_object$num_object<br>";
 				if($num_object){//check ถ้ามีข้อมูลอยู่แล้วให้ทำการUpdate
-					$strSQL="UPDATE intro_style SET intro_bg='$object_name',intro_repeat='$intro_repeat',intro_color='$intro_color',intro_detail='$intro_detail'";
+					$strSQL="UPDATE intro_style SET intro_bg='$object_name',intro_repeat='$intro_repeat',intro_color='$intro_color',intro_detail='$intro_detail'  where admin_id='$admin_id'";
 					$query=mysql_query($strSQL);
 					if(!$query){echo"Error1".mysql_error();}
 					
@@ -68,7 +69,7 @@ if($file_bg){
 				}else{
 				echo"Inseart";
 				
-					$strSQL = "INSERT INTO intro_style(intro_bg,intro_repeat,intro_color,intro_detail) VALUES('$object_name','$intro_repeat','$intro_color','$intro_detail')";
+					$strSQL = "INSERT INTO intro_style(intro_bg,intro_repeat,intro_color,intro_detail,admin_id) VALUES('$object_name','$intro_repeat','$intro_color','$intro_detail','$admin_id')";
 					$objQuery = mysql_query($strSQL);	
 					if($objQuery){
 					/*echo"<script>window.location=\"index.php?page=$pic_type\";</script>";*/
@@ -86,7 +87,7 @@ if($file_bg){
 				
 	
 	
-	$strSQL="UPDATE intro_style SET intro_repeat='$intro_repeat',intro_color='$intro_color'";
+	$strSQL="UPDATE intro_style SET intro_repeat='$intro_repeat',intro_color='$intro_color'  where admin_id='$admin_id'";
 	$query=mysql_query($strSQL);
 	if(!$query){echo"Error".mysql_error();}
 }

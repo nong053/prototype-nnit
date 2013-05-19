@@ -2,10 +2,6 @@
 include("../config.inc.php");
 require("class_mysql.php");
 $db=new database();
-
-
-	
-	
 $path_object="../object_system/";
 	if(!is_dir($path_object)){
 	umask(0);
@@ -21,6 +17,7 @@ $content_header=$_FILES["content_header"]["name"];//--ต้องแก้ไ�
 	$content_height=$_POST['content_height'];//--ต้องแก้ไข
 	$content_font_color=$_POST['content_font_color'];//--ต้องแก้ไข
 	$content_bg_color=$_POST['content_bg_color'];//--ต้องแก้ไข
+	$admin_id=$_POST['admin_id'];
 	
 	
 	
@@ -65,11 +62,11 @@ if($content_header){
 				}
 
 				if($num_object){//check ถ้ามีข้อมูลอยู่แล้วให้ทำการUpdate
-					$strSQL="UPDATE content_style SET content_header='$object_name',content_header_color='$content_header_color',content_border_color='$content_border_color',content_border_style='$content_border_style',content_width='$content_width',content_height='$content_height',content_font_color='$content_font_color',content_bg_color='$content_bg_color'";
+					$strSQL="UPDATE content_style SET content_header='$object_name',content_header_color='$content_header_color',content_border_color='$content_border_color',content_border_style='$content_border_style',content_width='$content_width',content_height='$content_height',content_font_color='$content_font_color',content_bg_color='$content_bg_color' where admin_id='$admin_id'";
 					$query=mysql_query($strSQL);
 					if(!$query){echo"Error".mysql_error();}
 				}else{
-					$strSQL = "INSERT INTO content_style(content_header,content_header_color,content_border_color,content_border_style,content_width,content_height,content_font_color,content_bg_color) VALUES('$object_name','$content_header_color','$content_border_color','$content_border_style','$content_width','$content_height','$content_font_color','$content_bg_color')";
+					$strSQL = "INSERT INTO content_style(content_header,content_header_color,content_border_color,content_border_style,content_width,content_height,content_font_color,content_bg_color,admin_id) VALUES('$object_name','$content_header_color','$content_border_color','$content_border_style','$content_width','$content_height','$content_font_color','$content_bg_color','$admin_id')";
 					$objQuery = mysql_query($strSQL);	
 					if($objQuery){
 					}else{
@@ -82,13 +79,9 @@ if($content_header){
 	
 }else{//if($file_header_bg)
 
-	$strSQL="UPDATE content_style SET content_header_color='$content_header_color',content_border_color='$content_border_color',content_border_style='$content_border_style',content_width='$content_width',content_height='$content_height',content_font_color='$content_font_color',content_bg_color='$content_bg_color'";
+	$strSQL="UPDATE content_style SET content_header_color='$content_header_color',content_border_color='$content_border_color',content_border_style='$content_border_style',content_width='$content_width',content_height='$content_height',content_font_color='$content_font_color',content_bg_color='$content_bg_color' where admin_id='$admin_id'";
 	$query=mysql_query($strSQL);
 	if(!$query){echo"Error".mysql_error();}
 }
-
-
-
 echo"<script>window.location=\"index.php?page=style_system&select_page=picture_style&page_style=content\"</script>";
-
 ?>

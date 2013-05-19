@@ -3,7 +3,7 @@
 class connect_mysql{
 	var $var_hostname = "localhost";
 	var $var_user = "root";
-	var $var_pass ="010535546";
+	var $var_pass ="root";
 	var $var_dbname= "prototype_db";
 
 	function set_host_user_pass_dbname(){
@@ -57,6 +57,7 @@ class manage_data extends connect_mysql{
 			}else{
 			return $result;
 			}
+			mysql_close();
 		}
 	function delete_data($table, $condition){
 		//echo"$table<br>";
@@ -69,6 +70,7 @@ class manage_data extends connect_mysql{
 			}else{
 			echo"error".mysql_error();
 			}
+			mysql_close();
 		}
 }
 

@@ -15,6 +15,7 @@ $file_header_bg=$_FILES["file_header_bg"]["name"];//--ต้องแก้ไ�
 $file_header_logo=$_FILES["file_header_logo"]["name"];//--ต้องแก้ไข
 $file_header_banner=$_FILES["file_header_banner"]["name"];//--ต้องแก้ไข
 $header_num=$_POST['header_num'];
+$admin_id=$_POST['admin_id'];
 echo"header_num:$header_num";
 
 //echo"file_header_bg$file_header_bg";
@@ -54,7 +55,7 @@ if($file_header_bg){
 			
 				
 				
-				$result_object=$db->selectSQL("object_system where object_position='$object_position'");
+				$result_object=$db->selectSQL("object_system where object_position='$object_position' and admin_id='$admin_id'");
 				$num_object=mysql_num_rows($result_object);
 				$rs_object=mysql_fetch_array($result_object);
 				$object_position_edit=$rs_object[object_position];
@@ -73,7 +74,7 @@ if($file_header_bg){
 				//echo"object_position_edit$object_position_edit";
 				//echo"num_object$num_object<br>";
 				if($num_object){//check ถ้ามีข้อมูลอยู่แล้วให้ทำการUpdate
-					$strSQL="UPDATE object_system SET object_name='$object_name',object_position='$object_position',object_color='$object_color',object_width='$object_width',object_height='$object_height' where object_position='$object_position_edit'";
+					$strSQL="UPDATE object_system SET object_name='$object_name',object_position='$object_position',object_color='$object_color',object_width='$object_width',object_height='$object_height' where object_position='$object_position_edit' and admin_id='$admin_id'";
 					$query=mysql_query($strSQL);
 					if(!$query){echo"Error".mysql_error();}
 					
@@ -81,7 +82,7 @@ if($file_header_bg){
 				}else{
 				
 				
-					$strSQL = "INSERT INTO object_system(object_name,object_position,object_color,object_width,object_height) VALUES('$object_name','$object_position','$object_color','$object_width','$header_height')";
+					$strSQL = "INSERT INTO object_system(object_name,object_position,object_color,object_width,object_height,admin_id) VALUES('$object_name','$object_position','$object_color','$object_width','$header_height','$admin_id')";
 					$objQuery = mysql_query($strSQL);	
 					if($objQuery){
 					/*echo"<script>window.location=\"index.php?page=$pic_type\";</script>";*/
@@ -103,7 +104,7 @@ if($file_header_bg){
 	$file_name=$file_header_bg;//--ต้องแก้ไข
 	
 	
-	$result_object=$db->selectSQL("object_system where object_position='$object_position'");
+	$result_object=$db->selectSQL("object_system where object_position='$object_position'  and admin_id='$admin_id'");
 	$num_object=mysql_num_rows($result_object);
 	$rs_object=mysql_fetch_array($result_object);
 	$object_position_edit=$rs_object[object_position];
@@ -111,7 +112,7 @@ if($file_header_bg){
 				
 	
 	
-	$strSQL="UPDATE object_system SET object_position='$object_position',object_color='$object_color',object_width='$object_width',object_height='$object_height' where object_position='$object_position_edit'";
+	$strSQL="UPDATE object_system SET object_position='$object_position',object_color='$object_color',object_width='$object_width',object_height='$object_height' where object_position='$object_position_edit'  and admin_id='$admin_id'";
 	$query=mysql_query($strSQL);
 	if(!$query){echo"Error".mysql_error();}
 }
@@ -155,7 +156,7 @@ if($file_header_logo){
 				
 				
 				
-				$result_object=$db->selectSQL("object_system where object_position='$object_position'");
+				$result_object=$db->selectSQL("object_system where object_position='$object_position'  and admin_id='$admin_id'");
 				$num_object=mysql_num_rows($result_object);
 				$rs_object=mysql_fetch_array($result_object);
 				$object_position_edit=$rs_object[object_position];
@@ -174,7 +175,7 @@ if($file_header_logo){
 				//echo"object_position_edit$object_position_edit";
 				//echo"num_object$num_object<br>";
 				if($num_object){//check ถ้ามีข้อมูลอยู่แล้วให้ทำการลบของเดิม
-					$strSQL="UPDATE object_system SET object_name='$object_name',object_position='$object_position',object_color='$object_color',object_width='$object_width',object_height='$object_height' where object_position='$object_position_edit'";
+					$strSQL="UPDATE object_system SET object_name='$object_name',object_position='$object_position',object_color='$object_color',object_width='$object_width',object_height='$object_height' where object_position='$object_position_edit'  and admin_id='$admin_id'";
 					$query=mysql_query($strSQL);
 					if(!$query){echo"Error".mysql_error();}
 					
@@ -182,7 +183,7 @@ if($file_header_logo){
 				}else{
 				
 				
-					$strSQL = "INSERT INTO object_system(object_name,object_position,object_color,object_width,object_height) VALUES('$object_name','$object_position','$object_color','$object_width','$object_height')";
+					$strSQL = "INSERT INTO object_system(object_name,object_position,object_color,object_width,object_height,admin_id) VALUES('$object_name','$object_position','$object_color','$object_width','$object_height','$admin_id')";
 					$objQuery = mysql_query($strSQL);	
 					if($objQuery){
 					/*echo"<script>window.location=\"index.php?page=$pic_type\";</script>";*/
@@ -212,7 +213,7 @@ if($file_header_logo){
 				
 	
 	
-				$strSQL2="UPDATE object_system SET object_position='$object_position',object_color='$object_color',object_width='$object_width',object_height='$object_height' where object_position='$object_position'";
+				$strSQL2="UPDATE object_system SET object_position='$object_position',object_color='$object_color',object_width='$object_width',object_height='$object_height' where object_position='$object_position'  and admin_id='$admin_id'";
 				$query=mysql_query($strSQL2);
 				if(!$query){echo"Error".mysql_error();}else{echo"ok";}
 }
@@ -253,7 +254,7 @@ if($file_header_banner){
 				
 				
 				
-				$result_object=$db->selectSQL("object_system where object_position='$object_position'");
+				$result_object=$db->selectSQL("object_system where object_position='$object_position'  and admin_id='$admin_id'");
 				$num_object=mysql_num_rows($result_object);
 				$rs_object=mysql_fetch_array($result_object);
 				$object_position_edit=$rs_object[object_position];
@@ -272,7 +273,7 @@ if($file_header_banner){
 				//echo"object_position_edit$object_position_edit";
 				//echo"num_object$num_object<br>";
 				if($num_object){//check ถ้ามีข้อมูลอยู่แล้วให้ทำการลบของเดิม
-					$strSQL="UPDATE object_system SET object_name='$object_name',object_position='$object_position',object_color='$object_color',object_width='$object_width',object_height='$object_height' where object_position='$object_position_edit'";
+					$strSQL="UPDATE object_system SET object_name='$object_name',object_position='$object_position',object_color='$object_color',object_width='$object_width',object_height='$object_height' where object_position='$object_position_edit'  and admin_id='$admin_id'";
 					$query=mysql_query($strSQL);
 					if(!$query){echo"Error".mysql_error();}
 					
@@ -280,7 +281,7 @@ if($file_header_banner){
 				}else{
 				
 				
-					$strSQL = "INSERT INTO object_system(object_name,object_position,object_color,object_width,object_height) VALUES('$object_name','$object_position','$object_color','$object_width','$object_height')";
+					$strSQL = "INSERT INTO object_system(object_name,object_position,object_color,object_width,object_height,admin_id) VALUES('$object_name','$object_position','$object_color','$object_width','$object_height','$admin_id')";
 					$objQuery = mysql_query($strSQL);	
 					if($objQuery){
 					/*echo"<script>window.location=\"index.php?page=$pic_type\";</script>";*/
@@ -305,7 +306,7 @@ if($file_header_banner){
 	//echo"file:$file_name<br>";
 	
 	
-				$result_object=$db->selectSQL("object_system where object_position='$object_position'");
+				$result_object=$db->selectSQL("object_system where object_position='$object_position'  and admin_id='$admin_id'");
 				$num_object=mysql_num_rows($result_object);
 				$rs_object=mysql_fetch_array($result_object);
 				$object_position_edit=$rs_object[object_position];
@@ -313,7 +314,7 @@ if($file_header_banner){
 				
 	
 	
-				$strSQL="UPDATE object_system SET 		object_position='$object_position',object_color='$object_color',object_width='$object_width',object_height='$object_height' where object_position='$object_position_edit'";
+				$strSQL="UPDATE object_system SET 		object_position='$object_position',object_color='$object_color',object_width='$object_width',object_height='$object_height' where object_position='$object_position_edit'  and admin_id='$admin_id'";
 				$query=mysql_query($strSQL);
 				if(!$query){echo"Error".mysql_error();}
 }

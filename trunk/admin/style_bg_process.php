@@ -15,6 +15,7 @@ $bg_position=$_POST['bg_position'];//--ต้องแก้ไข
 $bg_color=$_POST['bg_color'];//--ต้องแก้ไข
 $bg_web_color=$_POST['bg_web_color'];//--ต้องแก้ไข
 $file_name=$file_bg;//--ต้องแก้ไข
+$admin_id=$_POST['admin_id'];
 
 if($file_bg){
 	
@@ -54,12 +55,12 @@ if($file_bg){
 				//echo"object_position_edit$object_position_edit";
 				//echo"num_object$num_object<br>";
 				if($num_object){//check ถ้ามีข้อมูลอยู่แล้วให้ทำการUpdate
-					$strSQL="UPDATE bg_style SET bg_name='$object_name',bg_repeat='$bg_repeat',bg_position='$bg_position',bg_color='$bg_color',bg_web_color='$bg_web_color'";
+					$strSQL="UPDATE bg_style SET bg_name='$object_name',bg_repeat='$bg_repeat',bg_position='$bg_position',bg_color='$bg_color',bg_web_color='$bg_web_color' where admin_id='$admin_id'";
 					$query=mysql_query($strSQL);
 					if(!$query){echo"Error1".mysql_error();}
 			
 				}else{
-					$strSQL = "INSERT INTO bg_style(bg_name,bg_repeat,bg_position,bg_color,bg_web_color) VALUES('$object_name','$bg_repeat','$bg_position','$bg_color','$bg_web_color')";
+					$strSQL = "INSERT INTO bg_style(bg_name,bg_repeat,bg_position,bg_color,bg_web_color,admin_id) VALUES('$object_name','$bg_repeat','$bg_position','$bg_color','$bg_web_color',''$admin_id')";
 					$objQuery = mysql_query($strSQL);	
 					if($objQuery){
 					/*echo"<script>window.location=\"index.php?page=$pic_type\";</script>";*/
@@ -77,7 +78,7 @@ if($file_bg){
 				
 	
 	
-	$strSQL="UPDATE bg_style SET bg_repeat='$bg_repeat',bg_position='$bg_position',bg_color='$bg_color',bg_web_color='$bg_web_color'";
+	$strSQL="UPDATE bg_style SET bg_repeat='$bg_repeat',bg_position='$bg_position',bg_color='$bg_color',bg_web_color='$bg_web_color' where admin_id='$admin_id'";
 	$query=mysql_query($strSQL);
 	if(!$query){echo"Error".mysql_error();}
 }
