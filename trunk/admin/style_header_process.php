@@ -2,11 +2,8 @@
 include("../config.inc.php");
 require("class_mysql.php");
 $db=new database();
-
-
-	
-	
-$path_object="../object_system/";
+$admin_id=$_POST['admin_id'];
+$path_object="../object_system/$admin_id/";
 	if(!is_dir($path_object)){
 	umask(0);
 	mkdir($path_object,777);
@@ -15,7 +12,7 @@ $file_header_bg=$_FILES["file_header_bg"]["name"];//--ต้องแก้ไ�
 $file_header_logo=$_FILES["file_header_logo"]["name"];//--ต้องแก้ไข
 $file_header_banner=$_FILES["file_header_banner"]["name"];//--ต้องแก้ไข
 $header_num=$_POST['header_num'];
-$admin_id=$_POST['admin_id'];
+
 echo"header_num:$header_num";
 
 //echo"file_header_bg$file_header_bg";
@@ -44,17 +41,12 @@ if($file_header_bg){
 	
 	if($file_2 =="jpg" or $file_2=="gif" or $file_2=="png" or $file_2=="jpeg" or $file_2=="swf"){
 		//echo"hello $file_2<br>";
-		
-		
 			if(is_dir($path_object))
 			{
 			$object_name=$file_1;
 			//echo"object_name$object_name<br>";
-			copy($_FILES["file_header_bg"]["tmp_name"],"../object_system/".$object_name);//--ต้องแก้ไข
+			copy($_FILES["file_header_bg"]["tmp_name"],"../object_system/$admin_id/".$object_name);//--ต้องแก้ไข
 			//echo"sucessfully";
-			
-				
-				
 				$result_object=$db->selectSQL("object_system where object_position='$object_position' and admin_id='$admin_id'");
 				$num_object=mysql_num_rows($result_object);
 				$rs_object=mysql_fetch_array($result_object);
@@ -62,7 +54,7 @@ if($file_header_bg){
 				$object_name_edit=$rs_object[object_name];
 				
 				
-				$unlink="../object_system/$object_name_edit";
+				$unlink="../object_system/$admin_id/$object_name_edit";
 				if($unlink){
 				@unlink($unlink);//@ไม่ต้องการให้มันฟอ้งถ้าไม่มีไฟลล์ให้ลบ
 				//file_exists();ใช้ function นี้ตรวจสอบก่อนว่ามีไฟลล์ใหลบมั้ย
@@ -151,7 +143,7 @@ if($file_header_logo){
 			{
 			$object_name=$file_1;
 			//echo"object_name$object_name<br>";
-			copy($_FILES["file_header_logo"]["tmp_name"],"../object_system/".$object_name);//--ต้องแก้ไข
+			copy($_FILES["file_header_logo"]["tmp_name"],"../object_system/$admin_id/".$object_name);//--ต้องแก้ไข
 			//echo"sucessfully";
 				
 				
@@ -163,7 +155,7 @@ if($file_header_logo){
 				$object_name_edit=$rs_object[object_name];
 				
 				
-				$unlink="../object_system/$object_name_edit";
+				$unlink="../object_system/$admin_id/$object_name_edit";
 				if($unlink){
 				@unlink($unlink);//@ไม่ต้องการให้มันฟอ้งถ้าไม่มีไฟลล์ให้ลบ
 				//file_exists();ใช้ function นี้ตรวจสอบก่อนว่ามีไฟลล์ใหลบมั้ย
@@ -249,7 +241,7 @@ if($file_header_banner){
 			{
 			$object_name=$file_1;
 			//echo"object_name$object_name<br>";
-			copy($_FILES["file_header_banner"]["tmp_name"],"../object_system/".$object_name);//--ต้องแก้ไข
+			copy($_FILES["file_header_banner"]["tmp_name"],"../object_system/$admin_id/".$object_name);//--ต้องแก้ไข
 			//echo"sucessfully";
 				
 				
@@ -261,7 +253,7 @@ if($file_header_banner){
 				$object_name_edit=$rs_object[object_name];
 				
 				
-				$unlink="../object_system/$object_name_edit";
+				$unlink="../object_system/$admin_id/$object_name_edit";
 				if($unlink){
 				@unlink($unlink);//@ไม่ต้องการให้มันฟอ้งถ้าไม่มีไฟลล์ให้ลบ
 				//file_exists();ใช้ function นี้ตรวจสอบก่อนว่ามีไฟลล์ใหลบมั้ย

@@ -65,6 +65,23 @@ float:left;
 		
 	}
 </script>
+<?
+$member_user_url=trim($_SESSION['member_user_url2']);
+//ทำการ select admin_id ออกมาจาก admin
+$query_admin="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin=$obj_manage_data->select_data_proc($query_admin);
+$rs_admin=mysql_fetch_array($result_admin);
+
+if(!$rs_admin){
+$admin_id=0;
+}else{
+$admin_id=$rs_admin['admin_id'];
+}
+if($_SESSION['admin_status']=="3"){
+$admin_id=1;
+}
+echo"admin_id".$admin_id;
+?>
 <form action="contact_process.php" method="post" name="form_contact">
 <div class="content_form_member">
 		<div id="content">
@@ -202,6 +219,7 @@ float:left;
 			<div id="text">
 			
 			<input type="button" value="ส่งข้อมูล" onclick="check_form(<?=$confrim?>)" />
+			<input  type="hidden" name="admin_id"  value="<?=$admin_id?>"/>
             <input type="reset"  value="Clear"/>
 			<br style="clear:both" />
 			</div>

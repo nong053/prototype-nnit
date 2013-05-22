@@ -55,9 +55,6 @@ padding:0px 0px 0px 150px;
 .content_product{
 width:auto;
 padding:0px 0px 5px 0px;
-
-
-
 }
 .content_title_product{
 width:auto;

@@ -9,6 +9,7 @@ $pic_detail_eng=$_POST['pic_detail_eng'];
 $pic_link=$_POST['pic_link'];
 $pic_id=$_POST['pic_id'];
 $pic_name=$_POST['pic_name'];
+$admin_id=$_POST['admin_id'];
 
 //echo"pic_type778899$pic_type<br>";
 //echo"pic_detail$pic_detail<br>";

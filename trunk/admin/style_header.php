@@ -97,7 +97,7 @@ $header_banner_height=$rs_header_banner[object_height];
         </td>
         <td>
         <input type="file"  name="file_header_bg" />
-        <a href="preview_style_object.php?want=preview&object_position=header_bg&TB_iframe=true&height=350&width=500" rel="sexylightbox">
+        <a href="preview_style_object.php?want=preview&object_position=header_bg&admin_id=<?=$rs_admin_id['admin_id']?>&TB_iframe=true&height=350&width=500" rel="sexylightbox">
         preview
         </a>
          
@@ -118,7 +118,7 @@ $header_banner_height=$rs_header_banner[object_height];
         </td>
         <td>
         <input type="file"  name="file_header_logo"/>
-         <a href="preview_style_object.php?want=preview&object_position=header_logo&TB_iframe=true&height=350&width=500" rel="sexylightbox">
+         <a href="preview_style_object.php?want=preview&object_position=header_logo&admin_id=<?=$rs_admin_id['admin_id']?>&TB_iframe=true&height=350&width=500" rel="sexylightbox">
         preview
         </a>
         </td>
@@ -137,7 +137,7 @@ $header_banner_height=$rs_header_banner[object_height];
         </td>
         <td>
         <input type="file"  name="file_header_banner"/>
-         <a href="preview_style_object.php?want=preview&object_position=header_banner&TB_iframe=true&height=350&width=500" rel="sexylightbox">
+         <a href="preview_style_object.php?want=preview&object_position=header_banner&admin_id=<?=$rs_admin_id['admin_id']?>&TB_iframe=true&height=350&width=500" rel="sexylightbox">
         preview
         </a>
         </td>

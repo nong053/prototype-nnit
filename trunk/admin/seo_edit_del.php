@@ -32,7 +32,7 @@ function postResult(txt){
 	xmlReq.onreadystatechange = callBackpost;
 	xmlReq.open("POST",txt,true);
 	xmlReq.setRequestHeader("content-Type","application/x-www-form-urlencoded");/*?????*/
-	xmlReq.send("seo_tag1="+document.form1.seo_tag1.value+"&seo_tag2="+document.form1.seo_tag2.value+"&seo_tag3="+document.form1.seo_tag3.value+"&seo_keyword="+document.form1.seo_keyword.value+"&seo_position="+document.form1.seo_position.value+"&action="+document.form1.action.value+"&seo_id="+document.form1.seo_id.value);	
+	xmlReq.send("seo_tag1="+document.form1.seo_tag1.value+"&seo_tag2="+document.form1.seo_tag2.value+"&seo_tag3="+document.form1.seo_tag3.value+"&seo_keyword="+document.form1.seo_keyword.value+"&seo_position="+document.form1.seo_position.value+"&action="+document.form1.action.value+"&seo_id="+document.form1.seo_id.value+"&admin_id="+document.form1.admin_id.value);	
 }
 function callBackpost(){
 	if(xmlReq.readyState!=4){
@@ -123,7 +123,13 @@ border-right:#dedede solid 1px;
         
     </tr>
     <?php
-    $strSQL="select * from seo";
+	$member_user_url=trim($_SESSION['member_user_url2']);
+//ทำการ select admin_id ออกมาจาก admin
+$query_admin_id="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin=$obj_manage_data->select_data_proc($query_admin_id);
+$rs_admin=mysql_fetch_array($result_admin);
+
+    $strSQL="select * from seo where admin_id='".$rs_admin['admin_id']."'";
 	$result=mysql_query($strSQL);
 	$i=1;
 	while($rs=mysql_fetch_array($result)){
@@ -150,7 +156,7 @@ border-right:#dedede solid 1px;
         <?
 		$seo_position=$rs[seo_position]?>
         <?php
-			$strSQL2="select * from main_menu where main_menu_id='$seo_position'";
+			$strSQL2="select * from main_menu where main_menu_id='$seo_position' and admin_id='".$rs_admin['admin_id']."'";
 			$result2=mysql_query($strSQL2);
 			$rs2=mysql_fetch_array($result2);
 				echo $rs2[main_menu_name];
@@ -158,11 +164,11 @@ border-right:#dedede solid 1px;
         </td>
    
     	<td>
-       <a href="#" onclick="getResult('action_seo.php?action=del&seo_id=<?=$rs[seo_id]?>&')">
-        ลบ
+       <a href="#" onclick="getResult('action_seo.php?action=del&seo_id=<?=$rs[seo_id]?>&admin_id=<?=$rs_admin['admin_id']?>')">
+        ลบ1
         </a>
         &nbsp;
-        <a href="index.php?page=seo_system&select_page=seo_edit_del&action=edit&seo_id=<?=$rs[seo_id]?>">
+        <a href="index.php?page=seo_system&select_page=seo_edit_del&action=edit&seo_id=<?=$rs[seo_id]?>&admin_id=<?=$rs_admin['admin_id']?>">
         แก้ไข
         </a>
         </td>
@@ -182,11 +188,12 @@ $action=$_GET['action'];
 if($action=="edit"){
 	
 	$seo_id=$_GET['seo_id'];
+	$admin_id=$_GET['admin_id'];
 	/*$jobcat_position=$_GET['jobcat_position'];
 	$jobcat_title=$_GET['jobcat_title'];
 	$jobcat_detail=$_GET['jobcat_detail'];*/
 
-	$strSQL="select * from seo where seo_id='$seo_id'";
+	$strSQL="select * from seo where seo_id='".$seo_id."'";
 	$result=mysql_query($strSQL);
 	$rs2=mysql_fetch_array($result);
 	
@@ -241,12 +248,13 @@ if($action=="edit"){
         	
             <?php
 			$seo_position=$rs2[seo_position];
-			$strSQL="select * from main_menu";
+			$strSQL="select * from main_menu where admin_id='".$rs_admin['admin_id']."'";
 			$result=mysql_query($strSQL);
 			while($rs=mysql_fetch_array($result)){
 			if($seo_position==$rs[main_menu_id]){
             ?>
         	<option selected="selected" value="<?=$rs[main_menu_id]?>"><?=$rs[main_menu_name]?></option>
+
             <?
 			}else{
 			?>
@@ -266,6 +274,7 @@ if($action=="edit"){
     	<td>
         <input name="action" value="edit" type="hidden">
         <input name="seo_id" value="<?=$rs2[seo_id]?>" type="hidden">
+		<input name="admin_id" value="<?=$rs_admin['admin_id']?>" type="hidden">
         <input type="button" onclick="postResult('action_seo.php')" value="แก้ไข SEO" />
         </td>
     </tr>

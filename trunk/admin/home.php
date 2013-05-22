@@ -43,6 +43,7 @@ if($_SESSION['admin_status']=="3"){
 echo"admin here";
 $values=1;
 }
+
 $strSQL="select * from home where admin_id='".$values."'";
 $result=mysql_query($strSQL);
 $rs=mysql_fetch_array($result);

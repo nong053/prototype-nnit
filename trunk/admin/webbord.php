@@ -82,9 +82,23 @@ font-size:13px;">
 	   
 	 
 	  
-	   include("webbord_split.php");
-	   
-	   $strSQL="select * from topic order by topic_update desc";
+include("webbord_split.php");
+$member_user_url=trim($_SESSION['member_user_url2']);
+//ทำการ select admin_id ออกมาจาก admin
+$query_admin="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin=$obj_manage_data->select_data_proc($query_admin);
+$rs_admin=mysql_fetch_array($result_admin);
+if(!$rs_admin){
+$admin_id=0;
+}else{
+$admin_id=$rs_admin['admin_id'];
+}
+if($_SESSION['admin_status']=="3"){
+$admin_id=1;
+}
+
+echo"admin_id".$admin_id;
+	   $strSQL="select * from topic where admin_id='$admin_id' order by topic_update desc";
 	   //$result=mysql_query($strSQL);
 	   $result=pu_query($dbname,$strSQL);
 	   $i=1;

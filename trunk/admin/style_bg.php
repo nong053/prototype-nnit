@@ -5,7 +5,7 @@ $db=new database();
 //require("class_mysql.php");
 $member_user_url=trim($_SESSION['member_user_url2']);
 //##### Check table home start #####
-//ทำการ select admin_id ออกมาจาก table home
+//ทำการ select admin_id ออกมาจาก table bg_style
 $query_home="select admin_id from bg_style WHERE
 bg_style.admin_id=(select admin_id from admin
 where admin_username='".$member_user_url."');";

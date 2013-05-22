@@ -1,6 +1,7 @@
 <? ob_start();
 $pic_id=$_GET['pic_id'];
 $page=$_GET['page'];
+$admin_id=$_GET['admin_id'];
 include("../config.inc.php");
 
 $strSQL5="select * from banner_sum where pic_id='$pic_id'";
@@ -11,7 +12,7 @@ $rs5=mysql_fetch_array($result5);
 $pic_name=$rs5[pic_name];
 
 
-$path_big_picture="../mypicture/$pic_name";
+$path_big_picture="../mypicture/$admin_id/$pic_name";
 //echo"path_big_picture$path_big_picture";
 
 if($path_big_picture){	

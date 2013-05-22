@@ -40,41 +40,62 @@ $plugin_important=$rs_plugin[plugin_important];
 <div id="conent_style">
 <div id="box_style_l" style="float:left">
 
-<table>
+<table width="800">
 	<tr>
-    	<td>
+    	<td width="10">
         <b>ลำดับ</b>
         </td>
-        <td>
+        <td  width="120">
         <b>ส่วนเสริม</b>
         </td>
-        <td>
-        <b>ตัวอย่าง</b>
-        </td>
-         <td>
+      
+         <td  width="80">
         <b>ตำแหน่ง</b>
         </td>
-        <td>
+        <td  width="80">
         <b>สถานะ</b>
         </td>
-        <td>
+		<td  width="80">
+        <b>ลำดับ</b>
+        </td>
+        <td  width="50">
         <b>จัดการ</b>
         </td>
     </tr>
 <?php 
 //require("class_mysql.php");
+//##### Check manage user login end #####
+$member_user_url=trim($_SESSION['member_user_url2']);
+//ทำการ select admin_id ออกมาจาก admin
+$query_admin="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin=$obj_manage_data->select_data_proc($query_admin);
+$rs_admin=mysql_fetch_array($result_admin);
+//ถ้าไม่มีaddmin_id ตามที่ loginเข้ามาให้ values =0 คือไม่มีข้อมูลน้นเอง
+if(!$rs_admin){
+$admin_id =0;
+}else{
+//ถ้ามีข้อมูล admin_id ให้ valuse = $admin_id ที่อยู่ในtable category product
+$admin_id = $rs_admin['admin_id'];
+}
+//ถ้าการlogin เข้ามาเป็น admin ให้แสดงข้อมูลของ admin 
+if($_SESSION['admin_status']=="3"){
+$admin_id=1;
+}
+//echo"admin_id".$admin_id;
+//##### Check manage user login end #####
+$action="add";
+//echo"action=".$action;
 
-$result_plugin= $db->selectSQL("plugin_on_web");
+$result_plugin= $db->selectSQL("plugin_on_web where admin_id='$admin_id'");
 $i=1;
 while($rs_plugin=mysql_fetch_array($result_plugin)){
 $plugint_num=mysql_num_rows($result_plugin);
 $plugin_id=$rs_plugin[plugin_id];
 $plugin_code=$rs_plugin[plugin_code];
-$plugin_name=$rs_plugin[plugin_name];
+
 $plugin_position=$rs_plugin[plugin_position];
 $plugin_status=$rs_plugin[plugin_status];
 $plugin_important=$rs_plugin[plugin_important];
-$action="add";
 
 ?>
     <tr>
@@ -84,9 +105,7 @@ $action="add";
         <td>
         <?=$plugin_name?>
         </td>
-        <td>
-        picture
-        </td>
+    
         <td>
         <?=$plugin_position?>
         </td>
@@ -96,9 +115,7 @@ $action="add";
         <td>
         <?=$plugin_important?>
         </td>
-        <td>
-        <?=$plugin_important?>
-        </td>
+       
         <td>
         <a href="plugin_process.php?del=del&plugin_id=<?=$plugin_id?>">
         ลบ
@@ -113,6 +130,7 @@ $i++;
 }
 ?>
 </table>
+<br style="clear:both">
 <?
 if($_GET['action']=="edit"){
 	$plugin_id=$_GET['plugin_id'];
@@ -191,6 +209,7 @@ echo"plugin_name_edit$plugin_name_edit";*/
     	<td>
         </td>
         <td>
+		<input type="hidden" name="admin_id" value="<?=$admin_id?>" />
         <input type="hidden" name="action" value="<?=$action?>" />
         <input type="hidden" name="plugin_id" value="<?=$plugin_id?>" />
         <input type="submit">
