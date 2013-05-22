@@ -81,11 +81,37 @@ include("../config.inc.php");
 	
 			
 			<?php 
-			$strSQL="select * from productcat";
+//##### Check manage user login end #####
+$member_user_url=trim($_SESSION['member_user_url2']);
+//ทำการ select admin_id ออกมาจาก table product category
+$query_home="select admin_id from productcat WHERE
+productcat.admin_id=(select admin_id from admin
+where admin_username='".$member_user_url."');";
+$result_home=$obj_manage_data->select_data_proc($query_home);
+$rs_num=mysql_num_rows($result_home);
+
+//ทำการ select admin_id ออกมาจาก admin
+$query_admin_id="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin_id=$obj_manage_data->select_data_proc($query_admin_id);
+$rs_admin_id=mysql_fetch_array($result_admin_id);
+
+//ถ้าไม่มีaddmin_id ตามที่ loginเข้ามาให้ values =0 คือไม่มีข้อมูลน้นเอง
+if(!$rs_num){
+$values =0;
+}else{
+//ถ้ามีข้อมูล admin_id ให้ valuse = $admin_id ที่อยู่ในtable category product
+$values = $rs_admin_id['admin_id'];
+}
+//ถ้าการlogin เข้ามาเป็น admin ให้แสดงข้อมูลของ admin 
+if($_SESSION['admin_status']=="3"){
+$values=1;
+}
+//##### Check manage user login end #####
+
+			$strSQL="select * from productcat  where admin_id='".$values."'";
 			$result=mysql_query($strSQL);
 			$i=1;
 			while($rs=mysql_fetch_array($result)){
-			
 				$strSQL2="select * from product where productcat_id=$rs[productcat_id]";
 				$result2=mysql_query($strSQL2);
 				$num=mysql_num_rows($result2);
@@ -133,20 +159,17 @@ include("../config.inc.php");
 				
 				if($rs[productcat_id]!="10"){
 					
-				echo"<a onClick=\"return confirm('คุณต้องการลบหมวดสินค้านี้ ?');\" href=\"productcat_delete.php?productcat_id=$rs[productcat_id]\">";
+				echo"<a onClick=\"return confirm('คุณต้องการลบหมวดสินค้านี้ ?');\" href=\"productcat_delete.php?productcat_id=$rs[productcat_id]&admin_id=".$rs_admin_id['admin_id']."\">";
 				?>
                 <img src="images/b_drop.png" border="0" />
                 <?
-				
-				
-				
 					echo"ลบ";
 				
 				echo"</a>&nbsp;";
 				}else{
 					
 				}
-				echo"<a href=\"index.php?page=ecommerce_system&select_ecommerce=productcat&action=edit&productcat_id=$rs[productcat_id]\">";
+				echo"<a href=\"index.php?page=ecommerce_system&select_ecommerce=productcat&action=edit&productcat_id=$rs[productcat_id]&admin_id=".$rs_admin_id['admin_id']."\">";
 				?>
                 <img src="images/b_edit.png" border="0" />
                 <?
@@ -205,7 +228,7 @@ include("../config.inc.php");
 				</div>
 			</div>
 			<div id="tr">
-				<div id="text_footer">รายละเอีิยดหมวดสินค้า</div>
+				<div id="text_footer">รายละเอียดหมวดสินค้า</div>
 				<div id="text_feild">
 				<input type="text" name="productcat_detail" value="<?=$productcat_detail?>" />
 				</div>
@@ -219,6 +242,7 @@ include("../config.inc.php");
 			<div id="tr">
 			  	
 				<div id="text_submit">
+				<input type="hidden" name="admin_id" id="admin_id" value="<?= $rs_admin_id['admin_id']?>">
 				<input type="hidden" name="productcat_id" value="<?=$productcat_id?>" />
 				<input type="submit" name="submit" value="<?=$submit?>" />
 				

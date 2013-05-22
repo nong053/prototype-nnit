@@ -14,12 +14,10 @@ $contact_email=$_POST['contact_email'];
 $return=$_POST['return'];
 $product_id=$_POST['product_id'];
 $productcat_id=$_POST['productcat_id'];
-
-
-
+$admin_id=$_POST['admin_id'];
 
 $date_time=date("d-m-y:h:i:s");
-$strSQL="insert into contact(contact_fullname,contact_title,contact_detail,contact_address,contact_tel,contact_email,contact_date)VALUES('$contact_fullname','$contact_title','$contact_detail','$contact_address','$contact_tel','$contact_email','$date_time')";
+$strSQL="insert into contact(contact_fullname,contact_title,contact_detail,contact_address,contact_tel,contact_email,contact_date,admin_id)VALUES('$contact_fullname','$contact_title','$contact_detail','$contact_address','$contact_tel','$contact_email','$date_time','$admin_id')";
 $sucess=mysql_query($strSQL)or die(mysql_error());
 
 if($sucess){

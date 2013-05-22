@@ -6,13 +6,13 @@ $productcat_name=$_POST['productcat_name'];
 $productcat_detail=$_POST['productcat_detail'];
 $productcat_name_eng=trim($_POST['productcat_name_eng']);
 $productcat_detail_eng=trim($_POST['productcat_detail_eng']);
-
-$strSQL="update productcat set productcat_name='$productcat_name',productcat_detail='$productcat_detail',productcat_name_eng='$productcat_name_eng',productcat_detail_eng='$productcat_detail_eng' where productcat_id=$productcat_id";
+$admin_id=trim($_POST['admin_id']);
+$strSQL="update productcat set productcat_name='$productcat_name',productcat_detail='$productcat_detail',productcat_name_eng='$productcat_name_eng',productcat_detail_eng='$productcat_detail_eng' where productcat_id=$productcat_id and admin_id='$admin_id'";
 $result=mysql_query($strSQL);
 if(!$result){
 echo"nonon".mysql_error();
 }else{
-	echo"<script>alert(\"Edit Success\");</script>";
+	echo"<script>alert(\"Edit Data is Success\");</script>";
 	
 	echo"<script>window.location=\"index.php?page=ecommerce_system&select_ecommerce=productcat\"</script>";
 	exit();	

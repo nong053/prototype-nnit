@@ -21,6 +21,7 @@
 	
 	
 	$productcat_id = trim($_GET['productcat_id']);
+	$admin_id = trim($_GET['admin_id']);
 	//$product_cat_path = iconv("UTF-8","windows-874",$productcat_id);
 	$product_cat_path = "../product/" . $productcat_id . "/";
 	if (is_dir($product_cat_path)){

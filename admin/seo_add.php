@@ -31,12 +31,11 @@ function postResult(txt){
 	xmlReq.onreadystatechange = callBackpost;
 	xmlReq.open("POST",txt,true);
 	xmlReq.setRequestHeader("content-Type","application/x-www-form-urlencoded");/*?????*/
-	xmlReq.send("seo_tag1="+document.form1.seo_tag1.value+"&seo_tag2="+document.form1.seo_tag2.value+"&seo_tag3="+document.form1.seo_tag3.value+"&seo_keyword="+document.form1.seo_keyword.value+"&seo_position="+document.form1.seo_position.value+"&action="+document.form1.action.value);	
+	xmlReq.send("seo_tag1="+document.form1.seo_tag1.value+"&seo_tag2="+document.form1.seo_tag2.value+"&seo_tag3="+document.form1.seo_tag3.value+"&seo_keyword="+document.form1.seo_keyword.value+"&seo_position="+document.form1.seo_position.value+"&action="+document.form1.action.value+"&admin_id="+document.form1.admin_id.value);	
 }
 function callBackpost(){
 	if(xmlReq.readyState!=4){
 	document.getElementById("Result").innerHTML="LOADING..";
-	
 	}else if(xmlReq.status==200){
 	/*document.form1.test.value="";
 	document.form1.jobcat_position.value="";
@@ -115,7 +114,15 @@ border-right:#dedede solid 1px;
         
     </tr>
     <?php
-    $strSQL="select * from seo";
+
+$member_user_url=trim($_SESSION['member_user_url2']);
+//ทำการ select admin_id ออกมาจาก admin
+$query_admin_id="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin=$obj_manage_data->select_data_proc($query_admin_id);
+$rs_admin=mysql_fetch_array($result_admin);
+
+
+    $strSQL="select * from seo where admin_id='".$rs_admin['admin_id']."'";
 	$result=mysql_query($strSQL);
 	$i=1;
 	while($rs=mysql_fetch_array($result)){
@@ -142,7 +149,7 @@ border-right:#dedede solid 1px;
         <?
 		$seo_position=$rs[seo_position]?>
         <?php
-			$strSQL2="select * from main_menu where main_menu_id='$seo_position'";
+			$strSQL2="select * from main_menu where main_menu_id='$seo_position' and admin_id='".$rs_admin['admin_id']."'";
 			$result2=mysql_query($strSQL2);
 			$rs2=mysql_fetch_array($result2);
 				echo $rs2[main_menu_name];
@@ -199,7 +206,7 @@ border-right:#dedede solid 1px;
         <select name="seo_position">
         	
             <?php
-			$strSQL="select * from main_menu";
+			$strSQL="select * from main_menu where admin_id='".$rs_admin['admin_id']."'";
 			$result=mysql_query($strSQL);
 			while($rs=mysql_fetch_array($result)){
             ?>
@@ -216,6 +223,7 @@ border-right:#dedede solid 1px;
 	<tr>
     	<td>
         <input name="action" value="add" type="hidden">
+		<input name="admin_id" value="<?=$rs_admin['admin_id']?>" type="hidden">
         <input type="button" onclick="postResult('action_seo.php')" value="เพิ่ม SEO" />
         </td>
     </tr>

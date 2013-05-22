@@ -5,14 +5,13 @@
 <!--<link href="template/template1/css/index.css" type="text/css" rel="stylesheet"/>-->
 <!-- import jquery and jquery ui start-->
 <link href="jQueryUI/css/smoothness/jquery-ui-1.8.20.custom.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="jquery/jquery.js"></script>
 <script type="text/javascript" src="jQueryUI/js/jquery-ui-1.8.20.custom.min.js"></script>
+
 <!-- import jquery and jquery ui end-->
 
  <script type="text/javascript">
 	$(document).ready(function(){
-		//alert("ok");
-		
 		$("input[type=button],input[type=submit],button").button();
 		var productSearch = ['a1','a2','a3'];
 		$("#txtSearch").autocomplete({source:productSearch});
@@ -20,15 +19,32 @@
 	</script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<?
+/*##########ดึง oject มาใช้งาน Start*/
+	function __autoload($filename){
+		require_once "oop/".$filename.".php";
+		}
+$obj_manage_data = new manage_data();
 
-<? $name_title=$_GET['name_title'];//is name to call title
+/*##########ดึง oject มาใช้งาน End*/
+$member_user_url=trim($_SESSION['member_user_url2']);
+//ทำการ select admin_id ออกมาจาก admin
+$query_admin_id="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin_id=$obj_manage_data->select_data_proc($query_admin_id);
+$rs_admin=mysql_fetch_array($result_admin_id);
+$admin_id=$rs_admin["admin_id"];
+echo"<br>admin_id".$rs_admin["admin_id"]."<br>";
+
+$name_title=$_GET['name_title'];//is name to call title
 ## ทำการ require เอาclass database;
 			include_once("class_mysql.php");
 			$db = new database();		
  		## set logo area.
-$main_menu_id2=$_GET['main_menu_id'];
-if($_GET['page']=="" ){
-$result_seo = $db->tableSQL("seo where 	seo_id = 5");
+$main_menu_id=$_GET['main_menu_id'];
+echo"main_menu_id".$main_menu_id."<br>";
+
+if($_GET['page']=="home"  or $_GET['page']=="" ){
+$result_seo = $db->tableSQL("seo where admin_id='".$admin_id."'");
 			$rs_seo = mysql_fetch_array($result_seo);
 			$object_seo_id=$rs_seo['seo_id'];
 			$object_seo_tag1=$rs_seo['seo_tag1'];
@@ -44,9 +60,9 @@ $result_seo = $db->tableSQL("seo where 	seo_id = 5");
 }
 
 
-if($main_menu_id2){
-	// echo"main_menu_id2$main_menu_id2";
-$result_seo = $db->tableSQL("seo where 	seo_position = '$main_menu_id2'");
+if($main_menu_id){
+	echo"main_menu_id$main_menu_id";
+$result_seo = $db->tableSQL("seo where seo_position = '$main_menu_id'");
 			$rs_seo = mysql_fetch_array($result_seo);
 			$object_seo_id=$rs_seo['seo_id'];
 			$object_seo_tag1=$rs_seo['seo_tag1'];
@@ -78,7 +94,7 @@ a{
 <?
 echo"member_user_url2==".$_SESSION['member_user_url2'];
  		## set logo area.
-			$result_logo = $db->tableSQL("object_system where object_position = 'header_logo'");
+			$result_logo = $db->tableSQL("object_system where object_position = 'header_logo' and admin_id='".$admin_id."'");
 			$rs_logo = mysql_fetch_array($result_logo);
 			$object_name_logo=$rs_logo['object_name'];
 			$object_color_logo=$rs_logo['object_color'];
@@ -86,7 +102,7 @@ echo"member_user_url2==".$_SESSION['member_user_url2'];
 			$object_height_logo=$rs_logo['object_height'];
 			
 		## set header area.
-			$result_header = $db->tableSQL("object_system where object_position = 'header_bg'");
+			$result_header = $db->tableSQL("object_system where object_position = 'header_bg' and admin_id='".$admin_id."'");
 			$rs_header = mysql_fetch_array($result_header);
 			$object_name_header=$rs_header['object_name'];
 			$object_color_header=$rs_header['object_color'];
@@ -95,7 +111,7 @@ echo"member_user_url2==".$_SESSION['member_user_url2'];
 			
 		## set banner area.
 		
-			$result_banner = $db->tableSQL("object_system where object_position = 'header_banner'");
+			$result_banner = $db->tableSQL("object_system where object_position = 'header_banner' and admin_id='".$admin_id."'");
 			$rs_banner = mysql_fetch_array($result_banner);
 			$object_name_banner=$rs_banner['object_name'];
 			$object_color_banner=$rs_banner['object_color'];
@@ -104,7 +120,7 @@ echo"member_user_url2==".$_SESSION['member_user_url2'];
 			
 		## set bg area.
 		
-			$result_bg = $db->tableSQL("bg_style");
+			$result_bg = $db->tableSQL("bg_style where admin_id='".$admin_id."'");
 			$rs_bg = mysql_fetch_array($result_bg);
 			$bg_name=$rs_bg['bg_name'];
 			$bg_repeat=$rs_bg['bg_repeat'];
@@ -114,7 +130,7 @@ echo"member_user_url2==".$_SESSION['member_user_url2'];
 			
 		## set main button area.
 		
-			$result_button = $db->tableSQL("button_style");
+			$result_button = $db->tableSQL("button_style where admin_id='".$admin_id."'");
 			$rs_button = mysql_fetch_array($result_button);
 			
 			$button_bg =$rs_button['button_bg'];
@@ -137,7 +153,7 @@ echo"member_user_url2==".$_SESSION['member_user_url2'];
 
 		## set box area.
 		
-			$result_box = $db->tableSQL("box_style");
+			$result_box = $db->tableSQL("box_style where admin_id='".$admin_id."'");
 			$rs_box = mysql_fetch_array($result_box);
 			$box_header =$rs_box['box_header'];
 			$box_header_color =$rs_box['box_header_color'];
@@ -152,7 +168,7 @@ echo"member_user_url2==".$_SESSION['member_user_url2'];
 			
 		## set box content area.
 		
-			$result_content = $db->tableSQL("content_style");
+			$result_content = $db->tableSQL("content_style where admin_id='".$admin_id."'");
 			$rs_content = mysql_fetch_array($result_content);
 			$content_header =$rs_content['content_header'];
 			$content_header_color =$rs_content['content_header_color'];
@@ -165,7 +181,7 @@ echo"member_user_url2==".$_SESSION['member_user_url2'];
 			
 		## set footer area.
 		
-			$result_footer = $db->tableSQL("footer_style");
+			$result_footer = $db->tableSQL("footer_style where admin_id='".$admin_id."'");
 			$rs_footer = mysql_fetch_array($result_footer);
 			$content_width =$rs_content['content_width'];
 			
@@ -458,7 +474,7 @@ body{
    	   <div id="logo">
            
             <img src="object_system/<?=$object_name_logo?>" width="<?=$object_width_logo?>" height="<?=$object_height_logo?>" />
-</div>
+			</div>
             <div id="top_banner" style="background-color:<?=$object_color_banner?>;">
             <img src="object_system/<?=$object_name_banner?>" width="<?=$object_width_logo?>" height="<?=$object_height_logo?>" />
             <div id="autocomplete">
@@ -484,7 +500,7 @@ body{
         	<div id="top_menu">
             	<ul>
               <?
-                $result_main_menu = $db->tableSQL("main_menu");
+                $result_main_menu = $db->tableSQL("main_menu where admin_id='".$admin_id."'");
 				while($rs_main_menu = mysql_fetch_array($result_main_menu)){
               if($rs_main_menu[plugin]=="article"){
 				  $link_main__menu="index.php?page=article&main_menu_id=$rs_main_menu[main_menu_id]&member_user_url=".$_SESSION['member_user_url2']."";
@@ -526,7 +542,7 @@ body{
                 		<div id="box_menu">
                         	<ul>
                             <?
-							$result_productcat = $db->tableSQL("productcat");
+							$result_productcat = $db->tableSQL("productcat where admin_id='".$admin_id."'");
 							while($rs_productcat=mysql_fetch_array($result_productcat)){
                             ?>
                             	<li>
@@ -551,10 +567,10 @@ body{
                     <font>
                 		<ul>
                             <?
-							$result_main_menu = $db->tableSQL("main_menu where plugin='article_ge'");
+							$result_main_menu = $db->tableSQL("main_menu where plugin='article_ge' and admin_id='".$admin_id."'");
 							$rs_main_menu2=mysql_fetch_array($result_main_menu);
 							$main_menu_id=$rs_main_menu2[main_menu_id];
-							$result_article = $db->tableSQL("article where main_menu_id= '$main_menu_id'");
+							$result_article = $db->tableSQL("article where main_menu_id= '$main_menu_id' and admin_id='".$admin_id."'");
 							while($rs_article=mysql_fetch_array($result_article)){
                             ?>
                             	<li>
@@ -635,7 +651,7 @@ body{
                 	<div id="box_center">
                     <font style="padding:5px;">
                 		<? 
-							$result_banner_sum = $db->tableSQL("banner_sum");
+							$result_banner_sum = $db->tableSQL("banner_sum where admin_id='".$admin_id."'");
 							while($rs_banner_sum=mysql_fetch_array($result_banner_sum)){
 							if($rs_banner_sum[pic_link]){
 							$link_banner=$rs_banner_sum[pic_link];
@@ -650,7 +666,7 @@ body{
 							?>
                             
                             <a href="<?=$link_banner?>">
-                            <img src="mypicture/<?=$rs_banner_sum[pic_name];?>" width="190" border="0"/>
+                            <img src="mypicture/<?=$admin_id?>/<?=$rs_banner_sum[pic_name];?>" width="190" border="0"/>
 							</a>
 							<?
 							}
@@ -668,20 +684,17 @@ body{
                 	</div>
                 	<div id="box_center">
                     <font style="padding:5px;">
-                    <?
 					
-                		$result_plugin_on_web = $db->tableSQL("plugin_on_web");
+						<?
+                		$result_plugin_on_web = $db->tableSQL("plugin_on_web where admin_id='$admin_id'");
 						while($rs_plugin_on_web=mysql_fetch_array($result_plugin_on_web)){
 							
 							echo "<font style=\"font-weight:bold;\">".$rs_plugin_on_web[plugin_name]."</font><br>";
                             echo $rs_plugin_on_web[plugin_code];
 							echo"<hr>";
-                            
-							
 						}
-					?>
+						?>
             		</font>	
-            			
                 	</div>
                  </div>
                 <br style="clear:both" />
@@ -792,7 +805,7 @@ body{
             	<ul>
                 	
                   <?
-                $result_main_menu = $db->tableSQL("main_menu");
+                $result_main_menu = $db->tableSQL("main_menu where admin_id='".$admin_id."'");
 				while($rs_main_menu = mysql_fetch_array($result_main_menu)){
               if($rs_main_menu[plugin]=="article"){
 				  $link_main__menu="index.php?page=article&main_menu_id=$rs_main_menu[main_menu_id]";

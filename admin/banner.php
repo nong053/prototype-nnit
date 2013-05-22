@@ -32,7 +32,29 @@ border-right:#dedede solid 1px;
 </style>
 <?
 include("../config.inc.php");
-//include("fckeditor/fckeditor.php");?>
+//##### Check manage user login end #####
+$member_user_url=trim($_SESSION['member_user_url2']);
+
+//ทำการ select admin_id ออกมาจาก admin
+$query_admin="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin=$obj_manage_data->select_data_proc($query_admin);
+$rs_admin=mysql_fetch_array($result_admin);
+
+//ถ้าไม่มีaddmin_id ตามที่ loginเข้ามาให้ values =0 คือไม่มีข้อมูลน้นเอง
+if(!$rs_admin){
+$admin_id =0;
+}else{
+//ถ้ามีข้อมูล admin_id ให้ valuse = $admin_id ที่อยู่ในtable category product
+$admin_id = $rs_admin['admin_id'];
+}
+//ถ้าการlogin เข้ามาเป็น admin ให้แสดงข้อมูลของ admin 
+if($_SESSION['admin_status']=="3"){
+$admin_id=1;
+}
+echo"admin_id".$admin_id;
+//##### Check manage user login end #####
+
+?>
 <div id="dev_text" style="font-size:18px; font-weight:bold; color:#FFF; padding:5px; background-color:#333;">
 SMALL BANNER 280 X 100 px
 </div>
@@ -89,7 +111,7 @@ SMALL BANNER 280 X 100 px
 		$action_banner="add_picture.php";
 	
 		
-	$strSQL5 = "select * from banner_sum";
+	$strSQL5 = "select * from banner_sum where admin_id=$admin_id";
 	$result5=mysql_query($strSQL5);
 	$num5=mysql_num_rows($result5);
 	$i=1;
@@ -115,7 +137,7 @@ SMALL BANNER 280 X 100 px
         </center>
         </td>
     	<td>
-        <img src="../mypicture/<?=$pic_name?>" width="20%" height="20%" />
+        <img src="../mypicture/<?=$admin_id?>/<?=$pic_name?>" width="20%" height="20%" />
         </td>
         <td>
        
@@ -145,7 +167,7 @@ SMALL BANNER 280 X 100 px
 		?>
         </td>
         <td>
-        <a href="delete_picture.php?page=banner&pic_id=<?=$pic_id?>"> <img src="../images_system/b_drop.png" border="0" /></a>
+        <a href="delete_picture.php?page=banner&pic_id=<?=$pic_id?>&admin_id=<?=$admin_id?>"> <img src="../images_system/b_drop.png" border="0" /></a>
         <a href="index.php?page=banner&pic_id=<?=$pic_id?>&action=edit&pic_type=<?=$pic_type?>"> <img src="../images_system/b_edit.png"  border="0"/></a>
         </td>
      </tr>
@@ -182,9 +204,6 @@ SMALL BANNER 280 X 100 px
 		?>
         <tr>
         	<td>
-          
-           
-           
            <?
 		/*
         $pic_type=$_GET['pic_type'];
@@ -224,22 +243,15 @@ SMALL BANNER 280 X 100 px
 	}
 		*/?>
 		<!--  </select>-->
-          
-          
-          
-          
           <?
-			$strSQL="select * from main_menu";
+			$strSQL="select * from main_menu where admin_id='$admin_id'";
 			$result=mysql_query($strSQL);
 			$num=mysql_num_rows($result);
-			
-			
 			/*$ps = new database();
 			$ps->selectSQL("main_menu");
 			$result=mysql_query($ps);
 			$num=mysql_num_rows($ps);
 			*/?>
-            
             <select name="main_menu_id">
             <?
 			for($i=1;$i<=$num;$i++)
@@ -267,7 +279,7 @@ SMALL BANNER 280 X 100 px
            
            
            
-           ตำแหน่่ง banner
+           ตำแหน่ง banner
             </td> 
         </tr>
         <tr>
@@ -275,8 +287,6 @@ SMALL BANNER 280 X 100 px
            <b>External Link</b>
             </td>
         </tr>
-        
-        
         <tr>
         	<td>
             <input type="text" name="pic_link" value="<?=$pic_link_edit?>"> ตัวอย่างเช่น http://www.google.com/
@@ -284,23 +294,16 @@ SMALL BANNER 280 X 100 px
         </tr>
        
           <tr>
-        	<td>รายละเีอียด
+        	<td>รายละเอียด
         	</td>
         </tr>
         <tr>
-        
-        
         	<td>
-           
-					
-                    
                    <!--CKEditor-->
     <textarea cols="80" id="pic_detail" name="pic_detail" rows="10" ><?=$pic_detail_edit?></textarea>
     <script type="text/javascript">
         //<![CDATA[
             CKEDITOR.replace( 'pic_detail',{
-
-          
             filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
             filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?Type=Images',
             filebrowserFlashBrowseUrl : '/ckfinder/ckfinder.html?Type=Flash',
@@ -320,19 +323,12 @@ SMALL BANNER 280 X 100 px
         	</td>
         </tr>
         <tr>
-        
-        
         	<td>
-           
-					
-                    
-                   <!--CKEditor-->
+        <!--CKEditor-->
     <textarea cols="80" id="pic_detail_eng" name="pic_detail_eng" rows="10" ><?=$pic_detail_eng_edit?></textarea>
     <script type="text/javascript">
         //<![CDATA[
             CKEDITOR.replace( 'pic_detail_eng',{
-
-          
             filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
             filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?Type=Images',
             filebrowserFlashBrowseUrl : '/ckfinder/ckfinder.html?Type=Flash',
@@ -352,6 +348,7 @@ SMALL BANNER 280 X 100 px
            <td height="26">
            	<input type="hidden" name="pic_type_page" value="banner" >
             <input type="hidden" name="pic_id" value="<?=$pic_id?>" />
+			 <input type="hidden" name="admin_id" value="<?=$admin_id?>" />
             <input name="btnSubmit" type="submit" value="Submit Now">
             
            </td>

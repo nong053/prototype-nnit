@@ -8,12 +8,20 @@ $link=$_POST['pic_link'];
 //$position=$_POST['position'];
 $pic_detail=$_POST['pic_detail'];
 $pic_detail_eng=$_POST['pic_detail_eng'];
+$admin_id=$_POST['admin_id'];
+
+$productcat_path="../mypicture/".$admin_id."/";
+if(!is_dir($productcat_path)){
+umask(0);
+mkdir($productcat_path,0777);
+}
+
 
 //echo"$pic_type<br>";
 //echo"$link<br>";
 //echo"$pic_detail<br>";
 
-	if(copy($_FILES["filUpload"]["tmp_name"],"../mypicture/".$_FILES["filUpload"]["name"]))
+	if(copy($_FILES["filUpload"]["tmp_name"],"../mypicture/$admin_id/".$_FILES["filUpload"]["name"]))
 	{
 		
 //echo"hello mycopy";
@@ -25,7 +33,7 @@ $pic_detail_eng=$_POST['pic_detail_eng'];
 		$link="";
 		}
 		$strSQL = "INSERT INTO banner_sum";
-		$strSQL .="(pic_name,pic_type,pic_detail,pic_detail_eng,pic_link,main_menu_id) VALUES ('".$_FILES["filUpload"]["name"]."','$pic_type','$pic_detail','$pic_detail_eng','$link','$main_menu_id')";
+		$strSQL .="(pic_name,pic_type,pic_detail,pic_detail_eng,pic_link,main_menu_id,admin_id) VALUES ('".$_FILES["filUpload"]["name"]."','$pic_type','$pic_detail','$pic_detail_eng','$link','$main_menu_id','$admin_id')";
 		$objQuery = mysql_query($strSQL);	
 		if($objQuery){
 			echo"<script>window.location=\"index.php?page=$pic_type_page\";</script>";

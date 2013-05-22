@@ -5,8 +5,9 @@ $productcat_name=trim($_POST['productcat_name']);
 $productcat_detail=trim($_POST['productcat_detail']);
 $productcat_name_eng=trim($_POST['productcat_name_eng']);
 $productcat_detail_eng=trim($_POST['productcat_detail_eng']);
+$admin_id=trim($_POST['admin_id']);
 
-$strSQL="select * from productcat where productcat_name='$productcat_name'";
+$strSQL="select * from productcat where productcat_name='$productcat_name' and admin_id='$admin_id'";
 $result=mysql_query($strSQL) or die (mysql_error());
 if($rs=mysql_fetch_array($result)){
 	echo"<script>alert(\"มีข้อมูลอยู่แล้ว\");</script>";
@@ -20,19 +21,17 @@ if($productcat_name==""){
 	echo"<script>window.location=\"index.php?page=ecommerce_system&select_ecommerce=productcat\"</script>";
 	exit();
 }
-
-$strSQL="insert into productcat(productcat_name,productcat_detail,productcat_name_eng,productcat_detail_eng)VALUES('$productcat_name','$productcat_detail','$productcat_name_eng','$productcat_detail_eng')";
+$strSQL="insert into productcat(productcat_name,productcat_detail,productcat_name_eng,productcat_detail_eng,admin_id)VALUES('$productcat_name','$productcat_detail','$productcat_name_eng','$productcat_detail_eng','$admin_id')";
 $ok=mysql_query($strSQL);
 if(!$ok){echo mysql_error();}
 
-$strSQL2="select * from productcat where productcat_name='$productcat_name'";
+$strSQL2="select * from productcat where productcat_name='$productcat_name' and admin_id ='$admin_id'";
 $result2=mysql_query($strSQL2);
 if(!result2){
 echo"erorr".mysql_error();
 }
 $rs=mysql_fetch_array($result2);
 $productcat_id=$rs[productcat_id];
-
 
 $product_path="../product/";
 if(!is_dir($product_path)){

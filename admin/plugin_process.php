@@ -5,19 +5,23 @@ $plugin_name=$_POST['plugin_name'];
 $plugin_code=$_POST['plugin_code'];
 $plugin_status=$_POST['plugin_status'];
 $plugin_position=$_POST['plugin_position'];
+$admin_id=$_POST['admin_id'];
 $action=$_POST['action'];
 $del=$_GET['del'];
 /*
-echo"del$del";
+echo"admin_id$admin_id";
+echo"del=$del<br>";
+echo"action$action<br>";
 echo"plugin_name$plugin_name<br>";
 echo"plugin_code$plugin_code<br>";
 echo"plugin_status$plugin_status<br>";
-echo"plugin_position$plugin_position<br>";*/
+echo"plugin_position$plugin_position<br>";
+*/
 
 require("../config.inc.php");
 //$db= new database();
 if($action=="add"){
-$strSQL="insert into plugin_on_web(plugin_name,plugin_code,plugin_status,plugin_position)values('$plugin_name','$plugin_code','$plugin_status','$plugin_position')";
+$strSQL="insert into plugin_on_web(plugin_name,plugin_code,plugin_status,plugin_position,admin_id)values('$plugin_name','$plugin_code','$plugin_status','$plugin_position','$admin_id')";
 $result=mysql_query($strSQL);
 if($result){
 	echo"ok";
@@ -37,6 +41,6 @@ if($del=="del"){
 	$strSQL="DELETE from plugin_on_web where plugin_id='$plugin_id'";
 	mysql_query($strSQL);
 }
-/*echo"<script>window.location=\'index.php?page=style_system&select_page=picture_style&page_style=plugin\'<script>";*/
+
 echo"<script>window.location=\"index.php?page=style_system&select_page=picture_style&page_style=plugin\"</script>";
 ?>

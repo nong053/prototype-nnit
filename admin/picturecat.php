@@ -73,8 +73,6 @@ include("../config.inc.php");
 				$strSQL2="select * from picture where picturecat_id=$rs[picturecat_id]";
 				$result2=mysql_query($strSQL2);
 				$num=mysql_num_rows($result2);
-				
-			
 			echo"<tr>";
 				echo"<td>";
 				echo"<center>";
@@ -117,13 +115,7 @@ include("../config.inc.php");
                 <? 
 				echo"ลบ";
 				echo"</a>
-				
 				&nbsp;";
-				
-				
-				
-				
-				
 				echo"<a href=\"index.php?page=picturecat&action=edit&picturecat_id=$rs[picturecat_id]\">";
 				?>
                 <img src="images/b_edit.png" border="0" />

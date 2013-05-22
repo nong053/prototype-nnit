@@ -2,11 +2,9 @@
 <?
 include("../config.inc.php");
 
-
 $action=$_POST['action'];
 $action_del=$_GET['action'];
-
-
+$admin_id=$_GET['admin_id'];
 
 if($action_del=="del"){
 $seo_id=$_GET['seo_id'];
@@ -25,8 +23,8 @@ $seo_tag2=$_POST['seo_tag2'];
 $seo_tag3=$_POST['seo_tag3'];
 $seo_keyword=$_POST['seo_keyword'];
 $seo_position=$_POST['seo_position'];
-
-$strSQL="insert into seo(seo_tag1,seo_tag2,seo_tag3,seo_keyword,seo_position)values('$seo_tag1','$seo_tag2','$seo_tag3','$seo_keyword','$seo_position')";
+$admin_id=$_POST['admin_id'];
+$strSQL="insert into seo(seo_tag1,seo_tag2,seo_tag3,seo_keyword,seo_position,admin_id)values('$seo_tag1','$seo_tag2','$seo_tag3','$seo_keyword','$seo_position','$admin_id')";
 
 $result=mysql_query($strSQL);
 if(!$result){
