@@ -21,8 +21,9 @@
 	
 	
 	$picturecat_id = trim($_GET['picturecat_id']);
+	$admin_id = trim($_GET['admin_id']);
 	//$picture_cat_path = iconv("UTF-8","windows-874",$picturecat_id);
-	$picture_cat_path = "../picture/" . $picturecat_id . "/";
+	$picture_cat_path = "../picture/$admin_id/" . $picturecat_id . "/";
 	if (is_dir($picture_cat_path)){
 		remove_dir($picture_cat_path);
 	}

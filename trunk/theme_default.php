@@ -5,18 +5,42 @@
 <!--<link href="template/template1/css/index.css" type="text/css" rel="stylesheet"/>-->
 <!-- import jquery and jquery ui start-->
 <link href="jQueryUI/css/smoothness/jquery-ui-1.8.20.custom.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="jquery/jquery.js"></script>
 <script type="text/javascript" src="jQueryUI/js/jquery-ui-1.8.20.custom.min.js"></script>
-
 <!-- import jquery and jquery ui end-->
-
+<link rel="stylesheet" type="text/css" href="css/layout.css" />
+<link rel="stylesheet" type="text/css" href="css/style4.css" />
+<script language="javascript" type="text/javascript" src="jquery/jquery.1.7.js"></script>
+<script language="javascript" type="text/javascript" src="jquery/jquery.easing.js"></script>
+<script language="javascript" type="text/javascript" src="jquery/script.js"></script>
+<script type="text/javascript">
+ $(document).ready( function(){	
+		// buttons for next and previous item						 
+		var buttons = { previous:$('#jslidernews1 .button-previous') ,
+						next:$('#jslidernews1 .button-next') };
+		 $obj = $('#jslidernews1').lofJSidernews( { interval : 4000,
+											 	easing			: 'easeInOutQuad',
+												duration		: 1200,
+												auto		 	: false,
+												maxItemDisplay  : 3,
+												startItem:1,
+												navPosition     : 'horizontal', // horizontal
+												navigatorHeight : null,
+												navigatorWidth  : null,
+												mainWidth:790,
+												buttons:buttons} );		
+	});
+</script>
  <script type="text/javascript">
 	$(document).ready(function(){
 		$("input[type=button],input[type=submit],button").button();
 		var productSearch = ['a1','a2','a3'];
 		$("#txtSearch").autocomplete({source:productSearch});
+
+		//slide picture start
+		//slide picture end
 	});
 	</script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <?
@@ -706,19 +730,64 @@ body{
                 	<div id="content">
      <?
 	 if($_GET['page']=="" or $_GET['page']=="home"){
+		 $result_slide_picture = $db->tableSQL("slide_picture where admin_id='".$admin_id."'");
+		 $slideRows=mysql_num_rows($result_slide_picture);
+		 
+		
 	 ?>
-     <!-- img slide-->
-	<div id="container"></div>
-	<script type="text/javascript" src="swfobject.js"></script>
-	<script type="text/javascript">
-		var s1 = new SWFObject("imagerotator.swf","rotator","785","200","7");
-		s1.addParam("allowfullscreen","true");
-		s1.addVariable("file","madrid.xml");
-		s1.addVariable("width","785");
-		s1.addVariable("height","200");
-		s1.write("container");
-	</script>
-	<!-- img slide-->
+
+
+
+<!------------------------------------- THE CONTENT ------------------------------------------------->
+<div id="jslidernews1" class="lof-slidecontent" style="width:790px; height:280px;">
+	<div class="preload"><div></div></div>
+    		 <div  class="button-previous">Previous</div>
+              <div  class="button-next">Next</div>
+    		 <!-- MAIN CONTENT --> 
+              <div class="main-slider-content" style="width:790px; height:280px;">
+                <ul class="sliders-wrap-inner">
+				<?
+				 while($rs_slide_picture=mysql_fetch_array($result_slide_picture)){
+				?>
+				 <li>
+                            <img src="slide_picture/<?=$admin_id?>/<?=$rs_slide_picture["slide_picture_object"]?>" title="Newsflash 2" >           
+                          <div class="slider-description">
+                            <div class="slider-meta"><a target="_parent" title="Newsflash 1" href="#Category-1">/ Newsflash 1 /</a> <i> — Monday, February 15, 2010 12:42</i></div>
+                            <h4>Content of Newsflash 1</h4>
+                            <p>The one thing about a Web site, it always changes! Joomla! makes it easy to add Articles, content,...
+                            <a class="readmore" href="<?=$rs_slide_picture["slide_picture_link"]?>">Read more </a>
+                            </p>
+                         </div>
+                    </li> 
+				<?
+				}
+				?>
+                   
+                  </ul>  	
+            </div>
+ 		   <!-- END MAIN CONTENT --> 
+           <!-- NAVIGATOR -->
+           	<div class="navigator-content">
+                  <div class="button-control"><span></span></div>	
+                  <div class="navigator-wrapper">
+                        <ul class="navigator-wrap-inner">
+						<?
+						for($i=1;$i<=$slideRows;$i++){
+						?>
+						<li><span><?=$i?></span></li>
+						<?
+						}
+						?>
+                        </ul>
+                  </div>
+                
+             </div> 
+          <!----------------- END OF NAVIGATOR --------------------->
+ </div> 
+
+
+<!------------------------------------- END OF THE CONTENT ------------------------------------------------->
+
     <?
 	 }
 	?>

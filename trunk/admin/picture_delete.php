@@ -6,10 +6,12 @@ $action=$_GET['action'];
 
 if($action="delete"){
 $picture_id=$_GET['picture_id'];
+$admin_id=$_GET['admin_id'];
+
 $picturecat_id=$_GET['picturecat_id'];
 
-$path_thumbnail="../picture/".$picturecat_id."/".$picture_id."/thumbnail/";
-$path_big_picture="../picture/".$picturecat_id."/".$picture_id."/";
+$path_thumbnail="../picture/".$admin_id."/".$picturecat_id."/".$picture_id."/thumbnail/";
+$path_big_picture="../picture/".$admin_id."/".$picturecat_id."/".$picture_id."/";
 
 			if($handle=@opendir($path_thumbnail)){
 				$imagesFile=array();
@@ -39,7 +41,7 @@ $path_big_picture="../picture/".$picturecat_id."/".$picture_id."/";
 $strSQL="delete from picture where picture_id=$picture_id";
 mysql_query($strSQL);
 //header("Location:index.php?page=picture&prdductcat_id=$picturecat_id");
-echo"<script> window.location=\"index.php?page=picture&picturecat_id=$picturecat_id\"</script>";
+echo"<script> window.location=\"index.php?page=picture&picturecat_id=$picturecat_id&admin_id=$admin_id\"</script>";
 
 }//action==delete
 ?>

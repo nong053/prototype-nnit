@@ -65,7 +65,25 @@ include("../config.inc.php");
 			
 			
 			<?php 
-			$strSQL="select * from picturecat";
+
+$member_user_url=trim($_SESSION['member_user_url2']);
+//ทำการ select admin_id ออกมาจาก admin
+$query_admin="select admin_id from admin where admin_username='".$member_user_url."'";
+$result_admin=$obj_manage_data->select_data_proc($query_admin);
+$rs_admin=mysql_fetch_array($result_admin);
+
+if(!$rs_admin){
+$admin_id=0;
+}else{
+$admin_id=$rs_admin['admin_id'];
+}
+if($_SESSION['admin_status']=="3"){
+$admin_id=1;
+}
+echo"admin_id".$admin_id;
+
+
+			$strSQL="select * from picturecat where admin_id='$admin_id'";
 			$result=mysql_query($strSQL);
 			$i=1;
 			while($rs=mysql_fetch_array($result)){
@@ -84,7 +102,7 @@ include("../config.inc.php");
 				echo"<td>";
 				
 				echo"<div id=\"dev_picturelink\">";
-				echo"<a href=\"index.php?page=picture&picturecat_id=$rs[picturecat_id]\">";
+				echo"<a href=\"index.php?page=picture&picturecat_id=$rs[picturecat_id]&admin_id=$admin_id\">";
 				?>
                 <img src="images/announcement.gif" border="0"/>
                 <? 
@@ -109,7 +127,7 @@ include("../config.inc.php");
 				
 				echo"<div id=\"dev_picturelink\">";
 				
-				echo"<a onClick=\"return confirm('คุณต้องการลบหมวดสินค้านี้');\" href=\"picturecat_delete.php?picturecat_id=$rs[picturecat_id]\">";
+				echo"<a onClick=\"return confirm('คุณต้องการลบหมวดสินค้านี้');\" href=\"picturecat_delete.php?picturecat_id=$rs[picturecat_id]&admin_id=$admin_id\">";
 				?>
                 <img src="images/b_drop.png" border="0" />
                 <? 
@@ -175,7 +193,7 @@ include("../config.inc.php");
             <tr>
             	
                 <td>
-                รายละเอีิยดหมวดรูปภาพ
+                รายละเอิยดหมวดรูปภาพ
                 </td>
                 <td>
                 <input type="text" name="picturecat_detail" value="<?=$picturecat_detail?>" />
@@ -204,6 +222,7 @@ include("../config.inc.php");
                 </td>
                 <td>
                 <input type="hidden" name="picturecat_id" value="<?=$picturecat_id?>" id="dev_submit" />
+				<input type="hidden" name="admin_id" value="<?=$admin_id?>" id="admin_id" />
                 <input type="submit" value="<?=$submit?>" />
                 </td>
             </tr>

@@ -25,7 +25,8 @@ include("../config.inc.php");
 //include("fckeditor/fckeditor.php");
 include("picture_split.php");
 $picturecat_id=$_GET['picturecat_id'];
-
+$admin_id=$_GET['admin_id'];
+echo"admin=$admin_id";
 $strSQL="select * from picture where picturecat_id='$picturecat_id'";
 $result=mysql_query($strSQL);
 $rs=mysql_fetch_array($result);
@@ -75,7 +76,7 @@ $rs=mysql_fetch_array($result);
 	
 	
 	//จัดการกับรูปภาพ
-	$thumbnailsPath="../picture/".$picturecat_id."/".$rs[picture_id]."/thumbnail/";
+	$thumbnailsPath="../picture/$admin_id/".$picturecat_id."/".$rs[picture_id]."/thumbnail/";
 		if(!is_dir($thumbnailsPath)){
 		
 		}else{ //else
@@ -140,7 +141,7 @@ $rs=mysql_fetch_array($result);
         
         
         
-         <a href="picture_delete.php?action=delete&picture_id=<?=$rs[picture_id]?>&picturecat_id=<?=$picturecat_id?>" onclick="return confirm('ท่านต้องการลบ รูปภาพนี้');">
+         <a href="picture_delete.php?action=delete&picture_id=<?=$rs[picture_id]?>&picturecat_id=<?=$picturecat_id?>&admin_id=<?=$admin_id?>" onclick="return confirm('ท่านต้องการลบ รูปภาพนี้');">
         <img src="images/b_drop.png" border="0">
         </a>
         
@@ -149,7 +150,7 @@ $rs=mysql_fetch_array($result);
         
         
         &nbsp;
-        <a href="index.php?page=picture&action=edit&picture_id=<?=$rs[picture_id]?>&picturecat_id=<?=$rs[picturecat_id]?>&picture_important=<?=$rs[picture_important]?>">
+        <a href="index.php?page=picture&action=edit&admin_id=<?=$admin_id?>&picture_id=<?=$rs[picture_id]?>&picturecat_id=<?=$rs[picturecat_id]?>&picture_important=<?=$rs[picture_important]?>">
         <img src="images/b_edit.png" border="0"  />
         </a>
         </center>
@@ -175,6 +176,7 @@ $rs=mysql_fetch_array($result);
 if($_GET['action']=="edit"){
 $submit="แก้ไขข้อมูลรูปภาพ";
 $picture_id=$_GET['picture_id'];
+$admin_id=$_GET['admin_id'];
 $strSQL="select * from picture where picture_id=$picture_id";
 $result=mysql_query($strSQL);
 $rs=mysql_fetch_array($result);
@@ -276,13 +278,15 @@ $action="add";
        
         </td>
         <td>
+		
+		   <input type="hidden" name="admin_id" value="<?=$admin_id?>" />
         	<input type="hidden" name="picturecat_id" value="<?=$picturecat_id?>" />
 			<input type="hidden" name="picture_id" value="<?=$rs[picture_id]?>" />
 			<input type="hidden" name="action" value="<?=$action?>" />
        		<input type="submit" value="<?=$submit?>" />
           
           <? if($action=="edit"){ ?>
-           <input type="button" onclick="parent.location='index.php?page=picture&picturecat_id=<?=$picturecat_id?>'"  value="กลับไปเพิ่มรูปภาพ"/>
+           <input type="button" onclick="parent.location='index.php?page=picture&picturecat_id=<?=$picturecat_id?>&admin_id=<?=$admin_id?>'"  value="กลับไปเพิ่มรูปภาพ"/>
            <?
 		  }
            ?>
