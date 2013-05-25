@@ -6,12 +6,12 @@
 	$picture_detail = trim($_POST['picture_detail']);
 	$picture_detail_eng = trim($_POST['picture_detail_eng']);
 	$picture_important =$_POST['picture_important'];
+	$admin_id =$_POST['admin_id'];
 	
 	$picture_date=date("d-m-y:h:i:s");
 	$action = $_POST['action'];
 	//check ค่าว่าง
-		
-		
+
 		if($action=="add"){
 			if(!$_FILES['picture_file']['name'][0]){
 				echo"<script>alert(\"กรุณาอัปโหลดภาพด้วยครับ\");</script>";
@@ -223,7 +223,7 @@
 			if($row=mysql_fetch_array($table)) {
 				$picture_id = $row['picture_id'];
 				//$picture_path = iconv("UTF-8","windows-874",$picture_id);
-				$picture_path = "../picture/" . $picturecat_id . "/" . $picture_id . "/";
+				$picture_path = "../picture/$admin_id/" . $picturecat_id . "/" . $picture_id . "/";
 
 			 	mkdir_r($picture_path,0777);
 			 	$aaa=$_FILES['picture_file'];
@@ -262,9 +262,9 @@
 			}
 		
 	}else{
-		header("Location:index.php?page=picture&picturecat_id=".$picturecat_id."");
+		header("Location:index.php?page=picture&picturecat_id=".$picturecat_id."&admin_id=".$admin_id."");
 	}
-	header("Location:index.php?page=picture&picturecat_id=".$picturecat_id."");
+	header("Location:index.php?page=picture&picturecat_id=".$picturecat_id."&admin_id=".$admin_id."");
 
 
 ?>
