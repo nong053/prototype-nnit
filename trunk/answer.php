@@ -11,22 +11,13 @@
 	
 }
 .answer #bg_title_answer #title_answes{
-	/*width:auto;
-	height:auto;
-	padding:5px;
-	border:#CCC 2px solid;
-	background-color:#900;
-	color:#FFF;
-	font-weight:bold;
-	
-	font-size:14px;*/
 	border-bottom:#5E88A3 0.2em solid;
-	height:40px;
 	color:#5E88A3;
 	font-weight:bold;
 	font-size:13px;
-	padding-top:0PX;
-	background-image:url(images/sub_maxgxl.jpg);
+	padding-top:0px;
+	padding:
+	
 }
 .answer #bg_title_answer #answer{
 	padding:5px;
@@ -51,6 +42,23 @@
 	}
 	
 </style>
+<script>
+$(document).ready(function(){
+	$("form#answerForm").submit(function(){
+	
+		if($("#check_sum_by_system").val()==$("#check_sum_by_user").val()){
+				if($("#ans_name").val() !=""){
+				document.answerForm.submit();
+				}else{
+				alert("กรอกชื่อด้วยครับ");
+				}
+		}else{
+			alert("กรอกรหัสยืนยันไม่ถูกต้องครับ");
+		}
+	return false;
+	});
+});
+</script>
 <!-- CKE-->
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <!-- CKE-->
@@ -97,7 +105,7 @@ while($rs2=mysql_fetch_array($result2)){
 }
 ?>
 
-<form action="process_answer.php" method="post">
+<form action="process_answer.php" method="post" id="answerForm">
  	<div id="bg_title_answer">
     
 		<div id="title_answes">
@@ -116,8 +124,10 @@ while($rs2=mysql_fetch_array($result2)){
        		<td>
             ชื่อ
         	</td>
+		</tr>
+		<tr>
         	<td>
-            <input type="text" name="ans_name" style="margin:2px;">
+            <input type="text" name="ans_name" style="margin:2px;" id="ans_name">
         	</td>
        </tr>
        <tr>
@@ -141,7 +151,24 @@ while($rs2=mysql_fetch_array($result2)){
       <br style="clear:both" />
        <input type="hidden" name="topic_id" value="<?=$topic_id?>" />
       <table> 
-      
+      <tr>
+			<td colspan="2">
+					<?php
+					$rand1=rand(1,10);
+					$rand2=rand(1,10);
+					$check_sum=$rand1+$rand2;
+					?>
+				กรอกรหัสยืนยัน :<b><? echo "$rand1 + $rand2 =?"; ?></b>
+			</td>
+		<tr>
+			<td></td>
+			<td>
+			<input type="text" name="check_sum_by_user" id="check_sum_by_user"/>
+			<input type="hidden" name="check_sum_by_system" id="check_sum_by_system" value="<?=$check_sum?>"/>
+			</td>
+		</tr>
+	  </tr>
+
         <tr>
        		<td>
             
@@ -149,7 +176,7 @@ while($rs2=mysql_fetch_array($result2)){
         	<td>
 
 			<input type="hidden" name="member_user_url" id="member_user_url" value="<?=$_SESSION['member_user_url2']?>">
-            <input type="submit" value="ตอบกระทู้" />
+            <input type="submit" value="ตอบกระทู้" /><input type="reset" value="ยกเลิก"  class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"/>
         	</td>
        </tr>
        </table>

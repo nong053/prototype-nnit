@@ -179,7 +179,7 @@
                 		<div id="<?=$select1?>">
               		 		<a href="index.php?page=style_system&select_page=select_style">
                             <div id="devmagin" style="margin:5px;">
-              			 	เลือก(Laout)
+              			 	เลือก(Layout)
                      		</div>
               			 	</a>
                     	 </div>

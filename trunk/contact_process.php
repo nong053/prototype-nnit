@@ -32,7 +32,7 @@ $rs_admin = mysql_fetch_array($result_admin);
 		$strTo = $result_admin[admin_email];
 		$strSubject = "ติดต่อเรา";
 		$strHeader =$result_admin[admin_website] ;
-		$strMessage = "เข้าไปตรวจสอบระบบ Back office ด้วยครับ คุณ.$contact_fullname.ติดต่อสอบถาม:.$contact_title.รายละเอียด.$contact_detail";
+		$strMessage = "เข้าไปตรวจสอบระบบ Back office ด้วยครับ <br>คุณ$contact_fullname<br>ติดต่อสอบถาม:$contact_title<br>รายละเอียด.$contact_detail";
 		$flgSend = @mail($strTo,$strSubject,$strMessage,$strHeader);  // @ = No Show Error //
 		
 		

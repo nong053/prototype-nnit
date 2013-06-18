@@ -304,14 +304,10 @@ if($file_header_banner){
 				$object_position_edit=$rs_object[object_position];
 				$object_name_edit=$rs_object[object_name];
 				
-	
-	
 				$strSQL="UPDATE object_system SET 		object_position='$object_position',object_color='$object_color',object_width='$object_width',object_height='$object_height' where object_position='$object_position_edit'  and admin_id='$admin_id'";
 				$query=mysql_query($strSQL);
 				if(!$query){echo"Error".mysql_error();}
 }
-
-
 echo"<script>window.location=\"index.php?page=style_system&select_page=picture_style&page_style=header\"</script>";
 
 ?>

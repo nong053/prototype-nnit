@@ -6,8 +6,11 @@ $_SESSION['member_user_url2']=$_GET['member_user_url'];
 $_SESSION['member_user_url2']=$_SESSION['member_user_url'];
 }
 ?>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<!--
 <script src="kendoui/js/kendo.all.min.js"></script>
+-->
 <script src="jQueryUI/js/jquery-ui-1.8.23.custom.min.js"></script>
 <link href="jQueryUI/css/custom-theme/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
 <?php

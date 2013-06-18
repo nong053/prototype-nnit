@@ -3,7 +3,7 @@
 <style>
 
 #bg_content11{
-	width:1000px;
+	width:778px;
 	height:auto;
 	/*background-color:#0F0;*/
 	float:left;
@@ -22,7 +22,7 @@
  #bg_content11 #header_product1{
 	width:auto;
 	border-bottom:#5E88A3 0.2em solid;
-	height:50px;
+	height:20px;
 	color:#5E88A3;
 	font-weight:bold;
 	font-size:13px;
@@ -53,13 +53,14 @@
 	width:470px;
 	height:auto;
 	border:#CCC 0.01em solid;
-	margin-top:5px;
+	margin:5px;
 	padding:0px;
+	background: #E1EEF5;
 }
  #bg_content11 #content1 #bg_product1 #product_pic1{
 	padding:5px;
 	margin:5px;
-	height:380px;
+	height:365px;
 }
  #bg_content11 #content1 #bg_product1 #product_add_cart1{
 	/*border-bottom:#CCC 0.01em solid;*/
@@ -84,9 +85,10 @@
 
  #bg_content11 #content1 #bg_product1_detail{
 	float:left;
-	width:300px;
-	margin-left:10px;
-	height:auto;
+	width:290px;
+	margin-left:0px;
+	height:auto !important;
+	height:425px;
 	border:#5E88A3 0.1em solid;
 
 	margin-top:5px;
@@ -97,6 +99,11 @@
 	color:#5E88A3;
 	
 	
+}
+#bg_content11 #content_detail_area #content_detail_title{
+padding:5px;
+background:#cccccc;
+margin:5px;
 }
 </style>
 	<?php 
@@ -143,22 +150,19 @@ $product_promotion_detail=$rs[product_promotion_detail];
 		if(count($imagesFiles)>0){
 		$thumbnailsFile = $imagesFiles[0];
 		}
-		
+
 	}
 ?>
 <div id="bg_content11">
-    
                                     <div id="header_product1">
-                                    	
                                         <div id="title_product1">
                                         <?=$product_name?>
-										
                                         </div>
                                         <div id="print_product1">
-                                        
                                         Print page
                                         </div>
                                     </div>
+
                             		<div id="content1">
                                 		<div id="bg_product1">
                                         
@@ -171,71 +175,59 @@ $product_promotion_detail=$rs[product_promotion_detail];
                                             
                                             <br style="clear:both" />
                                         </div>
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                       
-                                        
+
                                         <div id="bg_product1_detail">
                                         	
                                           <div id="txt_product_detail" style="background-color:#CCC; padding:5px;">
                                             	รายละเอียด
                                             </div>
-                                        	
-                                       <table width="100%" style="margin:5px;">
-                                            	<tr>
-                                                	<td width="35%">
-                                                   ชื่อสินค้า:
-                                                    </td>
-                                                    <td width="65%" align="right">
-                                                    
-                                                    <div id="text01" style=" font-weight:bold;  padding-right:20px; ">
-                                                    	<b><?=$product_name?></b>
-                                                    	</div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                	<td>ราคา</td>
-                                                    <td align="right">
-                                                    <!--<a href="index.php?page=basket&pid=<?//$product_id?>&action=add">-->
-                                                    <div id="price" style="background-image:url(images/botton_chat_03.jpg); background-repeat:no-repeat;">
-                                                    	<div id="text01" style=" font-weight:bold; padding-right:20px; ">
-                                                    	<?=$product_price?>
-                                                    	</div>
-                                                    </div>
-                                                    <!--</a>-->
-                                                    </td>
-                                                </tr>
-                                                 <tr>
-                                                	<td>จำนวนสินค้า</td>
-                                                    <td align="right">
-                                                    <div id="price" style="background-image:url(images/botton_chat_03.jpg); background-repeat:no-repeat; ">
-                                                    		<div id="text01" style="color:#000; font-weight:bold; padding-right:20px; ">
-                                                    	<?=$product_amount?>
-                                                    		</div>
-                                                    </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                	<td>
-                                                   
-                                                    </td>
-                                                    <td align="right">
-                                                  <!--  Wholesale vs Retail<img src="images/redQuestion.png"  border="0"/>-->
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            
+                                        <div id="setTable" style="padding:5px;">	
+										   <table width="90%" style="margin:0px;">
+													<tr>
+														<td width="30%">
+													   ชื่อสินค้า:
+														</td>
+														<td width="60%" align="right">
+														
+														<div id="text01" style=" font-weight:bold;  padding-right:0px; ">
+															<b><?=$product_name?></b>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td>ราคา</td>
+														<td align="right">
+														<!--<a href="index.php?page=basket&pid=<?//$product_id?>&action=add">-->
+														<div id="price" style="background-image:url(images/botton_chat_03.jpg); background-repeat:no-repeat;">
+															<div id="text01" style=" font-weight:bold; padding-right:20px; ">
+															<?=$product_price?>
+															</div>
+														</div>
+														<!--</a>-->
+														</td>
+													</tr>
+													 <tr>
+														<td>จำนวนสินค้า</td>
+														<td align="right">
+														<div id="price" style="background-image:url(images/botton_chat_03.jpg); background-repeat:no-repeat; ">
+																<div id="text01" style="color:#000; font-weight:bold; padding-right:20px; ">
+															<?=$product_amount?>
+																</div>
+														</div>
+														</td>
+													</tr>
+													<tr>
+														<td>
+														</td>
+														<td align="right">
+													  <!--  Wholesale vs Retail<img src="images/redQuestion.png"  border="0"/>-->
+														</td>
+													</tr>
+												</table>
+											</div>
                                             <div id="txt_product_detail" style="background-color:#CCC; padding:5px;">
                                             	สอบถามเพิ่มเติม
                                             </div>
-                                            
                                       <form>
                                       	<table style="margin:5px;">
                                         	<tr>
@@ -272,7 +264,6 @@ $product_promotion_detail=$rs[product_promotion_detail];
                                             </tr>
                                             <tr>
                                             	<td>
-                                             
                                                 </td>
                                                 <td>
                                                 <input type="button" value="ส่งข้อมูล" />
@@ -280,29 +271,30 @@ $product_promotion_detail=$rs[product_promotion_detail];
                                             </tr>
                                         </table>
                                         </form>
-                                      
-                                        
                                         <!-- table-->
-										<!--
                                         <div id="txt_product_detail" style="background-color:#CCC; padding:5px;">
-                                            สั่งชื้อสินค้า
+                                            social network
                                             </div>
                                         	<div id="product_add_cart1" style="padding:5px;">
-                                           	 	 <a href="index.php?page=cart&ProductID=<?=$product_id?>&Pic=<?=$thumbnailsFile?>">add Cart</a>
-                                                 
-                                              
-                                                
-                                            </div>
+                                           	 	 <!--
+												 <a href="index.php?page=cart&ProductID=<?=$product_id?>&Pic=<?=$thumbnailsFile?>">add Cart</a>
+                                                 -->
+												 <button>ss</button>
+                                            
                                         </div>
-                                         -->
-                                         
-                                      
+
                                         <br style="clear:both" />
                                         </div>
                                     <br style="clear:both" />
-                                    
                                     <?=$product_detail?>
-                                    
                                 	</div>
                                     <br style="clear:both" />
-                            	
+
+			 <div id="content_detail_area">
+				<div id="content_detail_title">
+				Detail
+				</div>
+			 </div>
+</div>
+
+ <br style="clear:both" />

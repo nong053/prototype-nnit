@@ -3,14 +3,13 @@
 <!--<link href="./css/form_member.css" rel="stylesheet" type="text/css">-->
 <style>
 .content_form_member{
-width:500px;
+width:370px;
 border:#CCCCCC 1px solid;
 padding:5px;
 float:left;
 }
 .map{
-width:400px;
-
+width: 750px;
 padding:5px;
 float:left;
 }
@@ -35,6 +34,22 @@ float:left;
 width:200px;
 background-color:#00FF00;
 float:left;
+}
+#contact_area{
+	
+
+}
+#contact_area #contact_form{
+	width:380px;
+	height:800px;
+	
+	float:left;
+}
+#contact_area #contact_about_us{
+	width:380px;
+	height:800px;
+	
+	float:right;
 }
 </style>
 <script>
@@ -65,169 +80,173 @@ float:left;
 		
 	}
 </script>
-<?
-$member_user_url=trim($_SESSION['member_user_url2']);
-//ทำการ select admin_id ออกมาจาก admin
-$query_admin="select admin_id from admin where admin_username='".$member_user_url."'";
-$result_admin=$obj_manage_data->select_data_proc($query_admin);
-$rs_admin=mysql_fetch_array($result_admin);
+<?php
+//echo"query_admin_id".$query_admin_id;
+$query_contact="select * from about where admin_id=$admin_id";
+$result_contact_id=$obj_manage_data->select_data_proc($query_contact);
+$rs_contact=mysql_fetch_array($result_contact_id);
+$about_map=$rs_contact["about_map"];
+$about_detail=$rs_contact["about_detail"];
 
-if(!$rs_admin){
-$admin_id=0;
-}else{
-$admin_id=$rs_admin['admin_id'];
-}
-if($_SESSION['admin_status']=="3"){
-$admin_id=1;
-}
-echo"admin_id".$admin_id;
 ?>
-<form action="contact_process.php" method="post" name="form_contact">
-<div class="content_form_member">
-		<div id="content">
-		<div id="lable_text">
-			<div id="lable"></div>
-			<div id="text">
-			<h4>กรอกข้อมูลเพื่อติดต่อสอบถาม</h4>
-			<br style="clear:both" />
-			</div>
-			
-		</div>
-	</div>
-
-
-	<div id="content">
-	
-	
-		<div id="lable_text">
-			<div id="lable">
-			ชื่อ
-			</div>
-			<div id="text">
-			<input type="text" name="contact_fullname" />
-			<font color="#FF0000" style="margin-left:5px;">*</font>
-			</div>
-		</div>	
-		
-		<div id="lable_text">
-			<div id="lable">
-			หัวข้อ
-			</div>
-			<div id="text">
-			<input type="text" name="contact_title" />
-			<font color="#FF0000" style="margin-left:5px;">*</font>
-			</div>
-		</div>	
-		
-		<div id="lable_text">
-			<div id="lable">
-			รายละเอียด
-			</div>
-			<div id="text">
-			<textarea name="contact_detail" rows="5"></textarea>
-            <font color="#FF0000" style="margin-left:5px;">*</font>
-			</div>
-			<br style="clear:both" />
-		</div>
-		
-
-		
-	
-	
-	
-	</div><!-- content-->
-	
-	<div id="content">
-		<div id="lable_text">
-			<div id="lable">
-			เบอร์โทร
-			</div>
-			<div id="text">
-			<input type="text" name="contact_tel" width="100" />
-            <font color="#FF0000" style="margin-left:5px;">*</font>
-			</div>
-			
-		</div>
-		
-		<div id="lable_text">
-			<div id="lable">
-			ที่อยู่
-			</div>
-			<div id="text">
-			<textarea name="contact_address" rows="5"></textarea>
-			</div>
-			
-		</div>
-		
-		<div id="lable_text">
-			<div id="lable">
-			E-mail
-			</div>
-			<div id="text">
-			<input type="text" name="contact_email" />
-			</div>
-			
-		</div>
-         <div id="lable_text">
-			<div id="lable">
-			<br />
-			</div>
-			<div id="text">
-            <?
-			$rand1=rand(1,10);
-			$rand2=rand(1,10);
-			$confrim=$rand1+$rand2;
-			
-			$_SESSION['confrim']=$confrim;
-			?>
-			<b><? echo "$rand1 + $rand2 =?"; ?></b>
-			</div>
-			
-		</div>
-        <div id="lable_text">
-			<div id="lable">
-			กรอกรหัสยืนยัน
-			</div>
-			<div id="text">
-			<input type="text" name="contact_confrim" />
-            <font color="#FF0000" style="margin-left:5px;">*</font>
-           
-			</div>
-			
-		</div>
-		
-		
-         <div id="lable_text">
-			<div id="lable">
-			<br />
-			</div>
-			<div id="text">
-			
-            <font color="#FF0000" style="margin-left:5px; margin-right:5px;">*</font>จำเป็นต้องกรอก
-           
-			</div>
-			<br style="clear:both" />
-            
-            
-		</div>
-
-	</div><!-- content-->
-	
-	<div id="content">
-		<div id="lable_text">
-			<div id="lable"></div>
-			<div id="text">
-			
-			<input type="button" value="ส่งข้อมูล" onclick="check_form(<?=$confrim?>)" />
-			<input  type="hidden" name="admin_id"  value="<?=$admin_id?>"/>
-            <input type="reset"  value="Clear"/>
-			<br style="clear:both" />
-			</div>
-			
-		</div>
-	</div>
-</div>
-</form>
 <div class="map">
-<iframe width="425" height="580" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.th/maps/ms?msid=203002154092292441902.0004c7f62fcdd8ce9b445&amp;msa=0&amp;hl=th&amp;ie=UTF8&amp;ll=13.77576,100.628015&amp;spn=0,0&amp;t=m&amp;iwloc=0004c7f64490354838be2&amp;output=embed"></iframe><br /><small>ดู <a href="https://maps.google.co.th/maps/ms?msid=203002154092292441902.0004c7f62fcdd8ce9b445&amp;msa=0&amp;hl=th&amp;ie=UTF8&amp;ll=13.77576,100.628015&amp;spn=0,0&amp;t=m&amp;iwloc=0004c7f64490354838be2&amp;source=embed" style="color:#0000FF;text-align:left">R-channelTv</a> ในแผนที่ขนาดใหญ่กว่า</small>
-</div
+<?=$about_map?>
+</div>
+<div id="contact_area">
+	<div id="contact_form">
+		
+			<form action="contact_process.php" method="post" name="form_contact">
+			<div class="content_form_member">
+					<div id="content">
+					<div id="lable_text">
+						<div id="lable"></div>
+						<div id="text">
+						<h4>กรอกข้อมูลเพื่อติดต่อสอบถาม</h4>
+						<br style="clear:both" />
+						</div>
+						
+					</div>
+				</div>
+
+
+				<div id="content">
+				
+				
+					<div id="lable_text">
+						<div id="lable">
+						ชื่อ
+						</div>
+						<div id="text">
+						<input type="text" name="contact_fullname" />
+						<font color="#FF0000" style="margin-left:5px;">*</font>
+						</div>
+					</div>	
+					
+					<div id="lable_text">
+						<div id="lable">
+						หัวข้อ
+						</div>
+						<div id="text">
+						<input type="text" name="contact_title" />
+						<font color="#FF0000" style="margin-left:5px;">*</font>
+						</div>
+					</div>	
+					
+					<div id="lable_text">
+						<div id="lable">
+						รายละเอียด
+						</div>
+						<div id="text">
+						<textarea name="contact_detail" rows="5"></textarea>
+						<font color="#FF0000" style="margin-left:5px;">*</font>
+						</div>
+						<br style="clear:both" />
+					</div>
+					
+
+					
+				
+				
+				
+				</div><!-- content-->
+				
+				<div id="content">
+					<div id="lable_text">
+						<div id="lable">
+						เบอร์โทร
+						</div>
+						<div id="text">
+						<input type="text" name="contact_tel" width="100" />
+						<font color="#FF0000" style="margin-left:5px;">*</font>
+						</div>
+						
+					</div>
+					
+					<div id="lable_text">
+						<div id="lable">
+						ที่อยู่
+						</div>
+						<div id="text">
+						<textarea name="contact_address" rows="5"></textarea>
+						</div>
+						
+					</div>
+					
+					<div id="lable_text">
+						<div id="lable">
+						E-mail
+						</div>
+						<div id="text">
+						<input type="text" name="contact_email" />
+						</div>
+						
+					</div>
+					 <div id="lable_text">
+						<div id="lable">
+						<br />
+						</div>
+						<div id="text">
+						<?
+						$rand1=rand(1,10);
+						$rand2=rand(1,10);
+						$confrim=$rand1+$rand2;
+						
+						$_SESSION['confrim']=$confrim;
+						?>
+						<b><? echo "$rand1 + $rand2 =?"; ?></b>
+						</div>
+						
+					</div>
+					<div id="lable_text">
+						<div id="lable">
+						กรอกรหัสยืนยัน
+						</div>
+						<div id="text">
+						<input type="text" name="contact_confrim" />
+						<font color="#FF0000" style="margin-left:5px;">*</font>
+					   
+						</div>
+						
+					</div>
+					
+					
+					 <div id="lable_text">
+						<div id="lable">
+						<br />
+						</div>
+						<div id="text">
+						
+						<font color="#FF0000" style="margin-left:5px; margin-right:5px;">*</font>จำเป็นต้องกรอก
+					   
+						</div>
+						<br style="clear:both" />
+						
+						
+					</div>
+
+				</div><!-- content-->
+				
+				<div id="content">
+					<div id="lable_text">
+						<div id="lable"></div>
+						<div id="text">
+						
+						<input type="button" value="ส่งข้อมูล" onclick="check_form(<?=$confrim?>)" />
+						<input  type="hidden" name="admin_id"  value="<?=$admin_id?>"/>
+						<input type="reset"  value="Clear"  class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"/>
+						<br style="clear:both" />
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			</form>
+
+	</div>
+	<div id="contact_about_us">
+	<?=$about_detail?>
+	</div>
+	<br style="clear:both">
+</div>
+
+<br style="clear:both">
