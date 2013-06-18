@@ -1,7 +1,6 @@
 
  <!-- <link rel="stylesheet" type="text/css" href="css/style.css">-->
   <link rel="stylesheet" type="text/css" href="css/jquery_ad-gallery.css">
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
   <script type="text/javascript" src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js"></script>
   <script type="text/javascript" src="jquery/jquery.ad-gallery.js?rand=509"></script>
   <script type="text/javascript" src="jquery/common.js"></script>

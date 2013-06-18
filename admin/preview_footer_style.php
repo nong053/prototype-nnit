@@ -11,15 +11,16 @@
 echo"test";
 require("class_mysql.php");
 $db=new database();
+$admin_id=$_GET['admin_id'];
 if($_GET['want']=="preview"){
 	
 	
 	
-	$result_preview = $db->selectSQL("footer_style");
+	$result_preview = $db->selectSQL("footer_style where admin_id='$admin_id'");
 	$rs_preview=mysql_fetch_array($result_preview);
 	$preview_object=$rs_preview[footer_bg];
 	echo"preview_object---->$preview_object";
-	$img="../object_system/$preview_object";
+	$img="../object_system/$admin_id/$preview_object";
 	if(!$preview_object){
 		echo"ไม่มีไฟล์ข้อมูล";
 	}else{

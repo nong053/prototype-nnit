@@ -2,7 +2,8 @@
 include("../config.inc.php");
 require("class_mysql.php");
 $db=new database();
-$path_object="../object_system/";
+$admin_id=$_POST['admin_id'];
+$path_object="../object_system/$admin_id";
 	if(!is_dir($path_object)){
 	umask(0);
 	mkdir($path_object,777);
@@ -17,7 +18,7 @@ $content_header=$_FILES["content_header"]["name"];//--ต้องแก้ไ�
 	$content_height=$_POST['content_height'];//--ต้องแก้ไข
 	$content_font_color=$_POST['content_font_color'];//--ต้องแก้ไข
 	$content_bg_color=$_POST['content_bg_color'];//--ต้องแก้ไข
-	$admin_id=$_POST['admin_id'];
+	
 	
 	
 	
@@ -42,18 +43,18 @@ if($content_header){
 			{
 			$object_name=$file_1;
 			//echo"object_name$object_name<br>";
-			copy($_FILES["content_header"]["tmp_name"],"../object_system/".$object_name);//--ต้องแก้ไข
+			copy($_FILES["content_header"]["tmp_name"],"../object_system/$admin_id/".$object_name);//--ต้องแก้ไข
 			//echo"sucessfully";
 			
 				
 				
-				$result_object=$db->selectSQL("content_style");
+				$result_object=$db->selectSQL("content_style where admin_id='$admin_id'");
 				$num_object=mysql_num_rows($result_object);
 				$rs_object=mysql_fetch_array($result_object);
 				$object_name_edit=$rs_object[content_header];//--ต้องแก้ไข
 				
 				
-				$unlink="../object_system/$object_name_edit";
+				$unlink="../object_system/$admin_id/$object_name_edit";
 				if($unlink){
 				@unlink($unlink);//@ไม่ต้องการให้มันฟอ้งถ้าไม่มีไฟลล์ให้ลบ
 				//file_exists();ใช้ function นี้ตรวจสอบก่อนว่ามีไฟลล์ใหลบมั้ย

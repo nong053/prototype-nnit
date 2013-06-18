@@ -81,7 +81,7 @@ $box_font_color=$rs_box[box_font_color];
         </td>
         <td>
         <input type="file"  name="box_header" value="<?=$box_header?>"/>
-        <a href="preview_box_style.php?want=preview&TB_iframe=true&height=350&width=500" rel="sexylightbox">
+        <a href="preview_box_style.php?admin_id=<?=$rs_admin_id['admin_id']?>&want=preview&TB_iframe=true&height=350&width=500" rel="sexylightbox">
         preview
         </a>
         </td>

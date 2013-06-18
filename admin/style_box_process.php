@@ -6,7 +6,7 @@ $db=new database();
 
 	
 	
-$path_object="../object_system/";
+$path_object="../object_system/$admin_id";
 	if(!is_dir($path_object)){
 	umask(0);
 	mkdir($path_object,777);
@@ -45,23 +45,22 @@ if($box_header){
 			{
 			$object_name=$file_1;
 			//echo"object_name$object_name<br>";
-			copy($_FILES["box_header"]["tmp_name"],"../object_system/".$object_name);//--ต้องแก้ไข
+			copy($_FILES["box_header"]["tmp_name"],"../object_system/$admin_id/".$object_name);//--ต้องแก้ไข
 			//echo"sucessfully";
 			
 				
 				
-				$result_object=$db->selectSQL("box_style");
+				$result_object=$db->selectSQL("box_style where admin_id='$admin_id'");
 				$num_object=mysql_num_rows($result_object);
 				$rs_object=mysql_fetch_array($result_object);
 				$object_name_edit=$rs_object[box_header];//--ต้องแก้ไข
 				
 				
-				$unlink="../object_system/$object_name_edit";
+				$unlink="../object_system/$admin_id/$object_name_edit";
+				echo"unlink$unlink";
 				if($unlink){
-				@unlink($unlink);//@ไม่ต้องการให้มันฟอ้งถ้าไม่มีไฟลล์ให้ลบ
+				@unlink($unlink);//@ไม่ต้องการให้มันฟ้องถ้าไม่มีไฟลล์ให้ลบ
 				//file_exists();ใช้ function นี้ตรวจสอบก่อนว่ามีไฟลล์ใหลบมั้ย
-				
-				
 				}
 
 				if($num_object){//check ถ้ามีข้อมูลอยู่แล้วให้ทำการUpdate
@@ -86,6 +85,6 @@ if($box_header){
 	$query=mysql_query($strSQL);
 	if(!$query){echo"Error".mysql_error();}
 }
-echo"<script>window.location=\"index.php?page=style_system&select_page=picture_style&page_style=box\"</script>";
+//echo"<script>window.location=\"index.php?page=style_system&select_page=picture_style&page_style=box\"</script>";
 
 ?>

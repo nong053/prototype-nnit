@@ -19,7 +19,7 @@ if($_GET['want']=="preview"){
 	$result_preview = $db->selectSQL("object_system where object_position='$object_position' and admin_id='$admin_id'");
 	$rs_preview=mysql_fetch_array($result_preview);
 	$preview_object=$rs_preview[object_name];
-	//echo"preview_object---->$preview_object";
+	echo"preview_object---->$preview_object";
 	$img="../object_system/$admin_id/$preview_object";
 	if(!$preview_object){
 		echo"ไม่มีไฟล์ข้อมูล";

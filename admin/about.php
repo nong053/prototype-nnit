@@ -15,8 +15,29 @@ $rs_num_about=mysql_num_rows($result_about_admin_id);
 if(!$rs_num_about){
 //ทำการเพิ่มข้อมูลเมื่อมี User ใหม่เข้ามา
 $table="about";
-$field="admin_id";
-$values =$member_user_id;
+$field="admin_id,about_detail";
+$admin_detail="
+<table>
+	<tr>
+		<td>บริษัท:</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ที่อยู่:</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>E-mail:</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>เบอร์โทร:</td>
+		<td></td>
+	</tr>
+</table>
+
+";
+$values ="'$member_user_id','$admin_detail'";
 $obj_manage_data->insert_data($table,$field,$values);
 }
 //##### Check table home end #####
@@ -27,6 +48,7 @@ $rs=mysql_fetch_array($result);
 $about_detail=$rs[about_detail];
 $about_title=$rs[about_title];
 $about_detail_eng=$rs[about_detail_eng];
+$about_map=$rs[about_map];
 ?>
 <div class="content_about_us">
 	<div id="about_us">
@@ -62,6 +84,16 @@ $about_detail_eng=$rs[about_detail_eng];
     
     <form action="process_about.php" method="post"> 
     <table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td>
+			Code แผนที่จาก Google
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<textarea id="about_map" name="about_map" cols="100" rows="10"><?=$about_map?></textarea>
+			</td>
+		</tr>
     	<tr>
         	
             <td>
@@ -102,11 +134,6 @@ $about_detail_eng=$rs[about_detail_eng];
         //]]>
     </script>
     <!--CKEditor-->
-
-
-
-
-
             </td>
        </tr>
        
@@ -138,21 +165,13 @@ $about_detail_eng=$rs[about_detail_eng];
         //]]>
     </script>
     <!--CKEditor-->
-
-
-
-
-
             </td>
        </tr>
-       
-       
-       
        <tr>
             
             	
                 <td>
-                <input type="submit" value="ตกลง">
+                <input type="submit" value="Submit"> <input type="reset" value="Cancel">
                 </td>
             
         </tr>

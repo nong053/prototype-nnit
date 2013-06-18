@@ -1,4 +1,8 @@
 <style>
+#devbord{
+padding-left: 5px; 
+width: 777px;
+}
 #devbord a{
 	color:#000;
 }
@@ -29,7 +33,7 @@
 <link href="css/webbord.css" rel="stylesheet" type="text/css" />
 
 <title>เว็บบอร์ด</title>
-<div id="devbord" style="padding-left:5px;">
+<div id="devbord" style="padding-left:0px;">
 
         <a href="index.php?page=new_topic&name_title=ตั้งกระทู้ถาม&member_user_url=<?=$_SESSION['member_user_url2']?>">ตั้งกระทู้ถาม</a>
         
@@ -76,8 +80,10 @@ font-size:13px;">
 	   include("config.inc.php");
 	  
 	   include("webbord_split.php");
-	   
-	   $strSQL="select * from topic order by topic_update desc";
+
+		echo"admin_id=$admin_id";
+
+	   $strSQL="select * from topic where admin_id=$admin_id order  by topic_update desc ";
 	   //$result=mysql_query($strSQL);
 	   $result=pu_query($dbname,$strSQL);
 	   $j=1;

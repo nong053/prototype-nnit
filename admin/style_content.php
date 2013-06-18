@@ -19,21 +19,21 @@ $rs_admin_id=mysql_fetch_array($result_admin_id);
 if(!$rs_num){
 $table="content_style";
 $field="admin_id";
-$values = $rs_admin_id['admin_id'];
-$obj_manage_data->insert_data($table,$field,$values);
+$admin_id = $rs_admin_id['admin_id'];
+$obj_manage_data->insert_data($table,$field,$admin_id);
 }
 //##### Check table home end #####
 
 //include("fckeditor/fckeditor.php");
 
-$values = $rs_admin_id['admin_id'];
+$admin_id = $rs_admin_id['admin_id'];
 if($_SESSION['admin_status']=="3"){
 echo"admin here";
-$values=1;
+$admin_id=1;
 }
 //Check User and Management by User End
 
-$result_content= $db->selectSQL("content_style where admin_id='".$values."'");
+$result_content= $db->selectSQL("content_style where admin_id='".$admin_id."'");
 $rs_content=mysql_fetch_array($result_content);
 $box_num=mysql_num_rows($result_content);
 
@@ -81,7 +81,7 @@ $content_bg_color=$rs_content[content_bg_color];
         </td>
         <td>
         <input type="file"  name="content_header" value="<?=$content_header?>"/>
-        <a href="preview_content_style.php?want=preview&TB_iframe=true&height=350&width=500" rel="sexylightbox">
+        <a href="preview_content_style.php?admin_id=<?=$admin_id?>&want=preview&TB_iframe=true&height=350&width=500" rel="sexylightbox">
         preview
         </a>
         </td>
@@ -131,10 +131,7 @@ $content_bg_color=$rs_content[content_bg_color];
 			 case'dotted':$selected_repeat1="selected";break;
 			 case'double':$selected_repeat2="selected";break;
 			 case'solid':$selected_repeat3="selected";break;
-			 
 			 case'':$selected_repeat0="selected";break;
-			 
-			
 		 }
 		 
 		 ?>

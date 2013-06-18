@@ -18,6 +18,7 @@ if($action_menu=="add"){
 $main_menu_name=$_POST['menu_name'];
 $main_menu_name_eng=$_POST['menu_name_eng'];
 $main_menu_link=$_POST['menu_link'];
+$menu_priority=$_POST['menu_priority'];
 //$main_menu_detail=$_POST['menu_detail'];
 $plugin=$_POST['plugin'];
 if($plugin!="link"){
@@ -31,7 +32,7 @@ echo"menu_detail$menu_detail<br>";
 echo"action_menu$action_menu";*/
 
 
-$strSQL="insert into main_menu(main_menu_name,main_menu_name_eng,main_menu_link,plugin,admin_id)values('$main_menu_name','$main_menu_name_eng','$main_menu_link','$plugin','$member_user_id')";
+$strSQL="insert into main_menu(main_menu_name,main_menu_name_eng,main_menu_link,menu_priority,plugin,admin_id)values('$main_menu_name','$main_menu_name_eng','$main_menu_link','$menu_priority','$plugin','$member_user_id')";
 
 $result=mysql_query($strSQL);
 if(!$result){
@@ -45,6 +46,7 @@ if($action_menu=="edit"){
 $main_menu_name=$_POST['menu_name'];
 $main_menu_name_eng=$_POST['menu_name_eng'];
 $main_menu_link=$_POST['menu_link'];
+$menu_priority=$_POST['menu_priority'];
 $plugin=$_POST['plugin'];
 $main_menu_id=$_POST['main_menu_id'];
 
@@ -55,7 +57,7 @@ echo"3$main_menu_detail<br>";
 echo"4$main_menu_link<br>";*/
 
 
-$strSQL="update main_menu set main_menu_name='$main_menu_name',main_menu_name_eng='$main_menu_name_eng',main_menu_link='$main_menu_link' ,plugin='$plugin' where main_menu_id='$main_menu_id'";
+$strSQL="update main_menu set main_menu_name='$main_menu_name',main_menu_name_eng='$main_menu_name_eng',main_menu_link='$main_menu_link' ,menu_priority='$menu_priority',plugin='$plugin' where main_menu_id='$main_menu_id'";
 $result=mysql_query($strSQL);
 if(!$result){echo"error".mysql_error();}
 }

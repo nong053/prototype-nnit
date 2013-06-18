@@ -3,10 +3,8 @@ include("../config.inc.php");
 require("class_mysql.php");
 $db=new database();
 
-
-	
-	
-$path_object="../object_system/";
+$admin_id=$_POST['admin_id'];
+$path_object="../object_system/$admin_id";
 	if(!is_dir($path_object)){
 	umask(0);
 	mkdir($path_object,777);
@@ -15,7 +13,7 @@ $button_bg=$_FILES["button_bg"]["name"];//--ต้องแก้ไข
 $button=$_FILES["button"]["name"];//--ต้องแก้ไข
 $button_over=$_FILES["button_over"]["name"];//--ต้องแก้ไข
 $button_overed=$_FILES["button_overed"]["name"];//--ต้องแก้ไข
-$admin_id=$_POST['admin_id'];
+
 
 if($button_bg){
 	$button_bg_color=$_POST['button_bg_color'];//--ต้องแก้ไข
@@ -34,7 +32,7 @@ if($button_bg){
 			{
 			$object_name=$file_1;
 			//echo"object_name$object_name<br>";
-			copy($_FILES["button_bg"]["tmp_name"],"../object_system/".$object_name);//--ต้องแก้ไข
+			copy($_FILES["button_bg"]["tmp_name"],"../object_system/$admin_id/".$object_name);//--ต้องแก้ไข
 			//echo"sucessfully";
 			
 				
@@ -45,12 +43,10 @@ if($button_bg){
 				$object_name_edit=$rs_object[button_bg];//--ต้องแก้ไข
 				
 				
-				$unlink="../object_system/$object_name_edit";
+				$unlink="../object_system/$admin_id/$object_name_edit";
 				if($unlink){
-				@unlink($unlink);//@ไม่ต้องการให้มันฟอ้งถ้าไม่มีไฟลล์ให้ลบ
+				@unlink($unlink);//@ไม่ต้องการให้มันฟ้องถ้าไม่มีไฟลล์ให้ลบ
 				//file_exists();ใช้ function นี้ตรวจสอบก่อนว่ามีไฟลล์ใหลบมั้ย
-				
-				
 				}
 
 				if($num_object){//check ถ้ามีข้อมูลอยู่แล้วให้ทำการUpdate
@@ -106,14 +102,11 @@ if($button){
 				$object_name_edit=$rs_object[button];//--ต้องแก้ไข
 				
 				
-				$unlink="../object_system/$object_name_edit";
+				$unlink="../object_system/$admin_id/$object_name_edit";
 				if($unlink){
-				@unlink($unlink);//@ไม่ต้องการให้มันฟอ้งถ้าไม่มีไฟลล์ให้ลบ
+				@unlink($unlink);//@ไม่ต้องการให้มันฟ้องถ้าไม่มีไฟลล์ให้ลบ
 				//file_exists();ใช้ function นี้ตรวจสอบก่อนว่ามีไฟลล์ใหลบมั้ย
-				
-				
 				}
-
 				if($num_object){//check ถ้ามีข้อมูลอยู่แล้วให้ทำการUpdate
 					$strSQL="UPDATE button_style SET button='$object_name',button_color='$button_color' where admin_id='$admin_id'";
 					$query=mysql_query($strSQL);
@@ -155,7 +148,7 @@ if($button_over){
 			{
 			$object_name=$file_1;
 			//echo"object_name$object_name<br>";
-			copy($_FILES["button_over"]["tmp_name"],"../object_system/".$object_name);//--ต้องแก้ไข
+			copy($_FILES["button_over"]["tmp_name"],"../object_system/$admin_id/".$object_name);//--ต้องแก้ไข
 			//echo"sucessfully";
 			
 				
@@ -166,7 +159,7 @@ if($button_over){
 				$object_name_edit=$rs_object[button_over];//--ต้องแก้ไข
 				
 				
-				$unlink="../object_system/$object_name_edit";
+				$unlink="../object_system/$admin_id/$object_name_edit";
 				if($unlink){
 				@unlink($unlink);//@ไม่ต้องการให้มันฟอ้งถ้าไม่มีไฟลล์ให้ลบ
 				//file_exists();ใช้ function นี้ตรวจสอบก่อนว่ามีไฟลล์ใหลบมั้ย
@@ -215,7 +208,7 @@ if($button_overed){
 			{
 			$object_name=$file_1;
 			//echo"object_name$object_name<br>";
-			copy($_FILES["button_overed"]["tmp_name"],"../object_system/".$object_name);//--ต้องแก้ไข
+			copy($_FILES["button_overed"]["tmp_name"],"../object_system/$admin_id/".$object_name);//--ต้องแก้ไข
 			//echo"sucessfully";
 			
 				
@@ -226,7 +219,7 @@ if($button_overed){
 				$object_name_edit=$rs_object[button_overed];//--ต้องแก้ไข
 				
 				
-				$unlink="../object_system/$object_name_edit";
+				$unlink="../object_system/$admin_id/$object_name_edit";
 				if($unlink){
 				@unlink($unlink);//@ไม่ต้องการให้มันฟอ้งถ้าไม่มีไฟลล์ให้ลบ
 				//file_exists();ใช้ function นี้ตรวจสอบก่อนว่ามีไฟลล์ใหลบมั้ย
@@ -267,7 +260,5 @@ $strSQL="UPDATE button_style SET button_font_color='$button_font_color',button_f
 $query_end=mysql_query($strSQL);
 if(!$query_end){echo"error".mysql_error();}
 
-
 echo"<script>window.location=\"index.php?page=style_system&select_page=picture_style&page_style=main_menu\"</script>";
-
 ?>

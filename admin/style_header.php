@@ -45,7 +45,6 @@ $table="object_system";
 $field="object_position,admin_id";
 $values = "'header_bg','".$admin_id."'";
 $obj_manage_data->insert_data($table,$field,$values);
-
 //add recode  	header_logo
 $table="object_system";
 $field="admin_id,object_position";
@@ -73,6 +72,7 @@ $result_header_bg = $db->selectSQL("object_system where object_position='header_
 $rs_header_bg=mysql_fetch_array($result_header_bg);
 $header_num=mysql_num_rows($result_header_bg);
 $header_bg_color=$rs_header_bg[object_color];
+
 $header_bg_width=$rs_header_bg[object_width];
 $header_bg_height=$rs_header_bg[object_height];
 

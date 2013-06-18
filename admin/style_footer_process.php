@@ -5,17 +5,16 @@ $db=new database();
 
 
 	
-	
-$path_object="../object_system/";
+$admin_id=$_POST['admin_id'];
+$path_object="../object_system/$admin_id";
 	if(!is_dir($path_object)){
 	umask(0);
 	mkdir($path_object,777);
 }
 $file_bg=$_FILES["footer_bg"]["name"];//--ต้องแก้ไข
-
 $footer_repeat=$_POST['footer_repeat'];//--ต้องแก้ไข
 $footer_color=$_POST['footer_color'];//--ต้องแก้ไข
-$admin_id=$_POST['admin_id'];
+
 $file_name=$file_bg;//--ต้องแก้ไข
 
 if($file_bg){
@@ -39,7 +38,7 @@ if($file_bg){
 			{
 			$object_name=$file_1;
 			
-			copy($_FILES["footer_bg"]["tmp_name"],"../object_system/".$object_name);//--ต้องแก้ไข
+			copy($_FILES["footer_bg"]["tmp_name"],"../object_system/$admin_id/".$object_name);//--ต้องแก้ไข
 				$result_object=$db->selectSQL("footer_style");
 				$num_object=mysql_num_rows($result_object);
 				echo"num_objec$num_object";
@@ -48,7 +47,7 @@ if($file_bg){
 				$object_name_edit=$rs_object[footer_bg];
 				
 				
-				$unlink="../object_system/$object_name_edit";
+				$unlink="../object_system/$admin_id/$object_name_edit";
 				if($unlink){
 				@unlink($unlink);//@ไม่ต้องการให้มันฟอ้งถ้าไม่มีไฟลล์ให้ลบ
 				//file_exists();ใช้ function นี้ตรวจสอบก่อนว่ามีไฟลล์ใหลบมั้ย

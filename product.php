@@ -1,9 +1,15 @@
 <style>
-#pic_small a{
+.pic_small a{
 	color:#333;
 	text-decoration:none;
+	padding-left:10px;
+	width:250px;
+	text-align:left;
 }
-#pic_txt a{
+.pic_small a b{
+	text-align:left;
+}
+.pic_txt a{
 	color:#333;
 	text-decoration:none;
 }
@@ -65,23 +71,25 @@
 	 ?>
 		
 				
-     <div id="pic_all " style="float:left; background-color:#FFF; margin-left:5px; margin-top:5px; width:210; height:300px; border:#ccc solid 1px;">
+     <div class="pic_all " style="float:left; background-color:#FFF; margin-right:5px; margin-top:5px;  width:252; height:300px; border:#ccc solid 1px;  text-align:center;">
      
-        
-        <img src="<?=$thumbnailsFile?>" border="0"  height="188" /><br>
-        <div id="pic_txt" style="padding:5px;">
+        <div class="scopePic" style="background-image:url(<?=$thumbnailsFile?>) ;background-repeat:no-repeat; height:188px; width:200px; padding:5px; margin:auto;">
+       <!-- <img src="<?=$thumbnailsFile?>" border="0"  height="188" />-->
+		</div>
+        <div class="pic_txt" style="padding:5px; border-top:1px solid #cccccc; border-bottom:1px solid #cccccc; text-align:left;">
         <a href="index.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>&name_title=<?=$product_name?>&member_user_url=<?=$_SESSION['member_user_url2']?>">
        
-       <div id="txt" style="padding:1px;"> <img src="admin/images/knowledgebase.gif" border="0" />คลิ๊กดูรายละเอียด</div>
+       <div class="txt" style="padding:1px;"> <img src="admin/images/knowledgebase.gif" border="0" />คลิ๊กดูรายละเอียด</div>
         </a>
         </div>
-        <hr />
-        <div id="pic_small">
+        
+        <div class="pic_small">
         	<a href="index.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>&name_title=<?=$product_name?>&member_user_url=<?=$_SESSION['member_user_url2']?>" >
        
         	
-			<b><?=$product_name?></b> <br>
-            <div id="title_product" style="width:180px; padding:3px;">
+			
+            <div class="title_product" style="padding-left:10px !important; padding-left:0px;">
+			<b><?=$product_name?></b> 
         	<?
             if(strlen($product_title)>51){
 			$product_title =mb_substr($product_title,0,50,"UTF-8")."...";
@@ -101,6 +109,6 @@
 
 <?php }?>	
 <br style="clear:both" />
-<br style="clear:both" />
+
 </div>
   
