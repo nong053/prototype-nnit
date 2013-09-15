@@ -57,6 +57,7 @@ $result_seo = $db->tableSQL("seo where admin_id='".$admin_id."'");
 			$object_seo_tag2=$rs_seo['seo_tag2'];
 			$object_seo_tag3=$rs_seo['seo_tag3'];
 			$object_seo_keyword=$rs_seo['seo_keyword'];
+			$name_title="โปรโมชั่นพิเศษ";
 ?>
 			
 			<title><?=$object_seo_tag1?> <?=$object_seo_tag2?> <?=$object_seo_tag3?></title>
@@ -205,6 +206,16 @@ body{
 	font-family:Tahoma, Geneva, sans-serif;
 	font-size:13px;
 	text-align:center;
+
+
+    background-position: center top;
+    background-repeat:<?=$bg_repeat?>;
+    height: 100%;
+    width: 100%;
+	background-color:<?=$bg_color?>;
+    background-image:url(object_system/<?=$admin_id?>/<?=$bg_name?>);
+
+
 }
 #body{
 	text-align:left;
@@ -484,7 +495,7 @@ background:white;
 #autocomplete{
 	float:right;
     left: 750px;
-    position: absolute;
+    /*position: absolute;*/
     top: 0;
 
 }
@@ -496,6 +507,72 @@ background:white;
 color:#cccccc;
 }
 
+
+#headerArea{
+height:35px;
+width:auto;
+z-index:5;
+background-image:url("./images_system/layout1/bg_tab.png");
+}
+#headerArea #hederContent{
+	width:1000px;
+	text-align:left;
+	margin:auto;
+	
+}
+#headerArea #hederContent #headerLeft{
+	width:600px;
+	height:30px;
+	float:left;
+}
+#headerArea #hederContent #headerLeft #icon_tw{
+float:left;
+width:84px;
+background-image:url("./images_system/layout1/icon-fb.jpg");
+
+}
+#headerArea #hederContent #headerLeft #icon_tw .title_icon{
+padding:7px;
+}
+#headerArea #hederContent #headerLeft #icon_tw .title_icon a{
+color:white;
+text-decoration:none;
+padding-left:20px;
+}
+
+#headerArea #hederContent #headerLeft #icon_fw{
+float:left;
+width:84px;
+background-image:url("./images_system/layout1/icon-tw.jpg");
+}
+#headerArea #hederContent #headerLeft #icon_fw .title_icon{
+padding:7px;
+}
+#headerArea #hederContent #headerLeft #icon_fw .title_icon a{
+color:white;
+text-decoration:none;
+padding-left:20px;
+}
+
+#headerArea #hederContent #headerLeft .iconTop{
+float:left;
+width:50px;
+}
+#headerArea #hederContent #headerLeft .iconTop .title_icon{
+padding:7px;
+}
+#headerArea #hederContent #headerLeft .iconTop .title_icon a{
+color:white;
+text-decoration:none;
+padding-left:20px;
+}
+
+#headerArea #hederContent #headerRight{
+	width:300px;
+	height:30px;
+	float:right;
+
+}
 /*/footer*/
 
 
@@ -504,13 +581,57 @@ color:#cccccc;
 
 </head>
 
-<body style="background-color:<?=$bg_color?>; background-image:url(object_system/<?=$bg_name?>); background-repeat:<?=$bg_repeat?>;">
+<body>
 	
    
     
     
-    
+    <div id="headerArea">
+		<div id="hederContent">
+			<div id="headerLeft">
+
+				<div id="icon_tw">
+						<div class="title_icon">
+							<a href="http://www.twitter.com"> Sign in </a>
+						</div>
+				</div>
+				<div id="icon_fw">
+						<div class="title_icon">
+						<a href="http://www.fadebook.com"> Sign in </a>
+						</div>
+				</div>
+				<div class="iconTop">
+						<div class="title_icon">
+						<a href="login.php"> Login </a>
+						</div>
+					</div>
+				<div class="iconTop">
+						<div class="title_icon">
+						<a href="index.php?page=register&name_title=สมัครสมาชิก"> Register </a>
+						</div>
+				</div>
+			</div>
+
+			<div id="headerRight">
+				  <div id="autocomplete">
+								<form action="" >
+									<table>
+										<tr>
+											<td>
+											<input type="text" id="txtSearch"  name="txtSearch"  value="Search here"/>
+											</td>
+											<td>
+											<input type="button" id="btnSubmit" name="btnSubmit" value="ค้นหาข้อมูล" />
+											</td>
+										</tr>
+									</table>
+								</form>
+					</div>
+			</div>
+		</div>
+	</div>
 	<div id="body" style="background-color:<?=$bg_web_color?>;">
+	
 	<?
 	if($_SESSION['cus_name']){
 	?>
@@ -534,20 +655,7 @@ color:#cccccc;
 			</div>
             <div id="top_banner" style="background-color:<?=$object_color_banner?>;">
             <img src="object_system/<?=$admin_id?>/<?=$object_name_banner?>" width="<?=$object_width_logo?>" height="<?=$object_height_logo?>" />
-            <div id="autocomplete">
-            <form action="" >
-            	<table>
-                	<tr>
-                    	<td>
-                        <input type="text" id="txtSearch"  name="txtSearch"  value="Search here"/>
-                        </td>
-                        <td>
-                        <input type="button" id="btnSubmit" name="btnSubmit" value="ค้นหาข้อมูล" />
-                        </td>
-                    </tr>
-                </table>
-            </form>
-            </div>
+            
             </div>
             
             <br style="clear:both" />
@@ -601,6 +709,25 @@ color:#cccccc;
 		<!-- title navigator end-->
         <div id="bg_content">
         	<div id="bg_box_left" >
+				<div id="counter_user">
+					<img src="images_system/layout1/banner3_08.png">
+				</div>
+				<div id="status_server">
+					<img src="images_system/layout1/status_server.jpg">
+				</div>
+				<div id="list_package">
+					<img src="images_system/layout1/banner3_10.png">
+				</div>
+				<div class="us_service">
+					<img src="images_system/layout1/banner3_06.png">
+				</div>
+				<div class="us_service">
+					<img src="images_system/layout1/banner3_03.png">
+				</div>
+				
+				<div class="us_service">
+					<img src="images_system/layout1/banner_promote.jpg">
+				</div>
             	<div class="box_left shadow">
             		<div class="box_top">
                 	<div class="b" style="padding-left:5px;">หมวดสินค้า</div>
@@ -654,14 +781,16 @@ color:#cccccc;
                 	</div>
                  </div>
                  <br style="clear:both" />
-                 
+                
                  <div class="box_left shadow">
             		<div class="box_top">
                 	<div class="b" style="padding-left:5px;">ลงชื่อเข้าใช้งาน</div>
                 	</div>
                 	<div class="box_center">
                     <div style="padding:5px;">
+				
                    		<!--form_Login-->
+						
 		 <form action="login_process.php" method="post">
 		 		<div class="menu_content_login">
 		 			<div id="menu_content_login_c" style="padding-left:5px;">
@@ -704,13 +833,16 @@ color:#cccccc;
 					
 		   </div>
 		 </form>
+		
 		 <!-- form Login-->
+		
             		</div>	
             			
                 	</div>
                  </div>
                 <br style="clear:both" />
-                
+          
+			
                 <div class="box_left shadow">
             		<div class="box_top">
                 	<div class="b" style="padding-left:5px;">Link ผู้สนันสนุน</div>

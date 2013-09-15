@@ -2,20 +2,22 @@
 include("../config.inc.php");
 require("class_mysql.php");
 $db=new database();
-
-$path_object="../object_system/";
-	if(!is_dir($path_object)){
-	umask(0);
-	mkdir($path_object,777);
-}
 $file_bg=$_FILES["bg_picture"]["name"];//--ต้องแก้ไข
-
 $bg_repeat=$_POST['bg_repeat'];//--ต้องแก้ไข
 $bg_position=$_POST['bg_position'];//--ต้องแก้ไข
 $bg_color=$_POST['bg_color'];//--ต้องแก้ไข
 $bg_web_color=$_POST['bg_web_color'];//--ต้องแก้ไข
 $file_name=$file_bg;//--ต้องแก้ไข
 $admin_id=$_POST['admin_id'];
+
+
+$path_object="../object_system/$admin_id/";
+	if(!is_dir($path_object)){
+	umask(0);
+	mkdir($path_object,777);
+}
+
+
 
 if($file_bg){
 	
@@ -38,13 +40,13 @@ if($file_bg){
 			{
 			$object_name=$file_1;
 			
-			copy($_FILES["bg_picture"]["tmp_name"],"../object_system/".$object_name);//--ต้องแก้ไข
+			copy($_FILES["bg_picture"]["tmp_name"],"../object_system/$admin_id/".$object_name);//--ต้องแก้ไข
 				$result_object=$db->selectSQL("bg_style");
 				$num_object=mysql_num_rows($result_object);
 				$rs_object=mysql_fetch_array($result_object);
 				$object_position_edit=$rs_object[bg_position];
 				$object_name_edit=$rs_object[bg_name];
-				$unlink="../object_system/$object_name_edit";
+				$unlink="../object_system/$admin_id/$object_name_edit";
 				if($unlink){
 				@unlink($unlink);//@ไม่ต้องการให้มันฟอ้งถ้าไม่มีไฟลล์ให้ลบ
 				//file_exists();ใช้ function นี้ตรวจสอบก่อนว่ามีไฟลล์ใหลบมั้ย

@@ -21,20 +21,20 @@ $rs_admin_id=mysql_fetch_array($result_admin_id);
 if(!$rs_num){
 $table="bg_style";
 $field="admin_id";
-$values = $rs_admin_id['admin_id'];
-$obj_manage_data->insert_data($table,$field,$values);
+$admin_id = $rs_admin_id['admin_id'];
+$obj_manage_data->insert_data($table,$field,$admin_id);
 }
 //##### Check table home end #####
 
 //include("fckeditor/fckeditor.php");
 
-$values = $rs_admin_id['admin_id'];
+$admin_id = $rs_admin_id['admin_id'];
 if($_SESSION['admin_status']=="3"){
 echo"admin here";
-$values=1;
+$admin_id=1;
 }
 
-$result_bg = $db->selectSQL("bg_style where admin_id='".$values."'");
+$result_bg = $db->selectSQL("bg_style where admin_id='".$admin_id."'");
 $rs_bg=mysql_fetch_array($result_bg);
 $bg_num=@mysql_num_rows($rs_bg);
 $bg_name=$rs_bg[bg_name];
@@ -77,7 +77,7 @@ $bg_web_color=$rs_bg[bg_web_color];
     </tr>
         <td>
         <input type="file"  name="bg_picture"/>
-        <a href="preview_style_process.php?want=preview&bg_id=1&TB_iframe=true&height=350&width=500" rel="sexylightbox">
+        <a href="preview_style_process.php?want=preview&admin_id=<?=$admin_id?>&bg_id=1&TB_iframe=true&height=350&width=500" rel="sexylightbox">
         preview
         </a>
         </td>

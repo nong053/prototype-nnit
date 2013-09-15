@@ -14,12 +14,15 @@ $db=new database();
 if($_GET['want']=="preview"){
 	
 	$bg_id=$_GET['bg_id'];
+	echo"bg_id---->$bg_id";
+	$admin_id=$_GET['admin_id'];
 	//echo"object_position------->$object_position";
-	$result_preview = $db->selectSQL("bg_style where bg_id='$bg_id'");
+	$result_preview = $db->selectSQL("bg_style where admin_id='$admin_id'");
 	$rs_preview=mysql_fetch_array($result_preview);
 	$preview_object=$rs_preview[bg_name];
+	
 	echo"preview_object---->$preview_object";
-	$img="../object_system/$preview_object";
+	$img="../object_system/$admin_id/$preview_object";
 	if(!$preview_object){
 		echo"ไม่มีไฟล์ข้อมูล";
 	}else{

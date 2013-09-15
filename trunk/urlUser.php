@@ -9,7 +9,7 @@
 	if($rs_num){
 		$userUrlId=$_GET['userUrlId'];
 		$_SESSION['member_user_url']=$userUrlId;
-		echo"<script>window.location=\"./index.php?page=home\"</script>";
+		echo"<script>window.location=\"../index.php?page=home\"</script>";
 		//Usering on hosting
 		//echo"<script>window.location=\"../index.php?page=home\"</script>";
 	}else{
