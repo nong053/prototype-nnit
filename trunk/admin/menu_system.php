@@ -340,14 +340,14 @@ $i++;
 
 		  switch($plugin_edit){
 			  case"":$selected1="selected";break;
-			  case"index.php?page=home":$selected2="selected";break;
-			  case"index.php?page=product":$selected3="selected";break;
-			  case"index.php?page=hotel":$selected4="selected";break;
+			  case"dispatcher.php?page=home":$selected2="selected";break;
+			  case"dispatcher.php?page=product":$selected3="selected";break;
+			  case"dispatcher.php?page=hotel":$selected4="selected";break;
 			  case"map":$selected5="selected";break;
 			  case"article":$selected6="selected";break;
 			  case"article_ge":$selected7="selected";break;
-			  case"index.php?page=webboard":$selected8="selected";break;
-			  case"index.php?page=contact":$selected9="selected";break;
+			  case"dispatcher.php?page=webboard":$selected8="selected";break;
+			  case"dispatcher.php?page=contact":$selected9="selected";break;
 			  case"link":$selected10="selected";break;
 		  }
 		  ?>
@@ -356,14 +356,14 @@ $i++;
           <option value="" <?=$selected1?>>
             ไม่เลือกส่วนเสริม
             </option>
-            <option value="index.php?page=home" <?=$selected2?>>
+            <option value="dispatcher.php?page=home" <?=$selected2?>>
             หน้าแรก
             </option>
             
-          	<option value="index.php?page=product" <?=$selected3?>>
+          	<option value="dispatcher.php?page=product" <?=$selected3?>>
             Product
             </option>
-            <option  value="index.php?page=hotel" <?=$selected4?>>
+            <option  value="dispatcher.php?page=hotel" <?=$selected4?>>
             Hotel
             </option>
             <option  value="map" <?=$selected5?> disabled="disabled">
@@ -375,10 +375,10 @@ $i++;
             <option  value="article_ge" <?=$selected7?>>
             บทความทั่วไป
             </option>
-            <option  value="index.php?page=webboard" <?=$selected8?>>
+            <option  value="dispatcher.php?page=webboard" <?=$selected8?>>
             เว็บบอร์ด
             </option>
-            <option  value="index.php?page=contact" <?=$selected9?>>
+            <option  value="dispatcher.php?page=contact" <?=$selected9?>>
             ติดต่อเรา
             </option>
              <option  value="link" <?=$selected10?>>

@@ -77,14 +77,14 @@
        <!-- <img src="<?=$thumbnailsFile?>" border="0"  height="188" />-->
 		</div>
         <div class="pic_txt" style="padding:5px; border-top:1px solid #cccccc; border-bottom:1px solid #cccccc; text-align:left;">
-        <a href="index.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>&name_title=<?=$product_name?>&member_user_url=<?=$_SESSION['member_user_url2']?>">
+        <a href="dispatcher.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>&name_title=<?=$product_name?>&member_user_url=<?=$_SESSION['member_user_url2']?>">
        
        <div class="txt" style="padding:1px;"> <img src="admin/images/knowledgebase.gif" border="0" />คลิ๊กดูรายละเอียด</div>
         </a>
         </div>
         
         <div class="pic_small">
-        	<a href="index.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>&name_title=<?=$product_name?>&member_user_url=<?=$_SESSION['member_user_url2']?>" >
+        	<a href="dispatcher.php?page=product_detail&product_id=<?=$product_id?>&productcat_id=<?=$productcat_id?>&name_title=<?=$product_name?>&member_user_url=<?=$_SESSION['member_user_url2']?>" >
        
         	
 			

@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!--<link href="template/template1/css/index.css" type="text/css" rel="stylesheet"/>-->
+<!--<link href="template/template1/css/dispatcher.css" type="text/css" rel="stylesheet"/>-->
 <!-- import jquery and jquery ui start-->
 <!--
 <link href="jQueryUI/css/smoothness/jquery-ui-1.8.20.custom.css" rel="stylesheet" type="text/css" />
@@ -34,6 +34,7 @@ $obj_manage_data = new manage_data();
 
 /*##########ดึง oject มาใช้งาน End*/
 $member_user_url=trim($_SESSION['member_user_url2']);
+
 //ทำการ select admin_id ออกมาจาก admin
 $query_admin_id="select admin_id from admin where admin_username='".$member_user_url."'";
 $result_admin_id=$obj_manage_data->select_data_proc($query_admin_id);
@@ -194,6 +195,9 @@ a{
 			$footer_bg =$rs_footer['footer_bg'];
 			$footer_repeat =$rs_footer['footer_repeat'];
 			$footer_color  =$rs_footer['footer_color'];
+
+		
+			
 			
 	 ?>
 <style>
@@ -607,7 +611,7 @@ padding-left:20px;
 					</div>
 				<div class="iconTop">
 						<div class="title_icon">
-						<a href="index.php?page=register&name_title=สมัครสมาชิก"> Register </a>
+						<a href="dispatcher.php?page=register&name_title=สมัครสมาชิก"> Register </a>
 						</div>
 				</div>
 			</div>
@@ -636,7 +640,7 @@ padding-left:20px;
 	if($_SESSION['cus_name']){
 	?>
 	  <div id="status_user_online" style="font-size:16px; padding:5px; float:left;">คุณ<?=$_SESSION['cus_name']?>กำลังอยู่ในระบบ  </div>
-       <div id="status_user_online" style="font-size:16px; padding:5px; float:right;"><input type="button" onclick="window.location='index.php?logout=logout&member_user_url=<?=$_SESSION['member_user_url2']?>'"  value="ออกจากระบบ"/> </div>
+       <div id="status_user_online" style="font-size:16px; padding:5px; float:right;"><input type="button" onclick="window.location='dispatcher.php?logout=logout&member_user_url=<?=$_SESSION['member_user_url2']?>'"  value="ออกจากระบบ"/> </div>
       <br style="clear:both" />
 	  <?
 	  }
@@ -644,7 +648,7 @@ padding-left:20px;
 		  //session_destroy();
 		  unset($_SESSION["cus_name"]); 
 		 $member_user_url= $_GET['member_user_url'];
-		  echo"<script>window.location='index.php?member_user_url=".$member_user_url."'</script>";
+		  echo"<script>window.location='dispatcher.php?member_user_url=".$member_user_url."'</script>";
 	  }
 	  ?>
      <div id="bg_header" style="background-color:<?=$object_color_header?>; background-image:url(object_system/<?=$admin_id?>/<?=$object_name_header?>); height:<?=$object_height_header?>px;">
@@ -668,9 +672,9 @@ padding-left:20px;
                 $result_main_menu = $db->tableSQL("main_menu where admin_id='".$admin_id."' order by menu_priority asc");
 				while($rs_main_menu = mysql_fetch_array($result_main_menu)){
               if($rs_main_menu[plugin]=="article"){
-				  $link_main__menu="index.php?page=article&main_menu_id=$rs_main_menu[main_menu_id]&member_user_url=".$_SESSION['member_user_url2']."";
+				  $link_main__menu="dispatcher.php?page=article&main_menu_id=$rs_main_menu[main_menu_id]&member_user_url=".$_SESSION['member_user_url2']."";
                   }else if($rs_main_menu[plugin]=="article_ge"){
-				  	 $link_main__menu="index.php?page=article&main_menu_id=$rs_main_menu[main_menu_id]&article_ge=article_ge&member_user_url=".$_SESSION['member_user_url2']."";
+				  	 $link_main__menu="dispatcher.php?page=article&main_menu_id=$rs_main_menu[main_menu_id]&article_ge=article_ge&member_user_url=".$_SESSION['member_user_url2']."";
 				  }else if($rs_main_menu[plugin]=="link"){
 					 $link_main__menu="$rs_main_menu[main_menu_link]&member_user_url=".$_SESSION['member_user_url2'].""; 
 				  }else{
@@ -690,7 +694,7 @@ padding-left:20px;
                     <li style="float:right;">
 					<!--
 						<div class="text">
-						<a href="index.php?page=cart&member_user_url=<?=$_SESSION['member_user_url2']?>">
+						<a href="dispatcher.php?page=cart&member_user_url=<?=$_SESSION['member_user_url2']?>">
 						ตระกร้าสินค้า
 						</a>
 						</div>
@@ -710,7 +714,10 @@ padding-left:20px;
         <div id="bg_content">
         	<div id="bg_box_left" >
 				<div id="counter_user">
-					<img src="images_system/layout1/banner3_08.png">
+					<!--<img src="images_system/layout1/banner3_08.png">-->
+					<?php
+					include_once("counter_user.php");
+					?>
 				</div>
 				<div id="status_server">
 					<img src="images_system/layout1/status_server.jpg">
@@ -740,7 +747,7 @@ padding-left:20px;
 							while($rs_productcat=mysql_fetch_array($result_productcat)){
                             ?>
                             	<li>
-                                <a href="index.php?page=product&productcat_id=<?=$rs_productcat[productcat_id]?>&name_title=<?=$rs_productcat[productcat_name]?>&member_user_url=<?=$_SESSION['member_user_url2']?>"><font style="padding-left:5px;"><?=$rs_productcat[productcat_name]?></font></a>
+                                <a href="dispatcher.php?page=product&productcat_id=<?=$rs_productcat[productcat_id]?>&name_title=<?=$rs_productcat[productcat_name]?>&member_user_url=<?=$_SESSION['member_user_url2']?>"><font style="padding-left:5px;"><?=$rs_productcat[productcat_name]?></font></a>
                                 </li>
                             <?
 							}
@@ -768,7 +775,7 @@ padding-left:20px;
 							while($rs_article=mysql_fetch_array($result_article)){
                             ?>
                             	<li>
-                                <a href="index.php?page=article&article_id=<?=$rs_article[article_id];?>&name_title=<?=$rs_article[article_name]?>&member_user_url=<?=$_SESSION['member_user_url2']?>"><span style="padding-left:5px;"><?=$rs_article[article_name];?></span></a>
+                                <a href="dispatcher.php?page=article&article_id=<?=$rs_article[article_id];?>&name_title=<?=$rs_article[article_name]?>&member_user_url=<?=$_SESSION['member_user_url2']?>"><span style="padding-left:5px;"><?=$rs_article[article_name];?></span></a>
                                 </li>
                             <?
 							}
@@ -815,14 +822,14 @@ padding-left:20px;
 						<td>
 						<input type="submit" name="submit" value="ตกลง"  />
 						<input type="hidden" name="member_user_url" id="member_user_url" value="<?=$_SESSION['member_user_url2']?>">
-						<br><a href="index.php?page=register&member_user_url=<?=$_SESSION['member_user_url2']?>">สมัครสมาชิก</a><br>
-                        <a href="index.php?page=forgot_pass&member_user_url=<?=$_SESSION['member_user_url2']?>">ลืมรหัสผ่าน</a><br>
+						<br><a href="dispatcher.php?page=register&member_user_url=<?=$_SESSION['member_user_url2']?>">สมัครสมาชิก</a><br>
+                        <a href="dispatcher.php?page=forgot_pass&member_user_url=<?=$_SESSION['member_user_url2']?>">ลืมรหัสผ่าน</a><br>
                         <?
 						if($_SESSION['cus_id']){
 							?>
-                            <a href="index.php?page=customer_area&select_member=member_add&member_user_url=<?=$_SESSION['member_user_url2']?>">ข้อมูลสมาชิก</a><br>
-                            <a href="index.php?page=customer_area&select_member=payment&member_user_url=<?=$_SESSION['member_user_url2']?>">แจ้งการชำระเงิน</a><br>
-                            <a href="index.php?page=customer_area&select_member=status_order&member_user_url=<?=$_SESSION['member_user_url2']?>">สถานะการสั่งซื้อ</a><br>
+                            <a href="dispatcher.php?page=customer_area&select_member=member_add&member_user_url=<?=$_SESSION['member_user_url2']?>">ข้อมูลสมาชิก</a><br>
+                            <a href="dispatcher.php?page=customer_area&select_member=payment&member_user_url=<?=$_SESSION['member_user_url2']?>">แจ้งการชำระเงิน</a><br>
+                            <a href="dispatcher.php?page=customer_area&select_member=status_order&member_user_url=<?=$_SESSION['member_user_url2']?>">สถานะการสั่งซื้อ</a><br>
                             <?
 						}
 						?>
@@ -858,7 +865,7 @@ padding-left:20px;
 								$pic_id=$rs_banner_sum[pic_id];
 								
 								
-									$link_banner="index.php?page=banner_detail&pic_id=$pic_id&name_title=รายละเอียด&member_user_url=".$_SESSION['member_user_url2']."";
+									$link_banner="dispatcher.php?page=banner_detail&pic_id=$pic_id&name_title=รายละเอียด&member_user_url=".$_SESSION['member_user_url2']."";
 								
 							
 							}
@@ -1040,9 +1047,9 @@ padding-left:20px;
                 $result_main_menu = $db->tableSQL("main_menu where admin_id='".$admin_id."'");
 				while($rs_main_menu = mysql_fetch_array($result_main_menu)){
               if($rs_main_menu[plugin]=="article"){
-				  $link_main__menu="index.php?page=article&main_menu_id=$rs_main_menu[main_menu_id]";
+				  $link_main__menu="dispatcher.php?page=article&main_menu_id=$rs_main_menu[main_menu_id]";
                   }else if($rs_main_menu[plugin]=="article_ge"){
-				  	 $link_main__menu="index.php?page=article&main_menu_id=$rs_main_menu[main_menu_id]&article_ge=article_ge";
+				  	 $link_main__menu="dispatcher.php?page=article&main_menu_id=$rs_main_menu[main_menu_id]&article_ge=article_ge";
 				  }else if($rs_main_menu[plugin]=="link"){
 					 $link_main__menu="$rs_main_menu[main_menu_link]"; 
 				  }else{

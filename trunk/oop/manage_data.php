@@ -2,9 +2,19 @@
 <?php
 class connect_mysql{
 	var $var_hostname = "localhost";
+	
 	var $var_user = "root";
 	var $var_pass ="root";
 	var $var_dbname= "prototype_db";
+	
+/*
+	var $var_user = "service_user";
+	var $var_pass ="010535546";
+	var $var_dbname= "service_db";
+
+*/
+
+
 
 	function set_host_user_pass_dbname(){
 		extract($_REQUEST);
@@ -49,6 +59,29 @@ class manage_data extends connect_mysql{
 			}
 			mysql_close();
 		}
+
+	function  insert_query($query){
+		$strSQL="$query";
+		connect_mysql::set_host_user_pass_dbname();
+		$result=mysql_query($strSQL);
+			if(!$result){echo"error".mysql_error();}else
+			{
+			return "ok for result insert";
+			}
+			mysql_close();
+		}
+	
+	function  update_query($query){
+		$strSQL="$query";
+		connect_mysql::set_host_user_pass_dbname();
+		$result=mysql_query($strSQL);
+			if(!$result){echo"error".mysql_error();}else
+			{
+			return "ok for result insert";
+			}
+			mysql_close();
+		}
+
 	function edit_data($table,$setfield,$condition){
 		connect_mysql::set_host_user_pass_dbname();
 		$strSQL="UPDATE $table SET $setfield WHERE $condition";
