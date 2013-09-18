@@ -31,6 +31,12 @@ function CheckAuthentication()
 	// forget to add session_start() at the top of this file.
 
 	if($_SESSION['member_user_url2']){
+		$picturecat_path=$_SESSION['member_user_url2'];
+		//$picturecat_path="/userfiles/".$_SESSION['member_user_url2'];
+		if(!is_dir($picturecat_path)){
+		umask(0);
+		mkdir("userfiles/".$picturecat_path,0777);
+		}
 	return true;
 	}else{
 	return false;
@@ -65,7 +71,8 @@ Examples:
 	$baseUrl = 'http://example.com/ckfinder/files/';
 	*/
 	//$baseUrl = '/userfiles/';
-	$baseUrl = '/prototype-nnit/nongLogin/';
+	//$baseUrl = "/prototype-nnit/".$_SESSION['member_user_url2']."/";
+	$baseUrl = "/userfiles/".$_SESSION['member_user_url2']."/";
 /*
 ATTENTION: The trailing slash is required.
 */
