@@ -102,7 +102,7 @@ $result_select_user=$obj_manage_data->select_data_proc($query_select_user);
 //$rs_select_user=mysql_fetch_array($result_select_user);
 $user =mysql_num_rows($result_select_user);
 
-
+//$counter_bg
 //Show Useronline
 ?>
 <style>
@@ -113,7 +113,8 @@ $user =mysql_num_rows($result_select_user);
 	#counterArea{
 	width:200px;
 	height:200px;
-	background-image:url("./images_system/layout1/counterBg.png");
+	/*background-image:url("./images_system/layout1/counterBg.png");*/
+	background-image:url(object_system/<?=$admin_id?>/<?=$counter_bg?>);
 	}
 	#counterArea #counterAreaTitle{
 	padding-top:25px;

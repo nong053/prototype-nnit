@@ -1,13 +1,15 @@
 <?php ob_start(); session_start();
 
 if($_GET['member_user_url']){
+
 $_SESSION['member_user_url2']=$_GET['member_user_url'];
 }else{
 $_SESSION['member_user_url2']=$_SESSION['member_user_url'];
 }
+
 if($_SESSION['member_user_url2']==""){
-	//defalult ถ้าไม่มีการlogin ให้ค่าเริ่มต้นเป็น workphp
-	$_SESSION['member_user_url2']="workphp";
+	//defalult  webpage www.nn-webready.com
+	$_SESSION['member_user_url2']="www.nn-webready.com";
 }
 ?>
 

@@ -13,13 +13,18 @@ if(count($userAsUrl)>2){
 }else{
 	$userUrlId=$userAsUrl[0];
 }
-//echo "host".$host."<br>";
+//echo "host=".$host."<br>";
+//echo "userUrlId=".$userUrlId."<br>";
+//echo "userAsUrl[1]=".$userAsUrl[0]."<br>";
+//echo "userAsUrl[2]=".$userAsUrl[1]."<br>";
+//echo "userAsUrl[3]=".$userAsUrl[2]."<br>";
 
-if(($host!="www.nn-it.com") and ($host!="nn-it.com") and($host!="localhost:9999")){
+
+if(($host!="www.nn-webready.com") and ($host!="nn-webready.com") and($host!="localhost:9999")){
 	//echo $host."!="."www.nn-it.com";
 	echo"<script>window.location=\"../$userUrlId\"</script>";
 }else{
-	echo"<script>window.location=\"../workphp\"</script>";
+	echo"<script>window.location=\"../nn-webready\"</script>";
 }
 
 

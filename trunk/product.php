@@ -24,9 +24,16 @@
 	 if($productcat_id){
 	 $strSQL="select * from product where productcat_id='$productcat_id' order by product_name";
 	 }else{
-	 $strSQL="select * from product order by product_name";
+	 $strSQL="select p.*,pc.admin_id
+from product p
+INNER JOIN productcat pc
+where pc.admin_id='$admin_id'
+AND p.productcat_id=pc.productcat_id
+order by product_name";
 	 }
 	 $result=mysql_query($strSQL);
+	 $renum = mysql_num_rows($result);
+	//echo"renum=$renum";
 	 while($rs=mysql_fetch_array($result)){
 	 $product_name=$rs[product_name];
 	 $product_title=$rs[product_title];

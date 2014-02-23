@@ -19,6 +19,7 @@ function doajax(mydata){
 			document.form1.menu_name.value="";
 			/*document.form1.menu_detail.value="";*/
 			document.form1.menu_link.value="http://www.";
+			//alert(ajax1.responseText);
 			alert('บันทึกข้อมูลเรียบร้อยแล้ว');
 			location.reload(true);
 
@@ -45,8 +46,9 @@ function doajax(mydata){
 		return false;
 		
 	} else{
-		
-	ajax1.send("menu_name="+document.form1.menu_name.value+"&menu_name_eng="+document.form1.menu_name_eng.value+"&menu_link="+document.form1.menu_link.value+"&action_menu="+document.form1.action_menu.value+"&main_menu_id="+document.form1.main_menu_id.value+"&plugin="+document.form1.plugin.value+"&menu_priority="+document.form1.menu_priority.value);
+		//alert(document.form1.member_user_id.value);
+		//alert(document.form1.action_menu.value);
+	ajax1.send("menu_name="+document.form1.menu_name.value+"&menu_name_eng="+document.form1.menu_name_eng.value+"&menu_link="+document.form1.menu_link.value+"&member_user_id="+document.form1.member_user_id.value+"&action_menu="+document.form1.action_menu.value+"&main_menu_id="+document.form1.main_menu_id.value+"&plugin="+document.form1.plugin.value+"&menu_priority="+document.form1.menu_priority.value);
 	
 	}
 }
@@ -396,6 +398,8 @@ $i++;
           </tr>
 		  <tr>
             <td>
+			
+			<input type="hidden" name="member_user_id" id="member_user_id" value="<?=$member_user_id?>">
              
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="menu_link" value="<?=$http?><?=$main_menu_link_edit?>" style="color:#999; width:200px; background-color:#FFC;"  />
             

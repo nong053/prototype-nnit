@@ -5,7 +5,7 @@
 -- โฮสต์: localhost
 -- เวลาในการสร้าง: 
 -- รุ่นของเซิร์ฟเวอร์: 5.0.51
--- รุ่นของ PHP: 5.2.6
+-- รุ่นของ PHP: 5.2.9-2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -62,8 +62,8 @@ CREATE TABLE `admin` (
 -- dump ตาราง `admin`
 -- 
 
-INSERT INTO `admin` VALUES (1, 'admin', 'admin', '11', '11', '3', 'nn.it@hotmail.com', 'www.test.com', '', '', '');
-INSERT INTO `admin` VALUES (2, 'rest', 'tes', 'test', 'test', '1', 'nn.it@hotmail.com', 'tes', '', '', '');
+INSERT INTO `admin` VALUES (1, 'admin', 'admin', '11', '11', '3', 'nn.it@hotmail.com', 'www.nn-webready.com', '', '', '');
+INSERT INTO `admin` VALUES (2, 'rest', 'tes', 'test', 'test', '1', 'nn.it@hotmail.com', 'test', '', '', '');
 INSERT INTO `admin` VALUES (3, 'rchanel', 'rchanel', 'rchanel', '1234', '1', 'rchanel@hotmail.com', 'www.rchaneltv.com', '', '', '');
 INSERT INTO `admin` VALUES (157, '11', '11', '1123', '11', 'check', '11', NULL, NULL, '11', '11');
 INSERT INTO `admin` VALUES (158, '11', '11', '11233', '11', 'check', '11', NULL, NULL, '11', '11');
@@ -400,6 +400,25 @@ CREATE TABLE `counter` (
 -- 
 
 INSERT INTO `counter` VALUES (1201);
+
+-- --------------------------------------------------------
+
+-- 
+-- โครงสร้างตาราง `counter_user`
+-- 
+
+CREATE TABLE `counter_user` (
+  `counter` int(255) NOT NULL,
+  `admin_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- 
+-- dump ตาราง `counter_user`
+-- 
+
+INSERT INTO `counter_user` VALUES (76, 179);
+INSERT INTO `counter_user` VALUES (5, 1);
+INSERT INTO `counter_user` VALUES (3, 2);
 
 -- --------------------------------------------------------
 
@@ -751,16 +770,18 @@ CREATE TABLE `home` (
   `home_detail` text NOT NULL,
   `home_title_eng` text NOT NULL,
   `home_detail_eng` text NOT NULL,
-  `admin_id` varchar(255) default NULL,
-  PRIMARY KEY  (`home_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `admin_id` int(255) default NULL,
+  PRIMARY KEY  (`home_id`),
+  KEY `admin_id` (`admin_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 -- 
 -- dump ตาราง `home`
 -- 
 
-INSERT INTO `home` VALUES (1, '', '<p>\r\n	<img alt="" src="/ckfinder/userfiles/images/564630_412436118772743_283313225018367_1784497_1125432247_n.jpg" style="width: 700px; height: 644px;" /></p>\r\n', '', '', '');
-INSERT INTO `home` VALUES (2, '', '\r\n<table border="0" cellpadding="1" cellspacing="1" height="337" width="539">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n				<img alt="" height="417" src="/prototype-nnit/workphp/images/m-elem1.png" width="240" /></td>\r\n			<td>\r\n				<img alt="" height="396" src="/prototype-nnit/workphp/images/m-elem2.png" width="237" /></td>\r\n			<td>\r\n				<img alt="" height="400" src="/prototype-nnit/workphp/images/m-elem3.png" width="252" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td style="text-align: center;">\r\n				Kendo UI Mobile<br />\r\n				on iOS</td>\r\n			<td style="text-align: center;">\r\n				Kendo UI Mobile<br />\r\n				on Android</td>\r\n			<td style="text-align: center;">\r\n				Kendo UI Mobile<br />\r\n				on BlackBerry OS</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n<p style="text-align: center;">\r\n	<img alt="" height="154" src="/prototype-nnit/workphp/images/button_kendo.jpg" width="686" /></p>\r\n<div class="c34 fn ma">\r\n	<h2 class="mt50 mb30 tac">\r\n		WinPhone8, iOS, Android, BlackBerry and beyond</h2>\r\n	<p class="mb30">\r\n		The UI widgets match the theming and functionality behavior of native controls available for iOS, Android, BlackBerry and (NEW!) WinPhone8 development, including buttons, navigation, and lists.</p>\r\n	<p class="mb70">\r\n		With Kendo UI&rsquo;s flexible styling system, developers can further customize Kendo UI Mobile themes easily to match any mobile environment.</p>\r\n	<table border="0" cellpadding="1" cellspacing="1" height="648" width="725">\r\n		<tbody>\r\n			<tr>\r\n				<td>\r\n					<div class="c20 fl ml20 mr100">\r\n						<h2 class="mt60">\r\n							Customize mobile themes &amp; widgets</h2>\r\n						<p>\r\n							When the out-of-the-box mobile themes are not enough, you can use the Mobile ThemeBuilder tool to quickly modify the styles of Kendo UI Mobile widgets as they exist in your apps with an easy to use standalone tool. The simple and intuitive point-and-click configuration wizard makes it a breeze to transform Kendo UI Mobile themes, providing you with the CSS output for use in your app. Try the <a href="http://demos.kendoui.com/themebuilder/mobile.html">Mobile ThemeBuilder</a> now to see how easy it is to customize mobile themes and widgets.</p>\r\n					</div>\r\n				</td>\r\n				<td>\r\n					<img alt="" src="/prototype-nnit/workphp/images/mobile-themebuilder.png" style="width: 436px; height: 594px;" /></td>\r\n			</tr>\r\n		</tbody>\r\n	</table>\r\n</div>\r\n<table border="0" cellpadding="1" cellspacing="1" height="499" width="715">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n				<img alt="" src="/prototype-nnit/workphp/images/m-elem7.png" style="width: 476px; height: 458px;" /></td>\r\n			<td>\r\n				<div class="c20 fr ml0 mt100 mb40">\r\n					<h2>\r\n						Kinetic scrolling</h2>\r\n					<p class="pt10">\r\n						Upgrade your application&rsquo;s scrolling experience with kinetic scrolling, which enables smooth, natural and touch-friendly scrolling through lists, carousels and other components. Kendo UI is optimized for performance and delivers unmatched smoothness among HTML5 and JavaScript mobile frameworks.</p>\r\n				</div>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n<table border="0" cellpadding="1" cellspacing="1" height="515" width="721">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n				<h2>\r\n					eady for app stores</h2>\r\n				<p>\r\n					Two easy steps:<br />\r\n					<br />\r\n					1: Build native-looking mobile apps with Kendo UI Mobile.<br />\r\n					<br />\r\n					2: Compile and deploy on popular app stores using packaging tools like <a href="http://phonegap.com/">PhoneGap</a>.</p>\r\n				<p>\r\n					You get all of the benefits of native apps, including access to devices sensors and cameras, without writing and maintaining the same app multiple times.</p>\r\n			</td>\r\n			<td>\r\n				<img alt="" src="/prototype-nnit/workphp/images/112.jpg" style="width: 506px; height: 464px;" /></td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n<div class="sfContentBlock shade nobg pb30">\r\n	<h2 class="pb40 nm tac">\r\n		What customers say about Kendo UI</h2>\r\n	<blockquote class="pl40">\r\n		<p>\r\n			As our company begins to employ iPads and iPhones across our business, it&#39;s becoming increasingly important that our web applications run properly on mobile browsers. The <mark>native touch support</mark> offered by Kendo UI was one of the biggest appeals. In addition, utilizing <mark> the Kendo framework ensures we build our application on a modern platform </mark> using technologies like HTML5, CSS3, and JavaScript.</p>\r\n		<cite><strong>Jack Szumski</strong> Project Lead <strong>MMC Global Technology Infrastructure</strong> </cite></blockquote>\r\n</div>\r\n', '', '<p>\r\n	workphp home test</p>\r\n', '179');
+INSERT INTO `home` VALUES (1, '', '<p>\r\n	<img alt="" src="/ckfinder/userfiles/images/564630_412436118772743_283313225018367_1784497_1125432247_n.jpg" style="width: 700px; height: 644px;" /></p>\r\n', '', '', 0);
+INSERT INTO `home` VALUES (2, '', '<table border="0" cellpadding="1" cellspacing="1" height="337" width="539">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n				<img alt="" height="417" src="/prototype-nnit/workphp/images/m-elem1.png" width="240" /></td>\r\n			<td>\r\n				<img alt="" height="396" src="/prototype-nnit/workphp/images/m-elem2.png" width="237" /></td>\r\n			<td>\r\n				<img alt="" height="400" src="/prototype-nnit/workphp/images/m-elem3.png" width="252" /><img alt="" src="/userfiles/workphp/images/49e3420faa514b5bde5e085b5ea6ae35.jpg" style="width: 640px; height: 480px;" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td style="text-align: center;">\r\n				Kendo UI Mobile<br />\r\n				on iOS</td>\r\n			<td style="text-align: center;">\r\n				Kendo UI Mobile<br />\r\n				on Android</td>\r\n			<td style="text-align: center;">\r\n				Kendo UI Mobile<br />\r\n				on BlackBerry OS</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n<p style="text-align: center;">\r\n	<img alt="" height="154" src="/prototype-nnit/workphp/images/button_kendo.jpg" width="686" /></p>\r\n<div class="c34 fn ma">\r\n	<h2 class="mt50 mb30 tac">\r\n		WinPhone8, iOS, Android, BlackBerry and beyond</h2>\r\n	<p class="mb30">\r\n		The UI widgets match the theming and functionality behavior of native controls available for iOS, Android, BlackBerry and (NEW!) WinPhone8 development, including buttons, navigation, and lists.</p>\r\n	<p class="mb70">\r\n		With Kendo UI&rsquo;s flexible styling system, developers can further customize Kendo UI Mobile themes easily to match any mobile environment.</p>\r\n	<table border="0" cellpadding="1" cellspacing="1" height="648" width="725">\r\n		<tbody>\r\n			<tr>\r\n				<td>\r\n					<div class="c20 fl ml20 mr100">\r\n						<h2 class="mt60">\r\n							Customize mobile themes &amp; widgets</h2>\r\n						<p>\r\n							When the out-of-the-box mobile themes are not enough, you can use the Mobile ThemeBuilder tool to quickly modify the styles of Kendo UI Mobile widgets as they exist in your apps with an easy to use standalone tool. The simple and intuitive point-and-click configuration wizard makes it a breeze to transform Kendo UI Mobile themes, providing you with the CSS output for use in your app. Try the <a href="http://demos.kendoui.com/themebuilder/mobile.html">Mobile ThemeBuilder</a> now to see how easy it is to customize mobile themes and widgets.</p>\r\n					</div>\r\n				</td>\r\n				<td>\r\n					<img alt="" src="/prototype-nnit/workphp/images/mobile-themebuilder.png" style="width: 436px; height: 594px;" /></td>\r\n			</tr>\r\n		</tbody>\r\n	</table>\r\n</div>\r\n<table border="0" cellpadding="1" cellspacing="1" height="499" width="715">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n				<img alt="" src="/prototype-nnit/workphp/images/m-elem7.png" style="width: 476px; height: 458px;" /></td>\r\n			<td>\r\n				<div class="c20 fr ml0 mt100 mb40">\r\n					<h2>\r\n						Kinetic scrolling</h2>\r\n					<p class="pt10">\r\n						Upgrade your application&rsquo;s scrolling experience with kinetic scrolling, which enables smooth, natural and touch-friendly scrolling through lists, carousels and other components. Kendo UI is optimized for performance and delivers unmatched smoothness among HTML5 and JavaScript mobile frameworks.</p>\r\n				</div>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n<table border="0" cellpadding="1" cellspacing="1" height="515" width="721">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n				<h2>\r\n					eady for app stores</h2>\r\n				<p>\r\n					Two easy steps:<br />\r\n					<br />\r\n					1: Build native-looking mobile apps with Kendo UI Mobile.<br />\r\n					<br />\r\n					2: Compile and deploy on popular app stores using packaging tools like <a href="http://phonegap.com/">PhoneGap</a>.</p>\r\n				<p>\r\n					You get all of the benefits of native apps, including access to devices sensors and cameras, without writing and maintaining the same app multiple times.</p>\r\n			</td>\r\n			<td>\r\n				<img alt="" src="/prototype-nnit/workphp/images/112.jpg" style="width: 506px; height: 464px;" /></td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n<div class="sfContentBlock shade nobg pb30">\r\n	<h2 class="pb40 nm tac">\r\n		What customers say about Kendo UI</h2>\r\n	<blockquote class="pl40">\r\n		<p>\r\n			As our company begins to employ iPads and iPhones across our business, it&#39;s becoming increasingly important that our web applications run properly on mobile browsers. The <mark>native touch support</mark> offered by Kendo UI was one of the biggest appeals. In addition, utilizing <mark> the Kendo framework ensures we build our application on a modern platform </mark> using technologies like HTML5, CSS3, and JavaScript.</p>\r\n		<cite><strong>Jack Szumski</strong> Project Lead <strong>MMC Global Technology Infrastructure</strong> </cite></blockquote>\r\n</div>\r\n', '', '<p>\r\n	workphp home test</p>\r\n', 179);
+INSERT INTO `home` VALUES (3, '', '<p>\r\n	<img alt="" src="/userfiles/test/images/267959_167311000004881_5774397_n.jpg" style="width: 363px; height: 540px;" /></p>\r\n', '', '', 2);
 
 -- --------------------------------------------------------
 
@@ -2395,6 +2416,105 @@ INSERT INTO `tour_pic` VALUES (19, 'menu5.gif', '4');
 INSERT INTO `tour_pic` VALUES (20, 'menu5.gif', '4');
 INSERT INTO `tour_pic` VALUES (21, 'menu5.gif', '4');
 INSERT INTO `tour_pic` VALUES (22, 'menu5.gif', '4');
+
+-- --------------------------------------------------------
+
+-- 
+-- โครงสร้างตาราง `useronline`
+-- 
+
+CREATE TABLE `useronline` (
+  `timestamp` int(11) NOT NULL,
+  `ip` varchar(255) NOT NULL,
+  `file` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- 
+-- dump ตาราง `useronline`
+-- 
+
+INSERT INTO `useronline` VALUES (1379354114, '127.0.0.1', '/userOnline.php');
+INSERT INTO `useronline` VALUES (1379354185, '127.0.0.1', '/userOnline.php');
+INSERT INTO `useronline` VALUES (1379354248, '127.0.0.1', '/userOnline.php');
+INSERT INTO `useronline` VALUES (1379354252, '127.0.0.1', '/userOnline.php');
+INSERT INTO `useronline` VALUES (1379354341, '127.0.0.1', '/userOnline.php');
+INSERT INTO `useronline` VALUES (1379354343, '127.0.0.1', '/userOnline.php');
+INSERT INTO `useronline` VALUES (1379425349, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379425375, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379432911, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433002, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433065, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433302, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433304, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433353, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433401, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433416, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433459, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433519, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433577, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433580, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433820, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433946, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433947, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379433948, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434047, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434109, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434111, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434124, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434125, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434126, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434139, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434194, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434195, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434202, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434203, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434342, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434411, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434414, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434471, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434474, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434602, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434605, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434643, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434896, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434898, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434915, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434931, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379434946, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379435048, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379435061, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379435063, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379435181, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379435206, '127.0.0.1', '/counter_user.php');
+INSERT INTO `useronline` VALUES (1379435353, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379435376, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379435410, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379436987, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379437194, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379437210, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379437269, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379437609, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379437616, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379437797, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379437814, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379437977, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379437983, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379437991, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379438006, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379438011, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379438181, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379438187, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379438202, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379438204, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379438220, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379438878, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379439297, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379474251, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1379474258, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393024050, '127.0.0.1', '/prototype-nnit/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393024131, '127.0.0.1', '/prototype-nnit/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393035543, '127.0.0.1', '/prototype-nnit/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393049649, '127.0.0.1', '/prototype-nnit/dispatcher.php');
 
 -- --------------------------------------------------------
 
