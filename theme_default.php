@@ -100,6 +100,18 @@ a{
 </style>
 <?
 //echo"member_user_url2==".$_SESSION['member_user_url2'];
+		//counter Background
+		$result_counter_bg = $db->tableSQL("object_system where object_position='counter_bg' and admin_id='".$admin_id."'");
+		$rs_counter_bg=mysql_fetch_array($result_counter_bg);
+		$counter_num=mysql_num_rows($result_counter_bg);
+		$counter_bg=$rs_counter_bg['object_name'];
+		$counter_bg_color=$rs_counter_bg[object_color];
+		$counter_bg_width=$rs_counter_bg[object_width];
+		$counter_bg_height=$rs_counter_bg[object_height];
+
+
+
+
  		## set logo area.
 			$result_logo = $db->tableSQL("object_system where object_position = 'header_logo' and admin_id='".$admin_id."'");
 			$rs_logo = mysql_fetch_array($result_logo);
@@ -107,7 +119,15 @@ a{
 			$object_color_logo=$rs_logo['object_color'];
 			$object_width_logo=$rs_logo['object_width'];
 			$object_height_logo=$rs_logo['object_height'];
-			
+		
+		## set header title  area.
+			$result_header_title = $db->tableSQL("object_system where object_position = 'header_title_bg' and admin_id='".$admin_id."'");
+			$rs_header_title = mysql_fetch_array($result_header_title);
+			$object_name_header_title=$rs_header_title['object_name'];
+			$object_color_header_title=$rs_header_title['object_color'];
+			$object_width_header_title=$rs_header_title['object_width'];
+			$object_height_header_title=$rs_header_title['object_height'];
+
 		## set header area.
 			$result_header = $db->tableSQL("object_system where object_position = 'header_bg' and admin_id='".$admin_id."'");
 			$rs_header = mysql_fetch_array($result_header);
@@ -245,7 +265,7 @@ body{
 	height:90px;
 	width:750px;
 	margin:5px;
-	margin-right:30px;
+	margin-right:10px;
 }
 #copy-right{
 text-align:right;
@@ -348,7 +368,7 @@ background-image:url("images_system/title_navigator.png");
 	background-image:url(object_system/<?=$admin_id?>/<?=$box_header?>);
 	height:25px;
 	color:<?=$box_font_color?>;
-	width:200px;
+	width:195px;
 	
 
 }
@@ -516,7 +536,9 @@ color:#cccccc;
 height:35px;
 width:auto;
 z-index:5;
-background-image:url("./images_system/layout1/bg_tab.png");
+background:<?=$object_color_header_title?>;
+background-image:url(object_system/<?=$admin_id?>/<?=$object_name_header_title?>);
+/*background-image:url("./images_system/layout1/bg_tab.png");*/
 }
 #headerArea #hederContent{
 	width:1000px;
@@ -658,7 +680,7 @@ padding-left:20px;
             <img src="object_system/<?=$admin_id?>/<?=$object_name_logo?>" width="<?=$object_width_logo?>" height="<?=$object_height_logo?>" />
 			</div>
             <div id="top_banner" style="background-color:<?=$object_color_banner?>;">
-            <img src="object_system/<?=$admin_id?>/<?=$object_name_banner?>" width="<?=$object_width_logo?>" height="<?=$object_height_logo?>" />
+            <img src="object_system/<?=$admin_id?>/<?=$object_name_banner?>" width="<?=$object_width_banner?>" height="<?=$object_height_banner?>" />
             
             </div>
             
@@ -712,13 +734,112 @@ padding-left:20px;
 		</div>
 		<!-- title navigator end-->
         <div id="bg_content">
+
+
+	  
+
+
+
         	<div id="bg_box_left" >
+			<!-- cate product-->
+			<div class="box_left shadow">
+				<div class="box_top">
+				<div class="b" style="padding-left:5px;">หมวดสินค้า</div>
+				</div>
+				<div class="box_center">
+					<div class="box_menu">
+						<ul>
+						<?
+						$result_productcat = $db->tableSQL("productcat where admin_id='".$admin_id."'");
+						while($rs_productcat=mysql_fetch_array($result_productcat)){
+						?>
+							<li>
+							<a href="dispatcher.php?page=product&productcat_id=<?=$rs_productcat[productcat_id]?>&name_title=<?=$rs_productcat[productcat_name]?>&member_user_url=<?=$_SESSION['member_user_url2']?>"><font style="padding-left:5px;"><?=$rs_productcat[productcat_name]?></font></a>
+							</li>
+						<?
+						}
+						?>
+						   
+						</ul>
+					</div>
+				</div>
+			 </div>
+			 <br style="clear:both" />
+			 <!-- end cate product-->
+			<!-- start banner -->
+			
+                    <div style="padding:5px;">
+                		<? 
+							$result_banner_sum = $db->tableSQL("banner_sum where admin_id='".$admin_id."'");
+							while($rs_banner_sum=mysql_fetch_array($result_banner_sum)){
+							if($rs_banner_sum[pic_link]){
+							$link_banner=$rs_banner_sum[pic_link];
+							}else{
+								$pic_id=$rs_banner_sum[pic_id];
+								
+								
+									$link_banner="dispatcher.php?page=banner_detail&pic_id=$pic_id&name_title=รายละเอียด&member_user_url=".$_SESSION['member_user_url2']."";
+								
+							
+							}
+							?>
+                            
+                            <a href="<?=$link_banner?>">
+                            <img src="mypicture/<?=$admin_id?>/<?=$rs_banner_sum[pic_name];?>" width="180" border="0"/>
+							</a>
+							<?
+							}
+                            
+						?>
+            		</div>	
+            			
+                	
+              <br style="clear:both" />
+			<!--
+			<div class="box_left shadow">
+            		<div class="box_top">
+                	<div class="b" style="padding-left:5px;">Link ผู้สนันสนุน</div>
+                	</div>
+                	<div class="box_center">
+                    <div style="padding:5px;">
+                		<? 
+							$result_banner_sum = $db->tableSQL("banner_sum where admin_id='".$admin_id."'");
+							while($rs_banner_sum=mysql_fetch_array($result_banner_sum)){
+							if($rs_banner_sum[pic_link]){
+							$link_banner=$rs_banner_sum[pic_link];
+							}else{
+								$pic_id=$rs_banner_sum[pic_id];
+								
+								
+									$link_banner="dispatcher.php?page=banner_detail&pic_id=$pic_id&name_title=รายละเอียด&member_user_url=".$_SESSION['member_user_url2']."";
+								
+							
+							}
+							?>
+                            
+                            <a href="<?=$link_banner?>">
+                            <img src="mypicture/<?=$admin_id?>/<?=$rs_banner_sum[pic_name];?>" width="180" border="0"/>
+							</a>
+							<?
+							}
+                            
+						?>
+            		</div>	
+            			
+                	</div>
+                 </div>
+              <br style="clear:both" />
+			  -->
+			 <!--end banner-->
+				<!--
 				<div id="counter_user">
-					<!--<img src="images_system/layout1/banner3_08.png">-->
+					
 					<?php
 					include_once("counter_user.php");
 					?>
 				</div>
+				-->
+				<!--
 				<div id="status_server">
 					<img src="images_system/layout1/status_server.jpg">
 				</div>
@@ -735,30 +856,9 @@ padding-left:20px;
 				<div class="us_service">
 					<img src="images_system/layout1/banner_promote.jpg">
 				</div>
-            	<div class="box_left shadow">
-            		<div class="box_top">
-                	<div class="b" style="padding-left:5px;">หมวดสินค้า</div>
-                	</div>
-                	<div class="box_center">
-                		<div class="box_menu">
-                        	<ul>
-                            <?
-							$result_productcat = $db->tableSQL("productcat where admin_id='".$admin_id."'");
-							while($rs_productcat=mysql_fetch_array($result_productcat)){
-                            ?>
-                            	<li>
-                                <a href="dispatcher.php?page=product&productcat_id=<?=$rs_productcat[productcat_id]?>&name_title=<?=$rs_productcat[productcat_name]?>&member_user_url=<?=$_SESSION['member_user_url2']?>"><font style="padding-left:5px;"><?=$rs_productcat[productcat_name]?></font></a>
-                                </li>
-                            <?
-							}
-							?>
-                               
-                            </ul>
-                        </div>
-                	</div>
-                 </div>
-                 <br style="clear:both" />
-                 
+				-->
+			
+
                  <div class="box_left shadow">
             		<div class="box_top">
                 	<div class="b" style="padding-left:5px;">บทความ</div>
@@ -850,58 +950,21 @@ padding-left:20px;
                 <br style="clear:both" />
           
 			
-                <div class="box_left shadow">
-            		<div class="box_top">
-                	<div class="b" style="padding-left:5px;">Link ผู้สนันสนุน</div>
-                	</div>
-                	<div class="box_center">
-                    <div style="padding:5px;">
-                		<? 
-							$result_banner_sum = $db->tableSQL("banner_sum where admin_id='".$admin_id."'");
-							while($rs_banner_sum=mysql_fetch_array($result_banner_sum)){
-							if($rs_banner_sum[pic_link]){
-							$link_banner=$rs_banner_sum[pic_link];
-							}else{
-								$pic_id=$rs_banner_sum[pic_id];
-								
-								
-									$link_banner="dispatcher.php?page=banner_detail&pic_id=$pic_id&name_title=รายละเอียด&member_user_url=".$_SESSION['member_user_url2']."";
-								
-							
-							}
-							?>
-                            
-                            <a href="<?=$link_banner?>">
-                            <img src="mypicture/<?=$admin_id?>/<?=$rs_banner_sum[pic_name];?>" width="180" border="0"/>
-							</a>
-							<?
-							}
-                            
-						?>
-            		</div>	
-            			
-                	</div>
-                 </div>
-                <br style="clear:both" />
+              
                 
-                <div class="box_left shadow">
-            		<div class="box_top">
-                	<div class="b" style="padding-left:5px;">ส่วนเสริม</div>
-                	</div>
-                	<div class="box_center">
+             
                     <div style="padding:5px;">
 					
 						<?
                 		$result_plugin_on_web = $db->tableSQL("plugin_on_web where admin_id='$admin_id'");
 						while($rs_plugin_on_web=mysql_fetch_array($result_plugin_on_web)){
 							
-							echo "<div style=\"font-weight:bold;\">".$rs_plugin_on_web[plugin_name]."</div><br>";
+							//echo "<div style=\"font-weight:bold;\">".$rs_plugin_on_web[plugin_name]."</div><br>";
                             echo $rs_plugin_on_web[plugin_code];
 							"<hr>";
 						}
 						?>
-            		</div>	
-                	</div>
+            	
                  </div>
                 <br style="clear:both" />
                 

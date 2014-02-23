@@ -68,11 +68,27 @@ $values=1;
 }
 //Check User and Management by User End
 
+//counter Background
+$result_counter_bg = $db->selectSQL("object_system where object_position='counter_bg' and admin_id='".$values."'");
+$rs_counter_bg=mysql_fetch_array($result_counter_bg);
+$counter_num=mysql_num_rows($result_counter_bg);
+$counter_bg_color=$rs_counter_bg[object_color];
+$counter_bg_width=$rs_counter_bg[object_width];
+$counter_bg_height=$rs_counter_bg[object_height];
+
+
+//Title top Background
+$result_header_title_bg = $db->selectSQL("object_system where object_position='header_title_bg' and admin_id='".$values."'");
+$rs_header_title_bg=mysql_fetch_array($result_header_title_bg);
+$header_title_num=mysql_num_rows($result_header_title_bg);
+$header_title_bg_color=$rs_header_title_bg[object_color];
+$header_title_bg_width=$rs_header_title_bg[object_width];
+$header_title_bg_height=$rs_header_title_bg[object_height];
+
 $result_header_bg = $db->selectSQL("object_system where object_position='header_bg' and admin_id='".$values."'");
 $rs_header_bg=mysql_fetch_array($result_header_bg);
 $header_num=mysql_num_rows($result_header_bg);
 $header_bg_color=$rs_header_bg[object_color];
-
 $header_bg_width=$rs_header_bg[object_width];
 $header_bg_height=$rs_header_bg[object_height];
 
@@ -91,6 +107,48 @@ $header_banner_height=$rs_header_banner[object_height];
 ?>
 <form method="post" action="style_header_process.php" name="tcp_test" enctype="multipart/form-data">
 <table>
+	<tr>
+    	<td>
+        พื้นหลัง	Top  Title
+        </td>
+        <td>
+        <input type="file"  name="file_header_title_bg" />
+        <a href="preview_style_object.php?want=preview&object_position=header_title_bg&admin_id=<?=$rs_admin_id['admin_id']?>&TB_iframe=true&height=350&width=500" rel="sexylightbox">
+        preview
+        </a>
+         
+        </td>
+        <td>
+        width:<input type="text" name="header_title_bg_width" style="width:30px;" value="<?=$header_title_bg_width?>"/>
+        height:<input type="text" name="header_title_bg_height" style="width:30px;" value="<?=$header_title_bg_height?>"/>
+        <input type="hidden" name="header_title_num" value="<?=$header_title_num?>" />
+        </td>
+        <td>
+       color:<input type="Text" name="header_title_bg_color" value="<?=$header_title_bg_color?>">
+       <a href="javascript:TCP.popup(document.forms['tcp_test'].elements['header_title_bg_color'])"><img width="15" height="13" src="../images_system/App_Store.png"></a>
+        </td>
+    </tr>
+	<tr>
+    	<td>
+        พื้นหลังนับจำนวนผู้เข้าชม
+        </td>
+        <td>
+        <input type="file"  name="file_counter_bg" />
+        <a href="preview_style_object.php?want=preview&object_position=counter_bg&admin_id=<?=$rs_admin_id['admin_id']?>&TB_iframe=true&height=350&width=500" rel="sexylightbox">
+        preview
+        </a>
+         
+        </td>
+        <td>
+        width:<input type="text" name="counter_bg_width" style="width:30px;" value="<?=$counter_bg_width?>"/>
+        height:<input type="text" name="counter_bg_height" style="width:30px;" value="<?=$counter_bg_height?>"/>
+        <input type="hidden" name="counter_num" value="<?=$counter_num?>" />
+        </td>
+        <td>
+       color:<input type="Text" name="counter_bg_color" value="<?=$counter_bg_color?>">
+       <a href="javascript:TCP.popup(document.forms['tcp_test'].elements['counter_bg_color'])"><img width="15" height="13" src="../images_system/App_Store.png"></a>
+        </td>
+    </tr>
 	<tr>
     	<td>
         พื้นหลัง	Header

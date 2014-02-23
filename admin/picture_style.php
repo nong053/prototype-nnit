@@ -52,7 +52,7 @@ require("class_mysql.php");
         <td>
         <a href="index.php?page=style_system&select_page=picture_style&page_style=header">
         <img src="../images_system/App_Store.png"  border="0"/><br>
-        จัดการHeader
+        จัดการทั่วไป
         </a>
         </td>
         <td>

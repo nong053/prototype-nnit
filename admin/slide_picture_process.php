@@ -9,7 +9,8 @@ $admin_id=$_POST['admin_id'];
 $path_object="../slide_picture/$admin_id/";
 	if(!is_dir($path_object)){
 	umask(0);
-	mkdir($path_object,777);
+	mkdir($path_object,0777,true);
+	chmod($path_object, 0777);
 }
 $file_slide1=$_FILES["file_slide1"]["name"];//--ต้องแก้ไข
 $file_slide2=$_FILES["file_slide2"]["name"];//--ต้องแก้ไข

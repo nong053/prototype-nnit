@@ -1,9 +1,16 @@
 <?php session_start();?>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <?
 include("../config.inc.php");
 $action_menu=$_POST['action_menu'];
 $action_menu_del=$_GET['action_menu_del'];
+
+
+
+
+
+echo"member_user_id=$member_user_id";
+
 if($action_menu_del=="del"){
 $menu_del_id=$_GET['menu_del_id'];
 $member_user_id=$_SESSION['member_user_id'];
@@ -15,6 +22,7 @@ if(!$result){
 }
 
 if($action_menu=="add"){
+$member_user_id=$_POST['member_user_id'];
 $main_menu_name=$_POST['menu_name'];
 $main_menu_name_eng=$_POST['menu_name_eng'];
 $main_menu_link=$_POST['menu_link'];
@@ -24,12 +32,6 @@ $plugin=$_POST['plugin'];
 if($plugin!="link"){
 $main_menu_link	="";
 }
-//$select_type_menu=$_POST['select_type_menu'];
-
-/*echo"$menu_name<br>";
-echo"$menu_link<br>";
-echo"menu_detail$menu_detail<br>";
-echo"action_menu$action_menu";*/
 
 
 $strSQL="insert into main_menu(main_menu_name,main_menu_name_eng,main_menu_link,menu_priority,plugin,admin_id)values('$main_menu_name','$main_menu_name_eng','$main_menu_link','$menu_priority','$plugin','$member_user_id')";

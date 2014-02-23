@@ -8,11 +8,11 @@ class connect_mysql{
 	var $var_dbname= "prototype_db";
 	
 /*
-	var $var_user = "service_user";
+	var $var_user = "workphp_user";
 	var $var_pass ="010535546";
-	var $var_dbname= "service_db";
-
+	var $var_dbname= "workphp_rwdb";
 */
+
 
 
 
