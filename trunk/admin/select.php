@@ -13,48 +13,66 @@
 	<tr>
     	<td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Contacts.png">
+		<a href ="index.php?page=home">
+        <img src="../images_system/Contacts.png" border=0>
+		</a>
         </div>
        
       </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Mail_alt.png">
+		<a href ="index.php?page=article_system">
+        <img src="../images_system/Mail_alt.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/iFile.png">
+		<a href ="index.php?page=contact">
+        <img src="../images_system/iFile.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Macristocracy.png">
+		<a href ="index.php?page=about">
+        <img src="../images_system/Macristocracy.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Maps_alt.png">
+		<a href ="index.php?page=style_system">
+        <img src="../images_system/Maps_alt.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Phone.png">
+		<a href ="index.php?page=tour">
+        <img src="../images_system/Phone.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Calendar.png">
+		<a href ="index.php?page=hotel_system">
+        <img src="../images_system/Calendar.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Phone.png">
+		<a href ="index.php?page=menu_system">
+        <img src="../images_system/Phone.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Calendar.png">
+		<a href ="index.php?page=web_directory">
+        <img src="../images_system/Calendar.png" border=0>
+		</a>
         </div>
         </td>
     </tr>
@@ -110,47 +128,65 @@
     <tr>
     	<td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Remote.png">
+		<a href ="index.php?page=vdo_system">
+        <img src="../images_system/Remote.png" border=0>
+		</a>
         </div>
       </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Things.png">
+		<a href ="index.php?page=seo_system">
+        <img src="../images_system/Things.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/BeejiveIM_alt2.png">
+		<a href ="index.php?page=member_system">
+        <img src="../images_system/BeejiveIM_alt2.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Cydia.png">
+		<a href ="index.php?page=ecommerce_system">
+        <img src="../images_system/Cydia.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img  src="../images_system/1285599217_Notes_alt.png">
+		<a href ="index.php?page=webbord">
+        <img  src="../images_system/1285599217_Notes_alt.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Safari.png">
+		<a href ="index.php?page=horoscope">
+        <img src="../images_system/Safari.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/YouTube.png">
+		<a href ="index.php?page=#">
+        <img src="../images_system/YouTube.png" border=0>
+		</a>
         </div>
         </td>
          <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Safari.png">
+		<a href ="index.php?page=Knowledge">
+        <img src="../images_system/Safari.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/YouTube.png">
+		<a href ="index.php?page=tour">
+        <img src="../images_system/YouTube.png" border=0>
+		</a>
         </div>
         </td>
     </tr>
@@ -204,37 +240,51 @@
     <tr>
     	<td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/App_Store.png">
+		<a href ="index.php?page=banner">
+        <img src="../images_system/App_Store.png" border=0>
+		</a>
         </div>
       </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Maps.png">
+		<a href ="index.php?page=admin">
+        <img src="../images_system/Maps.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Photos.png">
+		<a href ="index.php?page=picturecat">
+        <img src="../images_system/Photos.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Settings.png">
+		<a href ="index.php?page=mlm_system">
+        <img src="../images_system/Settings.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/iTunes.png">
+		<a href ="index.php?page=#">
+        <img src="../images_system/iTunes.png" border=0>
+		</a>
         </div>
         </td>
        <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/Settings.png">
+		<a href ="index.php?page=news_system">
+        <img src="../images_system/Settings.png" border=0>
+		</a>
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-        <img src="../images_system/iTunes.png">
+		<a href ="index.php?page=job_system">
+        <img src="../images_system/iTunes.png" border=0>
+		</a>
         </div>
         </td>
     </tr>
