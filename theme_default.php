@@ -995,14 +995,16 @@ padding-left:20px;
 				 while($rs_slide_picture=mysql_fetch_array($result_slide_picture)){
 				?>
 				 <li>
-                            <img src="slide_picture/<?=$admin_id?>/<?=$rs_slide_picture["slide_picture_object"]?>" title="Newsflash 2" >           
-                          <div class="slider-description">
+                            <img src="slide_picture/<?=$admin_id?>/<?=$rs_slide_picture["slide_picture_object"]?>" title="Newsflash 2"  width="790">           
+                         <!--
+						  <div class="slider-description">
                             <div class="slider-meta"><a target="_parent" title="Newsflash 1" href="#Category-1">/ Newsflash 1 /</a> <i> — Monday, February 15, 2010 12:42</i></div>
                             <h4>Content of Newsflash 1</h4>
                             <p>The one thing about a Web site, it always changes! Joomla! makes it easy to add Articles, content,...
                             <a class="readmore" href="<?=$rs_slide_picture["slide_picture_link"]?>">Read more </a>
                             </p>
                          </div>
+						 -->
                     </li> 
 				<?
 				}
@@ -1039,7 +1041,7 @@ padding-left:20px;
 						
 						switch($_GET['page']){
 							case"product":$require="product.php"; $title_top="สินค้าทั้งหมด";break;
-							case"product_detail":$require="product_detail_try.php";$title_top="รายละเอียดของสินค้า";break;
+							case"product_detail":$require="product_detail.php";$title_top="รายละเอียดของสินค้า";break;
 							case"gallery":$require="gallery.php";$title_top="อัลบั้ลรูปภาพ";break;
 							case"article":$require="article.php";$title_top="บทความ";break;
 							case"banner_detail":$require="banner_detail.php";$title_top="บทความ";break;

@@ -272,6 +272,7 @@ $product_promotion_detail=$rs[product_promotion_detail];
                                         </table>
                                         </form>
                                         <!-- table-->
+										<!--
                                         <div id="txt_product_detail" style="background-color:#CCC; padding:5px;">
                                             social network
                                             </div>
@@ -279,9 +280,11 @@ $product_promotion_detail=$rs[product_promotion_detail];
                                            	 	 <!--
 												 <a href="index.php?page=cart&ProductID=<?=$product_id?>&Pic=<?=$thumbnailsFile?>">add Cart</a>
                                                  -->
+												 <!--
 												 <button>ss</button>
                                             
                                         </div>
+										-->
 
                                         <br style="clear:both" />
                                         </div>
