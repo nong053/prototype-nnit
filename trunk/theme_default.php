@@ -1,4 +1,11 @@
 <!--<?php ob_start(); session_start();?>-->
+<?php
+/*##########ดึง oject มาใช้งาน End*/
+$member_user_url=trim($_SESSION['member_user_url2']);
+if($member_user_url==""){	
+echo"<script>window.location=\"index.php\"</script>";
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -32,8 +39,7 @@
 		}
 $obj_manage_data = new manage_data();
 
-/*##########ดึง oject มาใช้งาน End*/
-$member_user_url=trim($_SESSION['member_user_url2']);
+
 
 //ทำการ select admin_id ออกมาจาก admin
 $query_admin_id="select admin_id from admin where admin_username='".$member_user_url."'";
@@ -618,12 +624,12 @@ padding-left:20px;
 
 				<div id="icon_tw">
 						<div class="title_icon">
-							<a href="http://www.twitter.com"> Sign in </a>
+							<a href="http://www.facebook.com"> Sign in </a>
 						</div>
 				</div>
 				<div id="icon_fw">
 						<div class="title_icon">
-						<a href="http://www.fadebook.com"> Sign in </a>
+						<a href="http://www.twitter.com"> Sign in </a>
 						</div>
 				</div>
 				<div class="iconTop">
@@ -984,12 +990,12 @@ padding-left:20px;
 
 
 <!------------------------------------- THE CONTENT ------------------------------------------------->
-<div id="jslidernews1" class="lof-slidecontent" style="width:790px; height:280px;">
+<div id="jslidernews1" class="lof-slidecontent" style="width:790px; height:380px;">
 	<div class="preload"><div></div></div>
     		 <div  class="button-previous">Previous</div>
               <div  class="button-next">Next</div>
     		 <!-- MAIN CONTENT --> 
-              <div class="main-slider-content" style="width:790px; height:280px;">
+              <div class="main-slider-content" style="width:790px; height:380px;">
                 <ul class="sliders-wrap-inner">
 				<?
 				 while($rs_slide_picture=mysql_fetch_array($result_slide_picture)){
@@ -1131,7 +1137,7 @@ padding-left:20px;
 					?>
                 </ul>
                 <br style="clear:both" />
-            <span id="copy-right">  Copyright © 2005-2013 nn--it.com</span>
+         <span id="copy-right">  Copyright © 2005-2014 สนใจเว็บไชต์สวยราคาถูกบริการดีได้ที่ <a href="http://www.nn-it.com">nn-it.com</a> โทร. 080-992-6565(ห้างหุ้นส่วนจํากัด เอ็น เอ็น ไอที)</span>
             </div>
         </div>
     </div>

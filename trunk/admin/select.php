@@ -5,6 +5,104 @@
 }
 </style>
 
+
+<?php 
+//Admin
+	if($_SESSION['admin_name']=='admin' ){
+		
+?>
+	
+<?
+}else{	
+?>
+	 
+<?
+}
+?>
+
+
+<?php 
+	//E-Shopping 
+	if($role_id==1 or $_SESSION['admin_name']=='admin'){
+	
+?>
+	
+<?
+}else{	
+?>
+	 
+<?
+}
+?>
+<?php 
+//E-Horoscope 
+	if($role_id==2 or $_SESSION['admin_name']=='admin'){
+		
+?>
+	
+<?
+}else{	
+?>
+	 
+<?
+}
+?>
+<?php 
+// 	E-Travel/Tour 
+	if($role_id==3 or $_SESSION['admin_name']=='admin' ){
+		
+?>
+	
+<?
+}else{	
+?>
+	 
+<?
+}
+?>
+<?php 
+//E-MLM 
+	if($role_id==4 or $_SESSION['admin_name']=='admin' ){
+		
+?>
+	
+<?
+}else{	
+?>
+	 
+<?
+}
+?>
+<?php 
+//E-Reservation Hotel  
+	if($role_id==5 or $_SESSION['admin_name']=='admin'){
+		
+?>
+	
+<?
+}else{	
+?>
+	 
+<?
+}
+?>
+<?php 
+//E-Tv/Radio online 
+	if($role_id==6 or $_SESSION['admin_name']=='admin' ){
+		
+?>
+	
+<?
+}else{	
+?>
+	 
+<?
+}
+?>
+
+
+
+
 <div id="dev_bg">
 จัดการข้อมูลหลังร้าน
 </div>
@@ -42,23 +140,69 @@
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
+<?php 
+	//Admin 
+	if($_SESSION['admin_name']=='admin' ){
+	
+?>
 		<a href ="index.php?page=style_system">
         <img src="../images_system/Maps_alt.png" border=0>
 		</a>
+<?
+}else{	
+?>
+		
+        <img src="../images_system/Maps_alt.png" border=0>
+		
+<?
+}
+?>
+
+	
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
+
+<?php 
+// 	E-Travel/Tour 
+	if($role_id==3 or $_SESSION['admin_name']=='admin' ){
+?>
 		<a href ="index.php?page=tour">
         <img src="../images_system/Phone.png" border=0>
 		</a>
+<?
+}else{	
+?>
+	    
+        <img src="../images_system/Phone.png" border=0>
+		
+<?
+}
+?>
+
+
         </div>
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-		<a href ="index.php?page=hotel_system">
+<?php 
+// 	E-Reservation Hotel 
+if($role_id==5 or $_SESSION['admin_name']=='admin'){	
+?>
+	<a href ="index.php?page=hotel_system">
         <img src="../images_system/Calendar.png" border=0>
 		</a>
+<?
+}else{	
+?>
+	
+        <img src="../images_system/Calendar.png" border=0>
+		
+<?
+}
+?>
+		
         </div>
         </td>
         <td>
@@ -70,9 +214,24 @@
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-		<a href ="index.php?page=web_directory">
+		<?php 
+	//Admin 
+	if($_SESSION['admin_name']=='admin' ){
+	
+?>
+	<a href ="index.php?page=web_directory">
         <img src="../images_system/Calendar.png" border=0>
 		</a>
+<?
+}else{	
+?>
+	
+        <img src="../images_system/Calendar.png" border=0>
+	
+<?
+}
+?>
+		
         </div>
         </td>
     </tr>
@@ -149,9 +308,27 @@
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-		<a href ="index.php?page=ecommerce_system">
+				<?php 
+	//E-Shopping  
+	if($role_id==1 or $_SESSION['admin_name']=='admin'){
+	
+?>
+<a href ="index.php?page=ecommerce_system">
         <img src="../images_system/Cydia.png" border=0>
 		</a>
+<?
+}else{	
+?>
+	
+   
+        <img src="../images_system/Cydia.png" border=0>
+		
+	
+<?
+}
+?>
+		
+	
         </div>
         </td>
         <td>
@@ -163,9 +340,27 @@
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-		<a href ="index.php?page=horoscope">
+				<?php 
+	//E-Horoscope  
+	if($role_id==2 or $_SESSION['admin_name']=='admin'){
+	
+?>
+	<a href ="index.php?page=horoscope">
         <img src="../images_system/Safari.png" border=0>
 		</a>
+<?
+}else{	
+?>
+	
+  
+        <img src="../images_system/Safari.png" border=0>
+		
+	
+<?
+}
+?>
+		
+		
         </div>
         </td>
         <td>
@@ -184,9 +379,25 @@
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-		<a href ="index.php?page=tour">
+				<?php 
+	//E-Travel/Tour  
+	if($role_id==3 or $_SESSION['admin_name']=='admin' ){
+	
+?>
+	<a href ="index.php?page=tour">
         <img src="../images_system/YouTube.png" border=0>
 		</a>
+<?
+}else{	
+?>
+
+        <img src="../images_system/YouTube.png" border=0>
+
+	
+<?
+}
+?>
+	
         </div>
         </td>
     </tr>
@@ -247,9 +458,26 @@
       </td>
         <td>
         <div id="devtext" style="padding:10px;">
-		<a href ="index.php?page=admin">
+	<?php 
+	//Admin 
+	if($_SESSION['admin_name']=='admin' ){
+	
+?>
+	<a href ="index.php?page=admin">
         <img src="../images_system/Maps.png" border=0>
 		</a>
+<?
+}else{	
+?>
+
+     
+        <img src="../images_system/Maps.png" border=0>
+	
+	
+<?
+}
+?>
+		
         </div>
         </td>
         <td>
@@ -261,9 +489,26 @@
         </td>
         <td>
         <div id="devtext" style="padding:10px;">
-		<a href ="index.php?page=mlm_system">
+						<?php 
+	// 	E-MLM 
+	if($role_id==4 or $_SESSION['admin_name']=='admin' ){
+	
+?>
+	<a href ="index.php?page=mlm_system">
         <img src="../images_system/Settings.png" border=0>
 		</a>
+<?
+}else{	
+?>
+
+    
+        <img src="../images_system/Settings.png" border=0>
+	
+	
+<?
+}
+?>
+		
         </div>
         </td>
         <td>
@@ -275,9 +520,27 @@
         </td>
        <td>
         <div id="devtext" style="padding:10px;">
-		<a href ="index.php?page=news_system">
+						<?php 
+	//Admin  
+	if($_SESSION['admin_name']=='admin' ){
+	
+?>
+<a href ="index.php?page=news_system">
         <img src="../images_system/Settings.png" border=0>
 		</a>
+<?
+}else{	
+?>
+
+    
+        <img src="../images_system/Settings.png" border=0>
+	
+
+	
+<?
+}
+?>
+		
         </div>
         </td>
         <td>
