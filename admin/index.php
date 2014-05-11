@@ -21,10 +21,26 @@ $query_admin_id="select admin_id from admin where admin_username='".$member_user
 $result_admin_id=$obj_manage_data->select_data_proc($query_admin_id);
 $rs_admin_id=mysql_fetch_array($result_admin_id);
 $_SESSION['member_user_id']=$rs_admin_id['admin_id'];
-echo"member user url ".$member_user_url."<br>";
-echo"member user id ".$_SESSION['member_user_id']."<br>";
+$admin_id=$rs_admin_id['admin_id'];
+
+//echo"Member User Url ".$member_user_url."<br>";
+//echo"Member User Id ".$_SESSION['member_user_id']."<br>";
 $member_user_id=$_SESSION['member_user_id'];
 /*################## จัดาร session ผู้ใช้งาน End*/
+
+
+/*get role  start*/
+$query_role="select web.webre_cat_id as webre_cat_id,webcat.cat_webre_detail as cat_webre_detail
+from web_register web INNER JOIN webcat_register webcat
+ON web.webre_cat_id=webcat.cat_webre_id
+WHERE admin_id='$admin_id' ";
+$result_role=$obj_manage_data->select_data_proc($query_role);
+$rs_role=mysql_fetch_array($result_role);
+
+$role_id=$rs_role['webre_cat_id'];
+//echo  "Package ".$rs_role['cat_webre_detail'];
+
+/*get role end*/
 
 $user_downline=$_SESSION['user_downline'];
 
@@ -282,70 +298,115 @@ p{
 			}else{
 			$default_page="select.php";//default page
 			?>
-         		  <li><a href="index.php?page=select"><img src="images/pic_small/Settings.png"  border="0" align="absbottom" /> เลือกรายการ</a></li>
-            	 <li><a href="index.php?page=home"><img src="images/clientarea.gif" border="0" align="absbottom" /> หน้าแรก</a></li>
-				
-                
-                
+				<?php
+				if($role_id=1 or $amin_id=1){
+				?>
+
+				<?
+				}
+				?>
+         		<li><a href="index.php?page=select"><img src="images/pic_small/Settings.png"  border="0" align="absbottom" /> เลือกรายการ</a></li>
+            	<li><a href="index.php?page=home"><img src="images/clientarea.gif" border="0" align="absbottom" /> หน้าแรก</a></li>
                 <li><a href="index.php?page=menu_system"><img src="images/pic_small/Macristocracy.png" border="0" align="absbottom" /> จัดการเมนู</a></li>
-                
                 <li><a href="index.php?page=article_system"><img src="images/pic_small/BeejiveIM_alt2.png" border="0" align="absbottom" /> บทความ</a></li>
-                
-                <li><a href="index.php?page=web_directory"><img src="images/pic_small/Safari.png" border="0" align="absbottom" /> บัญชีเว็บไชต์</a></li>
                 
                 <li><a href="index.php?page=Knowledge"><img src="images/announcement.gif" border="0" align="absbottom" />	คลังความรู้</a></li>
                <!-- <li><a href="index.php?page=begin"><img src="images/clientarea.gif" border="0" align="absbottom" /> เริ่มธุกิจ</a></li>-->
                 <!--<li><a href="index.php?page=plan"><img src="images/clientarea.gif" border="0" align="absbottom" /> แผนการตลาด</a></li>-->
                 <li><a href="index.php?page=about"><img src="images/details.gif" border="0" align="absbottom" /> เกี่ยวกับเรา</a></li>
-                
 				<!--<li><a href="index.php?page=productcat"><img src="images/clientarea.gif" border="0" align="absbottom" /> ทัวร์ประเทศต่างๆ</a></li>-->
-                
                <!-- <li><a href="index.php?page=product_detail"><img src="images/clientarea.gif" border="0" align="absbottom" /> รายละเอียดสินค้า</a></li>
-                
                 <li><a href="index.php?page=promote"><img src="images/clientarea.gif" border="0" align="absbottom" /> ประชาสัมพันธ์</a></li>-->
                 <!--
                 <li><a href="index.php?page=run"><img src="images/clientarea.gif" border="0" align="absbottom" /> ตัววิ่ง</a></li>-->
-                
                 <li><a href="index.php?page=vdo_system"><img src="images/downloads.gif" width="16" height="16" border="0" align="absbottom" /> วีดีโอ</a></li>
-                
 				<li><a href="index.php?page=contact"><img src="images/submit-ticket.gif" width="16" height="16" border="0" align="absbottom" /> ติดต่อเรา</a></li>
+				<?php
+					//E-Shopping 
+				if($role_id==1 ){
+				?>
+                  <li><a href="index.php?page=ecommerce_system"><img src="images/iPod_alt.png" border="0" align="absbottom" /> ร้านค้าออนไลน์</a></li>
+				<?
+				}
+				?>
+
+				<?php
+					//ADMIN
+				if($_SESSION['admin_name']=='admin'){
+				?>
 				<li><a href="index.php?page=admin"><img src="images/support.gif" width="16" height="16" border="0" align="absbottom" /> ผู้ดูแลระบบ</a></li>
+				<li><a href="index.php?page=web_directory"><img src="images/pic_small/Safari.png" border="0" align="absbottom" /> บัญชีเว็บไชต์</a></li>
+			    <li><a href="index.php?page=style_system"><img src="images/Photos.png" border="0" align="absbottom" /> ระบบตกแต่งเว็บ</a></li>
+			   <li><a href="index.php?page=news_system"><img src="images/CamDera.png" border="0" align="absbottom" /> ระบบข่าวสาร(Rss)</a></li>
+			   <li><a href="index.php?page=web_register"><img src="images/pic_small/Settings.png" border="0" align="absbottom" /> Web Register</a></li>
+			    <li><a href="index.php?page=ecommerce_system"><img src="images/iPod_alt.png" border="0" align="absbottom" /> ร้านค้าออนไลน์</a></li>
+				<li><a href="index.php?page=horoscope"><img src="images/iFile.png" border="0" align="absbottom" /> ระบบดูดวง</a></li>
+				 <li><a href="index.php?page=tour"><img  src="images/announcement.gif" width="16" height="16" border="0" align="absbottom" /> ทัวร์ท่องเที่ยว</a></li>
+				 <li><a href="index.php?page=mlm_system"><img src="iFile.png" border="0" align="absbottom" /> ธุรกิจเครื่อข่าย</a></li>
+				 <li><a href="index.php?page=hotel_system"><img src="images/Phone.png" border="0" align="absbottom" /> ระบบจองโรงแรม</a></li>
+				   <li><a href="index.php?page=#"><img src="images/pic_small/YouTube.png" border="0" align="absbottom" /> ระบบทีวีออนไลน์</a></li>
+			      <li><a href="index.php?page=#"><img src="images/pic_small/iPod.png" border="0" align="absbottom" /> ระบบวิทยุออนไลน์</a></li>
+				<?
+				}
+				?>
+				<?php
+				// 	E-Horoscope 
+				if($role_id==2 ){
+				?>
+				<li><a href="index.php?page=horoscope"><img src="images/iFile.png" border="0" align="absbottom" /> ระบบดูดวง</a></li>
+				<?
+				}
+				?>
+				<?php
+				// 	E-Travel/Tour 
+				if($role_id==3){
+				?>
+ <li><a href="index.php?page=tour"><img  src="images/announcement.gif" width="16" height="16" border="0" align="absbottom" /> ทัวร์ท่องเที่ยว</a></li>
+				<?
+				}
+				?>
+
+				<?php
+				// 	 	E-MLM 
+				if($role_id==4 ){
+				?>
+                  <li><a href="index.php?page=mlm_system"><img src="iFile.png" border="0" align="absbottom" /> ธุรกิจเครื่อข่าย</a></li>
+				<?
+				}
+				?>
+				<?php
+				// 	 	E-Reservation Hotel 
+				if($role_id==5 ){
+				?>
+                  <li><a href="index.php?page=hotel_system"><img src="images/Phone.png" border="0" align="absbottom" /> ระบบจองโรงแรม</a></li>
+				<?
+				}
+				?>
+				<?php
+				// 	 	E-Tv/Radio online 
+				if($role_id==6 ){
+				?>
+                   <li><a href="index.php?page=#"><img src="images/pic_small/YouTube.png" border="0" align="absbottom" /> ระบบทีวีออนไลน์</a></li>
+			      <li><a href="index.php?page=#"><img src="images/pic_small/iPod.png" border="0" align="absbottom" /> ระบบวิทยุออนไลน์</a></li>
+				<?
+				}
+				?>
+				
 				<!--<li><a href="#"><img src="images/logout.gif" width="16" height="16" border="0" align="absbottom" /> เกี่ยวกับเรา</a></li>
-                
 				<li><a href="index.php?page=order_checker"><img src="images/knowledgebase.gif" width="16" height="16" border="0" align="absbottom" />ตรวจสอบการสั่งซื้อ</a></li>-->
-                
-               
-               <!-- <li><a href="index.php?page=downline"><img src="images/knowledgebase.gif" width="16" height="16" border="0" align="absbottom" />ตรวจสอบสายงาน</a></li>-->
-                
+                <!-- <li><a href="index.php?page=downline"><img src="images/knowledgebase.gif" width="16" height="16" border="0" align="absbottom" />ตรวจสอบสายงาน</a></li>-->
                  <li><a href="index.php?page=banner"><img src="images/order.gif" width="16" height="16" border="0" align="absbottom" /> Banner</a></li>
                   <li><a href="index.php?page=slide_picture"><img src="images/order.gif" width="16" height="16" border="0" align="absbottom" /> รูปภาพสไลด์</a></li>
-                 <li><a href="index.php?page=tour"><img  src="images/announcement.gif" width="16" height="16" border="0" align="absbottom" /> ทัวร์ท่องเที่ยว</a></li>
                   <li><a href="index.php?page=webbord"><img src="images/knowledgebase.gif" width="16" height="16" border="0" align="absbottom" /> จัดการเว็บบอร์ด</a></li>
                   <li><a href="index.php?page=picturecat"><img src="images/Maps_alt.png" border="0" align="absbottom" /> อัลบั้ลรูปภาพ</a></li>
-                  
-                  <li><a href="index.php?page=horoscope"><img src="images/iFile.png" border="0" align="absbottom" /> ระบบดูดวง</a></li>
-                  
-                  <li><a href="index.php?page=ecommerce_system"><img src="images/iPod_alt.png" border="0" align="absbottom" /> ร้านค้าออนไลน์</a></li>
-                  
-                   <li><a href="index.php?page=mlm_system"><img src="iFile.png" border="0" align="absbottom" /> ธุรกิจเครื่อข่าย</a></li>
-                  
-                	 <li><a href="index.php?page=hotel_system"><img src="images/Phone.png" border="0" align="absbottom" /> ระบบจองโรงแรม</a></li>
-                     
-                     <li><a href="index.php?page=member_system"><img src="images/BeejiveIM_Dalt2.png" border="0" align="absbottom" /> ระบบสมาชิก</a></li>
-                     
-                     <li><a href="index.php?page=news_system"><img src="images/CamDera.png" border="0" align="absbottom" /> ระบบข่าวสาร(Rss)</a></li>
-                     
-                     <li><a href="index.php?page=style_system"><img src="images/Photos.png" border="0" align="absbottom" /> ระบบตกแต่งเว็บ</a></li>
-                     
-                     <li><a href="index.php?page=#"><img src="images/pic_small/YouTube.png" border="0" align="absbottom" /> ระบบทีวีออนไลน์</a></li>
-                     
-                     <li><a href="index.php?page=#"><img src="images/pic_small/iPod.png" border="0" align="absbottom" /> ระบบวิทยุออนไลน์</a></li>
-                     
-                      <li><a href="index.php?page=seo_system"><img src="images/pic_small/Things.png" border="0" align="absbottom" /> ระบบโปรโมทเว็บ(SEO)</a></li>
-                      
-                       <li><a href="index.php?page=job_system"><img src="images/pic_small/Settings.png" border="0" align="absbottom" /> สมัครงาน</a></li>
-					   <li><a href="index.php?page=web_register"><img src="images/pic_small/Settings.png" border="0" align="absbottom" /> Web Register</a></li>
+                  <li><a href="index.php?page=member_system"><img src="images/BeejiveIM_Dalt2.png" border="0" align="absbottom" /> ระบบสมาชิก</a></li>
+                    <li><a href="index.php?page=seo_system"><img src="images/pic_small/Things.png" border="0" align="absbottom" /> ระบบโปรโมทเว็บ(SEO)</a></li>
+                    <li><a href="index.php?page=job_system"><img src="images/pic_small/Settings.png" border="0" align="absbottom" /> สมัครงาน</a></li>
+
 						<? }?> <!--ถ้าloginเข้ามาในระบบโดย downline ให้มองเห็นเฉพาะckeck downline-->
+
+
+
 			</ul>
             <br style="clear:both" />
 		</div>

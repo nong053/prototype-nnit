@@ -249,7 +249,8 @@ function callBackpost(){
                		 </li>
                      <li>
                 		<div id="<?=$select3?>">
-              		 		<a href="index.php?page=web_register&select_page=webrecat_edit_del">
+              		 		<a href="#">
+							<!-- <a href="index.php?page=web_register&select_page=webrecat_edit_del">-->
                             <div id="devmagin" style="margin:5px;">
               			 	แก้ไข / ลบ Package
                      		</div>

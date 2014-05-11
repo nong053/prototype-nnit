@@ -23,6 +23,7 @@ if(count($userAsUrl)>2){
 if(($host!="www.nn-webready.com") and ($host!="nn-webready.com") and($host!="localhost:9999")){
 	//echo $host."!="."www.nn-it.com";
 	echo"<script>window.location=\"../$userUrlId\"</script>";
+
 }else{
 	echo"<script>window.location=\"../nn-webready\"</script>";
 }

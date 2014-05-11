@@ -9,11 +9,12 @@ $_SESSION['member_user_url2']=$_SESSION['member_user_url'];
 
 if($_SESSION['member_user_url2']==""){
 	//defalult  webpage www.nn-webready.com
-	$_SESSION['member_user_url2']="www.nn-webready.com";
+	//$_SESSION['member_user_url2']="www.nn-webready.com";
 }
 ?>
 
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="jquery/jquery.js"></script>
+
 <!--
 <script src="kendoui/js/kendo.all.min.js"></script>
 -->
@@ -26,7 +27,9 @@ if($_SESSION['member_user_url2']==""){
 if($host=="www.rchaneltv.com"){
 include("web_design/rchaneltv/index.php");
 }else{
+
 include("theme_default.php");
+
 }
 //include("web_design/rchaneltv/carousel_data.php");
 ?>
