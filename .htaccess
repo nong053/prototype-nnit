@@ -6,9 +6,9 @@ RewriteRule ^([a-zA-Z0-9_-]+)$ urlUser.php?userUrlId=$1
 RewriteRule ^([a-zA-Z0-9_-]+)/$ urlUser.php?userUrlId=$1
 
 
+#RewriteRule (.*).html /dispatcher.php?page=$1
 
-RewriteRule ^view/(.*).html /dispatcher.php?page=$1
-
+RewriteRule ^view-(.*).html /dispatcher.php?id=$1
 
 
 </IfModule>
