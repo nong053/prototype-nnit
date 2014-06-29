@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php session_start(); ob_start();?>
 <?
 /*
 	$host=$_SERVER['HTTP_HOST'];
@@ -21,7 +21,11 @@
 	if($rs_num){
 		
 		$_SESSION['member_user_url']=$userUrlId;
-		echo"<script>window.location=\"../dispatcher.php?page=home\"</script>";
+		//echo"<script>window.location=\"../home.html\"</script>";
+		
+		header('Location: ../view-home.html');
+		//header("Location: ../dispatcher.php?page=$userUrlId");
+		//header("Location: ../dispatcher.php?page=home");
 		//Usering on hosting
 		//echo"<script>window.location=\"../index.php?page=home\"</script>";
 	}else{

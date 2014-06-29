@@ -990,12 +990,12 @@ padding-left:20px;
 
 
 <!------------------------------------- THE CONTENT ------------------------------------------------->
-<div id="jslidernews1" class="lof-slidecontent" style="width:790px; height:380px;">
+<div id="jslidernews1" class="lof-slidecontent" style="width:790px; height:280px;">
 	<div class="preload"><div></div></div>
     		 <div  class="button-previous">Previous</div>
               <div  class="button-next">Next</div>
     		 <!-- MAIN CONTENT --> 
-              <div class="main-slider-content" style="width:790px; height:380px;">
+              <div class="main-slider-content" style="width:790px; height:280px;">
                 <ul class="sliders-wrap-inner">
 				<?
 				 while($rs_slide_picture=mysql_fetch_array($result_slide_picture)){

@@ -64,11 +64,24 @@ if($file_slide1){
 				
 				
 				
-			$object_name="work1.png";
-			//echo"object_name$object_name<br>";
-			copy($_FILES["file_slide1"]["tmp_name"],"../slide_picture/$admin_id/work1.png");//--ต้องแก้ไข
-			//echo"sucessfully";
-			
+	$object_name="work1.png";
+	if(trim($_FILES["file_slide1"]["tmp_name"]) != "")
+	{
+		$date=date("d-m-y-H-i-s");
+		$rand=rand(1,1000);
+		$images = $_FILES["file_slide1"]["tmp_name"];
+		$width=790; //*** Fix Width & Heigh (Autu caculate) ***//
+		$size=GetimageSize($images);
+		$height=round($width*$size[1]/$size[0]);
+		$images_orig = ImageCreateFromJPEG($images);
+		$photoX = ImagesX($images_orig);
+		$photoY = ImagesY($images_orig);
+		$images_fin = ImageCreateTrueColor($width, $height);
+		ImageCopyResampled($images_fin, $images_orig, 0, 0, 0, 0, $width+1, $height+1, $photoX, $photoY);
+		ImageJPEG($images_fin,"../slide_picture/$admin_id/$object_name");
+		ImageDestroy($images_orig);
+		ImageDestroy($images_fin);
+	}
 				
 				
 				
@@ -155,9 +168,26 @@ if($file_slide2){
 				
 				
 				
-			$object_name="work2.png";
-			//echo"object_name$object_name<br>";
-			copy($_FILES["file_slide2"]["tmp_name"],"../slide_picture/$admin_id/work2.png");//--ต้องแก้ไข
+	$object_name="work2.png";
+	if(trim($_FILES["file_slide2"]["tmp_name"]) != "")
+	{
+		$date=date("d-m-y-H-i-s");
+		$rand=rand(1,1000);
+		$images = $_FILES["file_slide2"]["tmp_name"];
+		$width=790; //*** Fix Width & Heigh (Autu caculate) ***//
+		$size=GetimageSize($images);
+		$height=round($width*$size[1]/$size[0]);
+		$images_orig = ImageCreateFromJPEG($images);
+		$photoX = ImagesX($images_orig);
+		$photoY = ImagesY($images_orig);
+		$images_fin = ImageCreateTrueColor($width, $height);
+		ImageCopyResampled($images_fin, $images_orig, 0, 0, 0, 0, $width+1, $height+1, $photoX, $photoY);
+		ImageJPEG($images_fin,"../slide_picture/$admin_id/$object_name");
+		ImageDestroy($images_orig);
+		ImageDestroy($images_fin);
+	}
+
+			//copy($_FILES["file_slide2"]["tmp_name"],"../slide_picture/$admin_id/work2.png");//--ต้องแก้ไข
 			//echo"sucessfully";
 			
 				
@@ -244,10 +274,24 @@ if($file_slide3){
 				
 				
 				
-			$object_name="work3.png";
-			//echo"object_name$object_name<br>";
-			copy($_FILES["file_slide3"]["tmp_name"],"../slide_picture/$admin_id/work3.png");//--ต้องแก้ไข
-			//echo"sucessfully";
+	$object_name="work3.png";
+	if(trim($_FILES["file_slide3"]["tmp_name"]) != "")
+	{
+		$date=date("d-m-y-H-i-s");
+		$rand=rand(1,1000);
+		$images = $_FILES["file_slide3"]["tmp_name"];
+		$width=790; //*** Fix Width & Heigh (Autu caculate) ***//
+		$size=GetimageSize($images);
+		$height=round($width*$size[1]/$size[0]);
+		$images_orig = ImageCreateFromJPEG($images);
+		$photoX = ImagesX($images_orig);
+		$photoY = ImagesY($images_orig);
+		$images_fin = ImageCreateTrueColor($width, $height);
+		ImageCopyResampled($images_fin, $images_orig, 0, 0, 0, 0, $width+1, $height+1, $photoX, $photoY);
+		ImageJPEG($images_fin,"../slide_picture/$admin_id/$object_name");
+		ImageDestroy($images_orig);
+		ImageDestroy($images_fin);
+	}
 			
 				
 				

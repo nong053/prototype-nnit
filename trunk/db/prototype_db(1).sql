@@ -79,7 +79,7 @@ INSERT INTO `admin` VALUES (174, 'ss', 'ss', 'ssss', 'ss', 'check', 'ss', NULL, 
 INSERT INTO `admin` VALUES (175, 'ss', 'ss', 'sssss', 'ss', 'check', 'ss', NULL, NULL, 'ss', 'ss');
 INSERT INTO `admin` VALUES (176, 'ss', 'ss', 'sssssd', 'ss', 'check', 'ss', NULL, NULL, 'ss', 'ss');
 INSERT INTO `admin` VALUES (178, '', '3112aqsab33s ', '11s', '11', 'check', '11', NULL, NULL, '11', '11');
-INSERT INTO `admin` VALUES (179, 'nong', 'nuy', 'workphp', '010535546', 'show', 'nn.it@hotmail.com', NULL, NULL, '15/1', '0809926565');
+INSERT INTO `admin` VALUES (179, 'nong', 'nuy', 'nn-webready', '010535546', 'show', 'nn.it@hotmail.com', NULL, NULL, '15/1', '0809926565');
 
 -- --------------------------------------------------------
 
@@ -416,9 +416,10 @@ CREATE TABLE `counter_user` (
 -- dump ตาราง `counter_user`
 -- 
 
-INSERT INTO `counter_user` VALUES (76, 179);
-INSERT INTO `counter_user` VALUES (5, 1);
-INSERT INTO `counter_user` VALUES (3, 2);
+INSERT INTO `counter_user` VALUES (178, 179);
+INSERT INTO `counter_user` VALUES (8, 1);
+INSERT INTO `counter_user` VALUES (6, 2);
+INSERT INTO `counter_user` VALUES (1, 3);
 
 -- --------------------------------------------------------
 
@@ -1543,7 +1544,7 @@ CREATE TABLE `main_menu` (
   `admin_id` int(11) default NULL,
   PRIMARY KEY  (`main_menu_id`),
   KEY `admin_id` (`admin_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=111 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=128 ;
 
 -- 
 -- dump ตาราง `main_menu`
@@ -1556,12 +1557,25 @@ INSERT INTO `main_menu` VALUES (100, 0, 'เว็บบอร์ด', '', 'webb
 INSERT INTO `main_menu` VALUES (101, 0, 'สมัครสมาชิก', '', 'Register', '', 'http://localhost/prototype-nnit/index.php?page=register', 'link', NULL, NULL);
 INSERT INTO `main_menu` VALUES (102, 0, 'ตารางออกอากาศ', '', '', '', '', '', NULL, NULL);
 INSERT INTO `main_menu` VALUES (103, 0, 'หน้าแรก', '', 'Home', '', '', 'index.php?page=home', NULL, 0);
-INSERT INTO `main_menu` VALUES (104, 0, 'workhp_menu1', '', 'workhp_menu1', '', '', 'article', 2, 179);
 INSERT INTO `main_menu` VALUES (106, 0, 'workhp_menu2', '', 'workhp_menu2 ', '', '', 'article', 3, 179);
 INSERT INTO `main_menu` VALUES (107, 0, 'workhp_menu3 ', '', 'workhp_menu3 ', '', '', 'article', 4, 179);
 INSERT INTO `main_menu` VALUES (108, 0, 'หน้าแรก', '', '', '', '', 'index.php?page=home', 1, 179);
 INSERT INTO `main_menu` VALUES (109, 0, 'เว็บบอร์ด', '', 'web board', '', '', 'index.php?page=webboard', 5, 179);
 INSERT INTO `main_menu` VALUES (110, 0, 'ติดต่อเรา', '', 'contact us', '', '', 'index.php?page=contact', 6, 179);
+INSERT INTO `main_menu` VALUES (114, 0, '5555', '', '555', '', '', '', 10, 0);
+INSERT INTO `main_menu` VALUES (115, 0, 'test444', '', 'test444', '', '', '', 10, 0);
+INSERT INTO `main_menu` VALUES (116, 0, 'test', '', 'test', '', '', '', 6, 0);
+INSERT INTO `main_menu` VALUES (117, 0, 'ASDFASDF', '', 'ASDFASDF', '', '', '', 6, 0);
+INSERT INTO `main_menu` VALUES (118, 0, 'SDFGSDF', '', 'GSDFGSDF', '', '', '', 6, 0);
+INSERT INTO `main_menu` VALUES (119, 0, 'AA', '', 'BB', '', '', '', 6, 0);
+INSERT INTO `main_menu` VALUES (120, 0, 'dadfa', '', 'adfa', '', '', '', 6, 0);
+INSERT INTO `main_menu` VALUES (121, 0, 'asdfasd', '', 'asdfasdf', '', '', '', 6, 0);
+INSERT INTO `main_menu` VALUES (122, 0, 'adfa', '', 'adfa', '', '', '', 6, 0);
+INSERT INTO `main_menu` VALUES (123, 0, 'dadfad', '', 'asdfasd', '', '', '', 6, 0);
+INSERT INTO `main_menu` VALUES (124, 0, 'ASDFASDF', '', 'ASDFASDFAS', '', '', '', 6, 0);
+INSERT INTO `main_menu` VALUES (125, 0, 'GDHJFGHJ', '', 'FGHJFGHJ', '', '', '', 6, 0);
+INSERT INTO `main_menu` VALUES (126, 0, 'adfa', '', 'asdfa', '', '', '', 6, 179);
+INSERT INTO `main_menu` VALUES (127, 0, 'product all', '', 'product all', '', '', 'dispatcher.php?page=product', 7, 179);
 
 -- --------------------------------------------------------
 
@@ -1763,7 +1777,7 @@ CREATE TABLE `object_system` (
   `object_type` varchar(111) default NULL,
   `admin_id` int(11) NOT NULL,
   PRIMARY KEY  (`object_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 -- 
 -- dump ตาราง `object_system`
@@ -1775,6 +1789,16 @@ INSERT INTO `object_system` VALUES (10, '', 'header_banner', '#000066', '3', '3'
 INSERT INTO `object_system` VALUES (12, 'd-_nnit_rromote_header090613031101.png', 'header_bg', '#FFFFFF', '', '', NULL, 179);
 INSERT INTO `object_system` VALUES (13, 'logo_nnit3201306020602.png', 'header_logo', '', '', '', NULL, 179);
 INSERT INTO `object_system` VALUES (14, 'banner_top4110707133439.png', 'header_banner', '', '', '', NULL, 179);
+INSERT INTO `object_system` VALUES (15, NULL, 'header_bg', NULL, NULL, NULL, NULL, 0);
+INSERT INTO `object_system` VALUES (16, NULL, 'header_logo', NULL, NULL, NULL, NULL, 0);
+INSERT INTO `object_system` VALUES (17, NULL, 'header_banner', NULL, NULL, NULL, NULL, 0);
+INSERT INTO `object_system` VALUES (18, '', 'header_title_bg', NULL, NULL, NULL, NULL, 0);
+INSERT INTO `object_system` VALUES (19, '', 'header_title_bg', '#000066', '', '', NULL, 179);
+INSERT INTO `object_system` VALUES (20, NULL, 'header_bg', '', '', '', NULL, 2);
+INSERT INTO `object_system` VALUES (21, NULL, 'header_logo', '', '', '', NULL, 2);
+INSERT INTO `object_system` VALUES (22, NULL, 'header_banner', '', '', '', NULL, 2);
+INSERT INTO `object_system` VALUES (23, 'biotec230214241050.jpg', 'header_title_bg', '', '', '', NULL, 2);
+INSERT INTO `object_system` VALUES (24, '1005736_10151478496275213_410411626_n230214110227.jpg', 'counter_bg', '#3300CC', '1', '2', NULL, 179);
 
 -- --------------------------------------------------------
 
@@ -2515,6 +2539,116 @@ INSERT INTO `useronline` VALUES (1393024050, '127.0.0.1', '/prototype-nnit/dispa
 INSERT INTO `useronline` VALUES (1393024131, '127.0.0.1', '/prototype-nnit/dispatcher.php');
 INSERT INTO `useronline` VALUES (1393035543, '127.0.0.1', '/prototype-nnit/dispatcher.php');
 INSERT INTO `useronline` VALUES (1393049649, '127.0.0.1', '/prototype-nnit/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393050952, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393051110, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393051120, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393051147, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393052138, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393052150, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393052167, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393052178, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393053009, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393054223, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393054241, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393077797, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393077923, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393077998, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393078043, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393078668, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393086365, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393086401, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393086415, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393125616, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393125647, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393125722, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393125746, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393125756, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393125763, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393125825, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393125850, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393128075, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393137356, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393137884, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393139326, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393139524, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393139554, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393139608, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393139733, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393141600, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393141648, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393142092, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393142242, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393142362, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393142408, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393143398, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393144901, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393145136, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393145144, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393145177, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393145179, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393145191, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393145705, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393145711, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393145719, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393146265, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393146377, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393146407, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393146444, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393146484, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393146500, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1393147616, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394260593, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394265661, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394269111, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394269170, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394269900, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394269914, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394269948, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394269967, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394270452, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394270484, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394270621, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394270987, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394271114, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394271210, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394271279, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1394329849, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1395356072, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1395356086, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1395356103, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1395356105, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1395356106, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1395356110, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1395356131, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1395356174, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868409, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868881, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868882, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868886, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868888, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868890, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868892, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868893, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868899, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868923, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868925, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868927, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868931, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868933, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868935, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868937, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868940, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868941, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868943, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396868944, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396869225, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396869240, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396869261, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396869272, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396869430, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396869451, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1396869486, '127.0.0.1', '/dispatcher.php');
+INSERT INTO `useronline` VALUES (1399822556, '127.0.0.1', '/dispatcher.php');
 
 -- --------------------------------------------------------
 
@@ -2527,15 +2661,18 @@ CREATE TABLE `webcat_register` (
   `cat_webre_package` varchar(250) NOT NULL,
   `cat_webre_detail` text NOT NULL,
   PRIMARY KEY  (`cat_webre_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 -- 
 -- dump ตาราง `webcat_register`
 -- 
 
-INSERT INTO `webcat_register` VALUES (1, 'p1', '');
-INSERT INTO `webcat_register` VALUES (2, 'p2', '');
-INSERT INTO `webcat_register` VALUES (3, 'p3', '');
+INSERT INTO `webcat_register` VALUES (1, 'E-Shopping ', 'ร้านค้าออนไลน์ ');
+INSERT INTO `webcat_register` VALUES (2, 'E-Horoscope ', 'ดูดวงออนไลน์ ');
+INSERT INTO `webcat_register` VALUES (3, 'E-Travel/Tour ', 'ท่องเที่ยว/ทัวร์');
+INSERT INTO `webcat_register` VALUES (4, 'E-MLM ', 'ธุระกิจขายตรง ');
+INSERT INTO `webcat_register` VALUES (5, 'E-Reservation Hotel ', 'จองโรงแรม');
+INSERT INTO `webcat_register` VALUES (6, 'E-Tv/Radio online ', 'ทีวี/วิทยุออนไลน์');
 
 -- --------------------------------------------------------
 
